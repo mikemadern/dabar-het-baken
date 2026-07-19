@@ -67,6 +67,23 @@ een zin, een idee) — het hoeft niet compleet of netjes geformuleerd te zijn.
 - ⏳ *Later opnieuw vragen*: moodboards of voorbeeldsites die de gewenste stijl
   illustreren (zie Open Vragen).
 
+## Status
+
+- **Eerste versie van de website is gebouwd als meerdere pagina's** (niet als
+  onepager): `/` (homepage met hero + doorverwijskaarten), `/missie`,
+  `/activiteiten`, `/programma`, `/doe-mee`, `/steun-ons`, `/contact`. Gedeelde
+  header (met navigatie + mobiel hamburgermenu) en footer zitten in
+  `app/layouts/default.vue`. Copy is per sectie geschreven en fact-gecheckt tegen dit
+  document. Werkt responsief en bouwt zonder errors (`nuxi build`).
+- **Logo**: het bestaande logo ("Het Baken — Evangelisatie en Recreatie", met
+  vuurtoren-icoon) is uit de vacature-PDF geëxtraheerd op hoge resolutie en staat als
+  [public/images/logo-het-baken.png](public/images/logo-het-baken.png) (transparante
+  achtergrond) en `-wit-bg.png` (witte achtergrond) in het project.
+- De demo-content van de Nuxt Content-starter (Counter/Alert-componenten,
+  `content/index.md`, `content/about.md`) is verwijderd — de homepage is nu een losse
+  Vue-pagina in plaats van markdown-gedreven. `@nuxt/content` staat nog steeds
+  geïnstalleerd voor toekomstige pagina's (bijv. nieuws, uitgebreider programma).
+
 ## Techniek / functionaliteit
 
 - Gekozen: **Nuxt + TypeScript**, met de **`@nuxt/content`-module** zodat
