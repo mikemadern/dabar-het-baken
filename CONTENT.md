@@ -78,8 +78,12 @@ een zin, een idee) — het hoeft niet compleet of netjes geformuleerd te zijn.
   errors (`nuxi build`).
 - **Vergelijking met de oude site (bakenharderwijk.nl) uitgevoerd** — wat direct kon
   worden overgenomen is toegevoegd:
-  - `/fotos` — echte fotogalerij met een selectie uit de eigen fotoshoot van
-    2026-07-18, met lightbox (klik om te vergroten, met vorige/volgende).
+  - `/fotos` — albumoverzicht (`/fotos/[album]` per album, nu "Op de camping" en
+    "Zomerweek 1 — juli 2026") met een selectie uit de eigen fotoshoot van
+    2026-07-18. Lightbox met vorige/volgende-knoppen, toetsenbordbediening
+    (pijltjes + Esc) en een subtiele link naar het fotobeleid. Albumdata staat in
+    `app/data/albums.ts` — nieuwe albums (bv. volgende zomerweken) toevoegen kan
+    daar zonder de pagina's aan te passen.
   - `/fotobeleid` — beleid over foto/video-gebruik, overgenomen uit dit document.
   - `/jaarverslagen` — links naar de 7 bestaande jaarverslag-PDF's (2017–2022, 2024),
     voorlopig gehost op bakenharderwijk.nl (nog niet zelf gehost).

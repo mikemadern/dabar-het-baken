@@ -1,18 +1,16 @@
 <script setup lang="ts">
-useHead({ title: "Foto's — Dabar Het Baken" })
+import { albums, findAlbum } from '~/data/albums'
 
-const photos = [
-  { src: '/images/galerij/team-onderweg-tent.jpg', alt: 'Teamlid op weg naar de tenten op de camping' },
-  { src: '/images/galerij/welkom-camping.jpg', alt: 'Welkomstbord bij de ingang van Kriemelberg Bushcamp' },
-  { src: '/images/galerij/volleybal.jpg', alt: 'Team en gasten spelen samen volleybal' },
-  { src: '/images/galerij/clowns.jpg', alt: 'Teamleden verkleed als clowns rennen over de camping' },
-  { src: '/images/galerij/schommelen.jpg', alt: 'Een meisje schommelt op de camping' },
-  { src: '/images/galerij/trampoline-lachen.jpg', alt: 'Een meisje lacht op de trampoline' },
-  { src: '/images/galerij/trampoline-glijbaan.jpg', alt: 'Een meisje glijdt van de trampoline-glijbaan' },
-  { src: '/images/galerij/high-five.jpg', alt: 'Een teamlid geeft een high-five tijdens een groepsspel' },
-  { src: '/images/galerij/voetbal.jpg', alt: 'Kinderen voetballen samen met een teamlid' },
-]
+const route = useRoute()
+const album = findAlbum(route.params.album as string)
 
+if (!album) {
+  throw createError({ statusCode: 404, statusMessage: "Album niet gevonden" })
+}
+
+useHead({ title: `${album.title} — Foto's — Dabar Het Baken` })
+
+const photos = album.photos
 const openIndex = ref<number | null>(null)
 
 function open(index: number) {
@@ -29,20 +27,34 @@ function prev() {
   if (openIndex.value === null) return
   openIndex.value = (openIndex.value - 1 + photos.length) % photos.length
 }
+
+function handleKeydown(event: KeyboardEvent) {
+  if (openIndex.value === null) return
+  if (event.key === 'Escape') close()
+  else if (event.key === 'ArrowRight') next()
+  else if (event.key === 'ArrowLeft') prev()
+}
+
+watch(openIndex, (value) => {
+  document.body.style.overflow = value === null ? '' : 'hidden'
+})
+
+onMounted(() => window.addEventListener('keydown', handleKeydown))
+onUnmounted(() => {
+  window.removeEventListener('keydown', handleKeydown)
+  document.body.style.overflow = ''
+})
 </script>
 
 <template>
   <div>
     <section class="bg-stone-900 py-16 text-white sm:py-20">
       <div class="mx-auto max-w-3xl px-4 sm:px-6">
-        <p class="mb-2 inline-block rounded-full bg-yellow-400 px-3 py-1 text-sm font-semibold text-stone-900">
-          Foto's
-        </p>
-        <h1 class="text-3xl font-bold tracking-tight sm:text-5xl">Sfeerbeelden van de camping</h1>
-        <p class="mt-4 max-w-xl text-stone-300">
-          Een impressie van een bakenweek op Kriemelberg Bushcamp — clubs, spel en een team
-          in knalgele shirts.
-        </p>
+        <NuxtLink to="/fotos" class="text-sm font-medium text-stone-400 hover:text-white">
+          &larr; Alle albums
+        </NuxtLink>
+        <h1 class="mt-3 text-3xl font-bold tracking-tight sm:text-5xl">{{ album.title }}</h1>
+        <p class="mt-4 max-w-xl text-stone-300">{{ album.description }}</p>
       </div>
     </section>
 
@@ -67,6 +79,13 @@ function prev() {
             />
           </button>
         </div>
+
+        <NuxtLink
+          to="/fotobeleid"
+          class="mt-10 inline-block text-sm text-stone-400 underline decoration-stone-300 underline-offset-4 hover:text-stone-600"
+        >
+          Bezwaar tegen een foto? Bekijk ons fotobeleid
+        </NuxtLink>
       </div>
     </section>
 
@@ -79,7 +98,7 @@ function prev() {
       <button
         type="button"
         class="absolute right-4 top-4 rounded-full bg-white/10 p-2 text-white hover:bg-white/20"
-        aria-label="Sluiten"
+        aria-label="Sluiten (Esc)"
         @click="close"
       >
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18" /></svg>
@@ -87,7 +106,7 @@ function prev() {
       <button
         type="button"
         class="absolute left-4 top-1/2 -translate-y-1/2 rounded-full bg-white/10 p-2 text-white hover:bg-white/20"
-        aria-label="Vorige"
+        aria-label="Vorige foto"
         @click.stop="prev"
       >
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 19l-7-7 7-7" /></svg>
@@ -95,7 +114,7 @@ function prev() {
       <button
         type="button"
         class="absolute right-4 top-1/2 -translate-y-1/2 rounded-full bg-white/10 p-2 text-white hover:bg-white/20"
-        aria-label="Volgende"
+        aria-label="Volgende foto"
         @click.stop="next"
       >
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 5l7 7-7 7" /></svg>
@@ -107,6 +126,9 @@ function prev() {
         format="webp"
         width="1600"
       />
+      <p class="absolute bottom-4 left-1/2 -translate-x-1/2 text-sm text-stone-400">
+        {{ openIndex + 1 }} / {{ photos.length }}
+      </p>
     </div>
   </div>
 </template>
