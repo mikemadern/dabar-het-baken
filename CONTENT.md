@@ -71,10 +71,29 @@ een zin, een idee) — het hoeft niet compleet of netjes geformuleerd te zijn.
 
 - **Eerste versie van de website is gebouwd als meerdere pagina's** (niet als
   onepager): `/` (homepage met hero + doorverwijskaarten), `/missie`,
-  `/activiteiten`, `/programma`, `/doe-mee`, `/steun-ons`, `/contact`. Gedeelde
-  header (met navigatie + mobiel hamburgermenu) en footer zitten in
-  `app/layouts/default.vue`. Copy is per sectie geschreven en fact-gecheckt tegen dit
-  document. Werkt responsief en bouwt zonder errors (`nuxi build`).
+  `/activiteiten`, `/programma`, `/doe-mee`, `/steun-ons`, `/contact`, `/fotos`,
+  `/fotobeleid`, `/jaarverslagen`. Gedeelde header (met navigatie + mobiel
+  hamburgermenu) en footer zitten in `app/layouts/default.vue`. Copy is per sectie
+  geschreven en fact-gecheckt tegen dit document. Werkt responsief en bouwt zonder
+  errors (`nuxi build`).
+- **Vergelijking met de oude site (bakenharderwijk.nl) uitgevoerd** — wat direct kon
+  worden overgenomen is toegevoegd:
+  - `/fotos` — echte fotogalerij met een selectie uit de eigen fotoshoot van
+    2026-07-18, met lightbox (klik om te vergroten, met vorige/volgende).
+  - `/fotobeleid` — beleid over foto/video-gebruik, overgenomen uit dit document.
+  - `/jaarverslagen` — links naar de 7 bestaande jaarverslag-PDF's (2017–2022, 2024),
+    voorlopig gehost op bakenharderwijk.nl (nog niet zelf gehost).
+  - "Doe mee"-pagina: prominente "Meld je aan als teamlid"-knop die direct naar het
+    bestaande IZB-inschrijfsysteem linkt
+    (izb.nl/dabar/camping?relation_id=32836) — dit was op de oude site de
+    belangrijkste actieknop in de header, wij hadden 'm gemist.
+  - "Doe mee"-pagina: downloadlink naar de vacature-PDF, en een lijst van de
+    kerken die kerkambassadeurs leveren.
+  - "Contact"-pagina: een werkend contactformulier (naam/e-mail/bericht) dat bij
+    versturen een vooringevulde e-mail opent — geen backend nodig.
+  - Footer: links naar Jaarverslagen en Fotobeleid.
+  - Alle gebruikte foto's (ook de eerder gekozen 3) zijn achteraf verkleind naar
+    max. 2000px breed — scheelde ruim 500MB aan bronbestanden in de git-repo.
 - **Logo**: het bestaande logo ("Het Baken — Evangelisatie en Recreatie", met
   vuurtoren-icoon) is uit de vacature-PDF geëxtraheerd op hoge resolutie en staat als
   [public/images/logo-het-baken.png](public/images/logo-het-baken.png) (transparante
@@ -276,6 +295,20 @@ Financieel:
   nieuwe site, of liever alleen e-mail/contactformulier?
 - Moet er een CMS/eenvoudige manier komen waarmee vrijwilligers zelf nieuws/foto's
   kunnen toevoegen, of blijft alles in .md-bestanden die via git aangepast worden?
-- Nieuwsbrief-inschrijving ("Bakenvriend") en contactformulier terug laten komen —
-  via welke dienst (bv. Mailchimp) of anders?
+- Nieuwsbrief-inschrijving ("Bakenvriend") — via welke dienst (bv. Mailchimp) of
+  anders? *(Contactformulier is inmiddels wel toegevoegd, via mailto — zie Status.)*
 - Onlinedoneren (bv. iDEAL) gewenst, of blijft het tonen van IBAN/QR-code voldoende?
+- **Altijd-zichtbare donatieknop**: de oude site heeft een ronde, permanente
+  "Gift"-knop rechtsonder op elke pagina (vermoedelijk de Givt-app, gezien icoon en
+  bestandsnaam "icon_gift" — niet 100% kunnen bevestigen). Wil je dit ook op de
+  nieuwe site, en zo ja: heb je (of wil je) een Givt-account (of vergelijkbare
+  dienst) voor de organisatie?
+- **Nieuws/actualiteiten-pagina**: de oude homepage had een doorlopend nieuwsfeed
+  (aanmeldingen open, programma bekend, etc.) met archief terug tot 2019. Wil je dit
+  terug op de nieuwe site? Zo ja: wie schrijft en onderhoudt dit, en wat zou het
+  eerste bericht moeten zijn? (Ontbreekt nu nog, want er is geen content om mee te
+  starten.)
+- **Plattegrond van de camping**: leuk voor gasten, maar het is eigenlijk content van
+  Kriemelberg Bushcamp zelf, niet van Dabar Het Baken. Gewoon doorlinken naar de
+  camping (die we al noemen), of toch een eigen plattegrond-pagina/verwijzing
+  toevoegen?

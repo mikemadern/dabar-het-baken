@@ -1,5 +1,15 @@
 <script setup lang="ts">
 useHead({ title: 'Contact — Dabar Het Baken' })
+
+const name = ref('')
+const email = ref('')
+const message = ref('')
+
+function sendMessage() {
+  const subject = `Bericht via de website van ${name.value || 'iemand'}`
+  const body = `Naam: ${name.value}\nE-mail: ${email.value}\n\n${message.value}`
+  window.location.href = `mailto:dabarhetbaken@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+}
 </script>
 
 <template>
@@ -42,6 +52,51 @@ useHead({ title: 'Contact — Dabar Het Baken' })
           </ul>
         </div>
       </div>
+
+      <form class="mt-10 rounded-2xl border border-stone-200 bg-white p-6 shadow-sm sm:p-8" @submit.prevent="sendMessage">
+        <h2 class="text-lg font-semibold text-stone-900">Stuur ons een bericht</h2>
+        <p class="mt-1 text-sm text-stone-500">
+          Dit opent je e-mailprogramma met het bericht al ingevuld, klaar om te versturen.
+        </p>
+        <div class="mt-6 grid gap-4 sm:grid-cols-2">
+          <div>
+            <label for="name" class="block text-sm font-medium text-stone-700">Naam</label>
+            <input
+              id="name"
+              v-model="name"
+              type="text"
+              required
+              class="mt-1 w-full rounded-lg border border-stone-300 px-3 py-2 text-sm focus:border-yellow-400 focus:outline-none focus:ring-1 focus:ring-yellow-400"
+            >
+          </div>
+          <div>
+            <label for="email" class="block text-sm font-medium text-stone-700">E-mail</label>
+            <input
+              id="email"
+              v-model="email"
+              type="email"
+              required
+              class="mt-1 w-full rounded-lg border border-stone-300 px-3 py-2 text-sm focus:border-yellow-400 focus:outline-none focus:ring-1 focus:ring-yellow-400"
+            >
+          </div>
+        </div>
+        <div class="mt-4">
+          <label for="message" class="block text-sm font-medium text-stone-700">Bericht</label>
+          <textarea
+            id="message"
+            v-model="message"
+            rows="5"
+            required
+            class="mt-1 w-full rounded-lg border border-stone-300 px-3 py-2 text-sm focus:border-yellow-400 focus:outline-none focus:ring-1 focus:ring-yellow-400"
+          />
+        </div>
+        <button
+          type="submit"
+          class="mt-6 rounded-full bg-yellow-400 px-5 py-3 text-sm font-semibold text-stone-900 hover:bg-yellow-300 transition-colors"
+        >
+          Neem contact met ons op
+        </button>
+      </form>
     </section>
   </div>
 </template>

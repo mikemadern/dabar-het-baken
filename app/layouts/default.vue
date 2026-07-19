@@ -3,6 +3,7 @@ const navLinks = [
   { to: '/missie', label: 'Missie' },
   { to: '/activiteiten', label: 'Activiteiten' },
   { to: '/programma', label: 'Programma 2026' },
+  { to: '/fotos', label: "Foto's" },
   { to: '/doe-mee', label: 'Doe mee' },
   { to: '/steun-ons', label: 'Steun ons' },
   { to: '/contact', label: 'Contact' },
@@ -92,9 +93,13 @@ const mobileMenuOpen = ref(false)
             </ul>
           </div>
         </div>
-        <p class="mt-12 border-t border-stone-800 pt-6 text-xs text-stone-500">
-          © {{ new Date().getFullYear() }} Dabar Het Baken
-        </p>
+        <div class="mt-12 flex flex-wrap items-center justify-between gap-4 border-t border-stone-800 pt-6 text-xs text-stone-500">
+          <p>© {{ new Date().getFullYear() }} Dabar Het Baken</p>
+          <div class="flex gap-4">
+            <NuxtLink to="/jaarverslagen" class="hover:text-white">Jaarverslagen</NuxtLink>
+            <NuxtLink to="/fotobeleid" class="hover:text-white">Fotobeleid</NuxtLink>
+          </div>
+        </div>
       </div>
     </footer>
   </div>

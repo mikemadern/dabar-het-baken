@@ -8,6 +8,14 @@ const roles = [
   { name: 'Kerkambassadeur', requirement: '', description: 'Je vertegenwoordigt je kerk, houdt de lijnen kort en helpt mee met de werving van teamleden en fondsen.' },
   { name: 'Campingpastor', requirement: '', description: 'Je bent er voor gasten die op de camping een luisterend oor, een goed gesprek of gebed zoeken.' },
 ]
+
+const churches = [
+  'Baptistengemeente Harderwijk',
+  'CGK Harderwijk',
+  'Hervormde gemeente Harderwijk (Bethelkerk, De Regenboog, Grote kerk)',
+  'Hervormde gemeente Hierden (Dorpskerk, Visnet)',
+  'Protestantse gemeente Harderwijk',
+]
 </script>
 
 <template>
@@ -36,6 +44,22 @@ const roles = [
                 de camping tot een rol door het hele jaar heen.
               </p>
             </div>
+            <div class="mt-8 flex flex-wrap gap-3">
+              <a
+                href="https://www.izb.nl/dabar/camping?relation_id=32836"
+                target="_blank"
+                rel="noopener"
+                class="rounded-full bg-yellow-400 px-5 py-3 text-sm font-semibold text-stone-900 hover:bg-yellow-300 transition-colors"
+              >
+                Meld je aan als teamlid
+              </a>
+              <a
+                href="mailto:dabarhetbaken@gmail.com"
+                class="rounded-full border border-white/40 px-5 py-3 text-sm font-semibold text-white hover:bg-white/10 transition-colors"
+              >
+                Liever eerst wat vragen? Mail ons
+              </a>
+            </div>
           </div>
           <NuxtImg
             src="/images/team-kind-spelen.jpg"
@@ -63,12 +87,33 @@ const roles = [
             <p class="mt-2 text-sm text-stone-600 leading-relaxed">{{ role.description }}</p>
           </div>
         </div>
-        <a
-          href="mailto:dabarhetbaken@gmail.com"
-          class="mt-8 inline-block rounded-full bg-yellow-400 px-5 py-3 text-sm font-semibold text-stone-900 hover:bg-yellow-300 transition-colors"
-        >
-          Neem contact op — dabarhetbaken@gmail.com
-        </a>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a
+            href="mailto:dabarhetbaken@gmail.com"
+            class="inline-block rounded-full bg-yellow-400 px-5 py-3 text-sm font-semibold text-stone-900 hover:bg-yellow-300 transition-colors"
+          >
+            Neem contact op — dabarhetbaken@gmail.com
+          </a>
+          <a
+            href="/documenten/vacature-commissielid.pdf"
+            target="_blank"
+            class="inline-block rounded-full border border-stone-300 px-5 py-3 text-sm font-semibold text-stone-900 hover:bg-stone-100 transition-colors"
+          >
+            Download de vacature commissielid (PDF)
+          </a>
+        </div>
+
+        <div class="mt-16 border-t border-stone-200 pt-10">
+          <h2 class="text-lg font-semibold text-stone-900">Gesteund door kerken uit Harderwijk en Hierden</h2>
+          <p class="mt-2 text-sm text-stone-600">
+            Kerkambassadeurs vanuit deze kerken houden de lijnen met Dabar Het Baken kort:
+          </p>
+          <ul class="mt-4 grid gap-2 text-sm text-stone-700 sm:grid-cols-2">
+            <li v-for="church in churches" :key="church" class="flex gap-2">
+              <span class="text-yellow-500">●</span> {{ church }}
+            </li>
+          </ul>
+        </div>
       </div>
     </section>
   </div>
