@@ -14,14 +14,11 @@ function sendMessage() {
 
 <template>
   <div>
-    <section class="bg-stone-900 py-16 text-white sm:py-20">
-      <div class="mx-auto max-w-3xl px-4 sm:px-6">
-        <p class="mb-2 inline-block rounded-full bg-yellow-400 px-3 py-1 text-sm font-semibold text-stone-900">
-          Contact
-        </p>
-        <h1 class="text-3xl font-bold tracking-tight sm:text-5xl">Contact</h1>
-      </div>
-    </section>
+    <PageHeader
+      image="/images/headers/receptie-breed.jpg"
+      label="Contact"
+      title="Contact"
+    />
 
     <section class="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-20">
       <p class="text-lg text-stone-600">

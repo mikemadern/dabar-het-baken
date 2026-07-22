@@ -48,15 +48,16 @@ onUnmounted(() => {
 
 <template>
   <div>
-    <section class="bg-stone-900 py-16 text-white sm:py-20">
-      <div class="mx-auto max-w-3xl px-4 sm:px-6">
-        <NuxtLink to="/fotos" class="text-sm font-medium text-stone-400 hover:text-white">
-          &larr; Alle albums
-        </NuxtLink>
-        <h1 class="mt-3 text-3xl font-bold tracking-tight sm:text-5xl">{{ album.title }}</h1>
-        <p class="mt-4 max-w-xl text-stone-300">{{ album.description }}</p>
-      </div>
-    </section>
+    <PageHeader
+      :image="album.photos[0].src"
+      label="Foto's"
+      :title="album.title"
+    >
+      <NuxtLink to="/fotos" class="text-sm font-medium text-stone-500 hover:text-stone-700">
+        &larr; Alle albums
+      </NuxtLink>
+      <p class="mt-2 max-w-xl text-stone-600">{{ album.description }}</p>
+    </PageHeader>
 
     <section class="bg-stone-50 py-16 sm:py-20">
       <div class="mx-auto max-w-6xl px-4 sm:px-6">

@@ -1,1 +1,34 @@
 @import "tailwindcss";
+@import "@fontsource-variable/fredoka";
+@import "@fontsource/poppins/400.css";
+@import "@fontsource/poppins/500.css";
+@import "@fontsource/poppins/600.css";
+@import "@fontsource/poppins/700.css";
+@import "@fontsource/poppins/800.css";
+
+@theme {
+  --font-display: "Fredoka Variable", "Fredoka", sans-serif;
+  --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif;
+
+  /* Brand kleuren, gemeten uit de officiële "Zoekt jou!"-poster van Dabar Het Baken */
+  --color-yellow-100: #fff6d6;
+  --color-yellow-300: #ffe680;
+  --color-yellow-400: #ffde59;
+  --color-yellow-500: #ffd633;
+  --color-yellow-800: #7a5c00;
+
+  --color-sky-400: #38b6ff;
+
+  --color-red-500: #ff3131;
+}
+
+@layer base {
+  body {
+    font-family: var(--font-sans);
+  }
+
+  h1, h2, h3 {
+    font-family: var(--font-display);
+    font-weight: 600;
+  }
+}

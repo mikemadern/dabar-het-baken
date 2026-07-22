@@ -20,19 +20,22 @@ const churches = [
 
 <template>
   <div>
-    <section class="bg-stone-900 py-16 text-white">
+    <PageHeader
+      image="/images/headers/team-gesprek-gast.jpg"
+      label="Doe mee"
+      title="Word onderdeel van het team"
+    />
+
+    <section class="bg-white py-16 sm:py-20">
       <div class="mx-auto max-w-6xl px-4 sm:px-6">
-        <div class="grid gap-10 lg:grid-cols-2 lg:items-center">
+        <div class="grid gap-12 lg:grid-cols-2 lg:items-center">
           <div>
-            <p class="mb-2 inline-block rounded-full bg-yellow-400 px-3 py-1 text-sm font-semibold text-stone-900">
-              Doe mee
-            </p>
-            <h1 class="text-3xl font-bold tracking-tight sm:text-5xl">Doe mee</h1>
-            <p class="mt-4 text-lg text-stone-300">
+            <StickerLabel color="blue" rotate="right" class="mb-4">Zoekt teamleden voor 2026</StickerLabel>
+            <p class="text-lg text-stone-600">
               Dabar Het Baken draait volledig op vrijwilligers — mensen die tijd, aandacht
               en geloof willen delen met gasten op de camping.
             </p>
-            <div class="mt-6 space-y-4 text-stone-300 leading-relaxed">
+            <div class="mt-6 space-y-4 text-stone-700 leading-relaxed">
               <p>
                 Als interkerkelijke evangelisatie- en recreatiecommissie organiseren we
                 jaarlijks de bakenweken op Camping Kriemelberg Bushcamp in Ermelo. De
@@ -55,7 +58,7 @@ const churches = [
               </a>
               <a
                 href="mailto:dabarhetbaken@gmail.com"
-                class="rounded-full border border-white/40 px-5 py-3 text-sm font-semibold text-white hover:bg-white/10 transition-colors"
+                class="rounded-full border border-stone-300 px-5 py-3 text-sm font-semibold text-stone-900 hover:bg-stone-100 transition-colors"
               >
                 Liever eerst wat vragen? Mail ons
               </a>
@@ -73,8 +76,9 @@ const churches = [
     </section>
 
     <section class="bg-stone-50 py-16 sm:py-20">
-      <div class="mx-auto max-w-3xl px-4 sm:px-6">
-        <div class="space-y-4">
+      <div class="mx-auto max-w-5xl px-4 sm:px-6">
+        <StickerLabel class="mb-4">Manieren om mee te doen</StickerLabel>
+        <div class="grid gap-5 sm:grid-cols-2">
           <div
             v-for="role in roles"
             :key="role.name"
@@ -87,7 +91,7 @@ const churches = [
             <p class="mt-2 text-sm text-stone-600 leading-relaxed">{{ role.description }}</p>
           </div>
         </div>
-        <div class="mt-8 flex flex-wrap gap-3">
+        <div class="mt-10 flex flex-wrap gap-3">
           <a
             href="mailto:dabarhetbaken@gmail.com"
             class="inline-block rounded-full bg-yellow-400 px-5 py-3 text-sm font-semibold text-stone-900 hover:bg-yellow-300 transition-colors"
@@ -97,23 +101,25 @@ const churches = [
           <a
             href="/documenten/vacature-commissielid.pdf"
             target="_blank"
-            class="inline-block rounded-full border border-stone-300 px-5 py-3 text-sm font-semibold text-stone-900 hover:bg-stone-100 transition-colors"
+            class="inline-block rounded-full border border-stone-300 bg-white px-5 py-3 text-sm font-semibold text-stone-900 hover:bg-stone-100 transition-colors"
           >
             Download de vacature commissielid (PDF)
           </a>
         </div>
+      </div>
+    </section>
 
-        <div class="mt-16 border-t border-stone-200 pt-10">
-          <h2 class="text-lg font-semibold text-stone-900">Gesteund door kerken uit Harderwijk en Hierden</h2>
-          <p class="mt-2 text-sm text-stone-600">
-            Kerkambassadeurs vanuit deze kerken houden de lijnen met Dabar Het Baken kort:
-          </p>
-          <ul class="mt-4 grid gap-2 text-sm text-stone-700 sm:grid-cols-2">
-            <li v-for="church in churches" :key="church" class="flex gap-2">
-              <span class="text-yellow-500">●</span> {{ church }}
-            </li>
-          </ul>
-        </div>
+    <section class="bg-white py-16 sm:py-20">
+      <div class="mx-auto max-w-3xl px-4 sm:px-6">
+        <h2 class="text-lg font-semibold text-stone-900">Gesteund door kerken uit Harderwijk en Hierden</h2>
+        <p class="mt-2 text-sm text-stone-600">
+          Kerkambassadeurs vanuit deze kerken houden de lijnen met Dabar Het Baken kort:
+        </p>
+        <ul class="mt-4 grid gap-2 text-sm text-stone-700 sm:grid-cols-2">
+          <li v-for="church in churches" :key="church" class="flex gap-2">
+            <span class="text-yellow-500">●</span> {{ church }}
+          </li>
+        </ul>
       </div>
     </section>
   </div>

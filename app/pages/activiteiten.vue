@@ -13,14 +13,11 @@ const clubs = [
 
 <template>
   <div>
-    <section class="bg-stone-900 py-16 text-white sm:py-20">
-      <div class="mx-auto max-w-3xl px-4 sm:px-6">
-        <p class="mb-2 inline-block rounded-full bg-yellow-400 px-3 py-1 text-sm font-semibold text-stone-900">
-          Activiteiten
-        </p>
-        <h1 class="text-3xl font-bold tracking-tight sm:text-5xl">Activiteiten voor iedere leeftijd</h1>
-      </div>
-    </section>
+    <PageHeader
+      image="/images/headers/kringspel-breed.jpg"
+      label="Activiteiten"
+      title="Activiteiten voor iedere leeftijd"
+    />
 
     <section class="bg-stone-50 py-16 sm:py-20">
       <div class="mx-auto max-w-6xl px-4 sm:px-6">
@@ -45,7 +42,7 @@ const clubs = [
           >
             <div class="flex items-baseline justify-between gap-2">
               <h2 class="text-lg font-semibold text-stone-900">{{ club.name }}</h2>
-              <span class="shrink-0 rounded-full bg-yellow-100 px-2.5 py-1 text-xs font-semibold text-yellow-800">{{ club.age }}</span>
+              <span class="shrink-0 rounded-full bg-sky-100 px-2.5 py-1 text-xs font-semibold text-sky-800">{{ club.age }}</span>
             </div>
             <p class="mt-3 text-sm text-stone-600 leading-relaxed">{{ club.description }}</p>
           </div>

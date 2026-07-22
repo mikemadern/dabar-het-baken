@@ -64,11 +64,163 @@ een zin, een idee) — het hoeft niet compleet of netjes geformuleerd te zijn.
 - **Foto's**: er is weinig bestaand beeldmateriaal. Nieuwe, eigen foto's worden deze
   week gemaakt op de camping — zie [SHOTLIST.md](SHOTLIST.md) voor de lijst met
   gewenste opnames.
-- ⏳ *Later opnieuw vragen*: moodboards of voorbeeldsites die de gewenste stijl
-  illustreren (zie Open Vragen).
+- **Huisstijl bevestigd** (2026-07-19, op basis van 3 bestaande social media-posts
+  voor Dabar Het Baken): knalgeel **#ffe058** + lichtblauw **#38b0ff** (bevestigd
+  door pixels uit de posters te meten), een vetgedrukt rond "bubble"-lettertype
+  (Fredoka geïnstalleerd als beste gratis match) voor koppen/labels, en gekantelde
+  "sticker"-banners met witte/zwarte tekst voor titels/labels — vaak een gele
+  naamsticker met een blauwe sticker eronder voor een subboodschap (bv. "Zoekt
+  teamleden!"). Gebruiker koos expliciet om dit **overal consistent** door te
+  voeren (niet alleen op camping-gerichte pagina's), ook op Missie/Steun ons.
+  Geïmplementeerd: `app/assets/css/main.css` (kleuren + font via Tailwind
+  `@theme`), `app/components/StickerLabel.vue` (herbruikbare gekantelde badge,
+  geel of blauw).
+- **Huisstijl verfijnd** (2026-07-19, op basis van een door de gebruiker zelf
+  gemaakte poster "Zoekt jou!" — PDF via WhatsApp): exacte kleuren opnieuw gemeten
+  uit dit (nieuwere/voorkeurs-)ontwerp en toegepast: geel **#ffde59**, blauw
+  **#38b6ff**, en een nieuwe **rode accentkleur #ff3131** voor "vol"-labels.
+  Twee nieuwe stijlelementen uit de poster overgenomen:
+  - `app/components/ValueTicker.vue` — het blauwe "lint" met herhalende
+    kernwoorden (Evangelisatie · Ontspanning · Gebed · Zingen · Ontmoeting ·
+    Plezier), nu boven en onder op elke pagina via `app/layouts/default.vue`.
+  - Programma 2026-pagina herbouwd naar de schema-stijl uit de poster: twee
+    kolommen (Meivakantie/Zomervakantie) met zwarte balken en rode "VOL"-tags
+    voor volle weken.
+  - De poster leverde ook **nieuwe, actuelere programma-data**: de
+    meivakantieweek is nu bekend (zaterdag 25 april t/m vrijdag 1 mei 2026) en
+    zit vol, net als zomerweek 1 en 2. Zomerweek 3, 4 en 5 hebben nog ruimte.
+    Verwerkt op de Programma-pagina en hieronder bij "Programma 2026".
+- **Tweede lettertype toegevoegd** (2026-07-19): de poster gebruikt twee
+  lettertypen — het ronde "bubble"-font (Fredoka, al geïnstalleerd) alleen voor
+  koppen/banners, en een strak vetgedrukt geometrisch schreefloos lettertype voor
+  lopende tekst/subtitels ("EVANGELISATIE & RECREATIE"). **Poppins** geïnstalleerd
+  als beste match en ingesteld als standaard bodyfont (`--font-sans` in
+  `app/assets/css/main.css`). De PDF had geen ingebouwde tekstlaag (het is één
+  platte afbeelding) — lettertypen zijn dus visueel geïdentificeerd, niet uit
+  metadata gehaald.
+- **Subtiele schuine lijn overgenomen** (2026-07-19): de poster gebruikt een
+  lichte kanteling voor het lint bovenaan/onderaan. Verwerkt als:
+  - `ValueTicker.vue` zelf kantelt nu subtiel (-1°) i.p.v. strak horizontaal.
+  - Nieuw `app/components/DiagonalAccent.vue` — een dun, transparant, gekanteld
+    lijn-element — toegevoegd aan de donkere kop-sectie van alle pagina's
+    (Missie, Activiteiten, Programma, Doe mee, Steun ons, Contact, Foto's-
+    overzicht + albumdetail, Fotobeleid, Jaarverslagen). Bewust *niet* op de
+    homepage-hero, die al een foto+overlay heeft en anders te druk zou worden.
 
 ## Status
 
+- **Homepage-hero: schuine onderrand toegevoegd, bewust géén 1-op-1 kopie van de
+  subpagina's** (2026-07-20): de hero (in `index.vue`, blijft een eigen, andere
+  opzet dan `PageHeader.vue` omdat hij veel meer bevat — label, titel, twee
+  intro-alinea's én drie CTA-knoppen in één beeld i.p.v. alleen een titel):
+  - Dezelfde `clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%)` als op de
+    subpagina's toegepast op de hero-sectie, met dezelfde kantelrichting
+    (links lager, rechts hoger) als de `-rotate-1` van de `ValueTicker`
+    eronder — de schuine fotorand en de gekantelde ticker lopen zo optisch in
+    elkaar over.
+  - Bottom-padding vergroot (`pb-28 sm:pb-36` i.p.v. symmetrische `py-24 sm:py-32`)
+    zodat de CTA-knoppenrij ruim boven de schuine rand blijft en nooit wordt
+    weg geclipt.
+  - De `ValueTicker` direct na de hero krijgt een kleine negatieve margin
+    (`-mt-4 sm:-mt-6`, alleen op deze plek via een class-override — de ticker
+    onderaan elke pagina in `app/layouts/default.vue` blijft ongewijzigd) zodat
+    hij aansluit op de schuine rand in plaats van er los onder te "zweven".
+  - Geverifieerd dat de CTA-rij ruim boven de clip-lijn blijft (gemeten:
+    ~85px marge op desktop), op desktop + mobiel, en met een succesvolle
+    `nuxi build`.
+- **"Doe mee"-pagina overgezet op `PageHeader.vue` en opnieuw opgebouwd** (2026-07-20):
+  had net als de albumdetailpagina nog een eigen bespoke donkere hero. Nu:
+  - `PageHeader` met `/images/headers/team-gesprek-gast.jpg`, label "Doe mee",
+    titel "Word onderdeel van het team" (was kaal "Doe mee").
+  - De pagina is in drie duidelijke secties opgeknipt i.p.v. één lange sectie:
+    (1) intro + "Zoekt teamleden voor 2026"-badge + CTA's naast de
+    campingkind-foto (`team-kind-spelen.jpg`), (2) de vijf rollen
+    (Commissielid/Teamlid/Mentor/Kerkambassadeur/Campingpastor) nu als
+    kaarten-grid (`sm:grid-cols-2`) i.p.v. een gestapelde lijst, met
+    mail/vacature-CTA's eronder, (3) de lijst met steunende kerken.
+  - Inhoud/teksten, links (IZB-aanmeldlink, vacature-PDF, mailto) en de
+    kerkenlijst zijn ongewijzigd overgenomen — alleen de opmaak/structuur is
+    vernieuwd.
+  - Geverifieerd op desktop + mobiel (incl. de titel van twee regels op mobiel)
+    en met een succesvolle `nuxi build`.
+- **Albumdetailpagina (`/fotos/[album]`) overgezet op `PageHeader.vue`** (2026-07-20):
+  had nog een eigen bespoke header (donkere sectie met `opacity-30`-foto, eigen
+  gradient, terug-link en beschrijving los erin). Vervangen door het gedeelde
+  `PageHeader`-component (label "Foto's", titel = albumnaam,
+  `:image="album.photos[0].src"`) zodat de albumpagina dezelfde schuine foto-rand,
+  meer-foto-zichtbaar en label-boven-titel-opmaak krijgt als de andere
+  subpagina's. De "← Alle albums"-link en de albumbeschrijving staan nu in de
+  slot (op wit, onder de titel) i.p.v. in de donkere sectie. Lightbox (pijltjes,
+  Esc, klik-buiten) ongewijzigd getest en werkt nog. Geverifieerd op desktop +
+  mobiel voor beide albums en met een succesvolle `nuxi build`.
+- **Paginaheader: label direct boven titel + meer foto zichtbaar** (2026-07-20, na
+  onderstaande verfijning): op verzoek nog twee aanpassingen aan `PageHeader.vue`:
+  - De headerfoto-sectie is een stuk hoger geworden (`h-64 sm:h-80` i.p.v. een
+    door padding bepaalde hoogte), zodat er duidelijk meer van de foto te zien is.
+  - Het label staat nu direct boven de titel (vlak boven de naad) in plaats van
+    verticaal gecentreerd in de foto — via `flex flex-col justify-end` in de
+    foto-sectie. **Val gehad**: zonder `items-start` rekt een flex-child
+    standaard uit tot de volle breedte (`align-items: stretch`), waardoor het
+    label-vlak de hele containerbreedte innam — opgelost met `items-start`.
+  - De titel-verschuiving is omgezet van `-translate-y-1/2` (de helft van de
+    títel-hoogte zelf) naar een vaste waarde (`-translate-y-[27px]` mobiel,
+    `sm:-translate-y-[36px]`, getuned op de hoogte van een titel van één regel).
+    Bij `-1/2` duwde een titel van 2–3 regels (bv. Programma 2026) zichzelf zo
+    ver omhoog dat hij het label erboven grotendeels overlapte; met een vaste
+    verschuiving schuift een langere titel alleen verder naar beneden (het wit
+    in), niet verder omhoog over het label heen.
+  - Geverifieerd op desktop + mobiel voor zowel een titel van één regel (Missie)
+    als drie regels (Programma 2026 op mobiel) en met een succesvolle `nuxi build`.
+- **Paginaheader verder verfijnd: label/titel/schuine foto-rand** (2026-07-20): op
+  `PageHeader.vue` (gebruikt door 8 subpagina's):
+  - Het gele eyebrow-label staat weer boven de titel (in plaats van ernaast/eronder).
+  - De titel (H1) is een blauw, licht gekanteld "sticker"-blok geworden dat nu
+    precies op de naad tussen headerfoto en witte pagina-inhoud staat: met
+    `transform: translateY(-50%)` (niet met een negative margin — die botste met
+    hoe een `inline-block`-element marges/baseline afhandelt en gaf een
+    onvoorspelbare verschuiving) staat de titel voor ongeveer de helft op de foto
+    en de helft op het wit.
+  - De headerfoto zelf heeft nu een schuine onderrand via
+    `clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%)`: links loopt de foto door
+    tot de volle hoogte, rechts stopt hij op 90% — dezelfde kantelrichting als het
+    titelblok, zodat foto-rand en titel visueel op elkaar aansluiten.
+  - Bijvangst: de slot-tekst op `/fotos` ("Een impressie van...") stond nog op
+    `text-stone-200` (lichtgrijs, bedoeld voor op de donkere foto) maar valt nu
+    buiten de foto-sectie op wit — kleur aangepast naar `text-stone-600`.
+  - Geverifieerd in de browser op desktop én mobiel (incl. een titel van twee
+    regels op de Programma-pagina) en met een succesvolle `nuxi build`.
+- **Feedback verwerkt: ValueTicker alleen op homepage, DiagonalAccent verwijderd,
+  titel in blauw label** (2026-07-19/20, vóór bovenstaande verfijning):
+  - De `ValueTicker` (het rijdende woordenlint) stond eerst onder elke
+    paginaheader; op correctie staat hij nu alleen nog onder de hero op de
+    homepage. Onderaan elke pagina (vóór de footer) blijft hij wel overal staan.
+  - `DiagonalAccent.vue` (het dunne schuine lijn-element in elke donkere
+    headersectie) is volledig verwijderd — expliciete negatieve feedback ("Hier
+    ziet er niet uit").
+  - De overlay op headerfoto's is sterk verlicht (foto's zijn nu duidelijk
+    zichtbaar i.p.v. grotendeels weggedimd) en de paginatitel staat sindsdien in
+    een blauw label-blok, net als de banner-stijl uit de WhatsApp-poster.
+- **Homepage herzien + headerfoto's toegevoegd** (2026-07-20): op verzoek zijn drie
+  dingen aangepast:
+  - `ValueTicker` staat nu ónder elke paginaheader (in `PageHeader.vue` zelf, en
+    los toegevoegd na de hero op de homepage en op Doe mee/albumdetail) in plaats
+    van boven het menu.
+  - De 5 homepage-blokken (Missie/Activiteiten/Programma/Doe mee/Steun ons) zijn
+    via een workflow (3 onafhankelijke ontwerpvoorstellen + synthese) uitgewerkt
+    tot volwaardige, afwisselende secties (beeld+tekst om en om, een donkere
+    "rustpunt"-band met stat-cijfers voor Programma) i.p.v. 5 uniforme kaartjes.
+  - Alle paginaheaders (behalve de homepage-hero, die al een foto heeft) hebben nu
+    een eigen achtergrondfoto via het nieuwe `PageHeader.vue`-component.
+  - Nieuwe foto's opgeslagen in `public/images/headers/`.
+  - ⚠️ **Let op voor toekomstig foto-werk**: bij het kiezen van deze headerfoto's
+    bleek mijn eerdere aanname over welk fotonummer (uit
+    `photos/2026-07-18-zomerweek-1/`) welke inhoud toont op meerdere plekken
+    onjuist (bv. "poppenkast" bleek eerst per ongeluk een andere groepsfoto; twee
+    "teamportret"-bestanden bleken action-shots i.p.v. portretten). Dit is
+    gecorrigeerd door elk bronbestand opnieuw direct te bekijken vlak vóór
+    gebruik — doe dat bij het toevoegen van nieuwe foto's uit deze shoot ook
+    altijd opnieuw, vertrouw niet op eerdere nummer-op-inhoud-aannames uit dit
+    document of eerdere gesprekken.
 - **Eerste versie van de website is gebouwd als meerdere pagina's** (niet als
   onepager): `/` (homepage met hero + doorverwijskaarten), `/missie`,
   `/activiteiten`, `/programma`, `/doe-mee`, `/steun-ons`, `/contact`, `/fotos`,
@@ -190,20 +342,22 @@ Organisatiestructuur:
   externe mentoren. Leeftijd teamleden: **18–26 jaar** (vacaturetekst hieronder is
   leidend; het IZB-profiel noemt 16–25 jaar, maar dat houden we niet aan).
 
-## Programma 2026 (bron: IZB-profiel)
+## Programma 2026 (bron: IZB-profiel + officiële "Zoekt jou!"-poster)
 
-Beschikbare zomerweek-periodes en plaatsen (stand 2026-07-17):
+Meivakantieweek en zomerweek-periodes, incl. beschikbaarheid (stand poster, 2026-07-19):
 
-| Periode | Datum | Beschikbaarheid |
+| Week | Datum | Beschikbaarheid |
 |---|---|---|
-| 1 | 18-07-2026 t/m 24-07-2026 | Geen plaatsen beschikbaar |
-| 2 | 25-07-2026 t/m 31-07-2026 | Geen plaatsen beschikbaar |
-| 3 | 01-08-2026 t/m 07-08-2026 | 3 plaatsen beschikbaar |
-| 4 | 08-08-2026 t/m 14-08-2026 | 5 plaatsen beschikbaar |
-| 5 | 15-08-2026 t/m 21-08-2026 | 3 plaatsen beschikbaar |
+| Meivakantie | 25-04-2026 t/m 01-05-2026 | Vol |
+| Zomerweek 1 | 18-07-2026 t/m 24-07-2026 | Vol |
+| Zomerweek 2 | 25-07-2026 t/m 31-07-2026 | Vol |
+| Zomerweek 3 | 01-08-2026 t/m 07-08-2026 | Nog plaatsen beschikbaar |
+| Zomerweek 4 | 08-08-2026 t/m 14-08-2026 | Nog plaatsen beschikbaar |
+| Zomerweek 5 | 15-08-2026 t/m 21-08-2026 | Nog plaatsen beschikbaar |
 
-De meivakantieweek 2026 stond niet op deze pagina — datum/beschikbaarheid nog na
-te vragen (zie Open Vragen).
+Exacte aantallen resterende plaatsen voor weken 3–5 zijn niet vermeld op de poster
+(die noemt alleen "vol" voor de volle weken) — voor de website is dat ook niet meer
+nodig, want dat verandert toch te snel.
 
 ## Contactgegevens
 
@@ -287,12 +441,9 @@ Financieel:
 - Wat is de "bakenbrief" precies, en hoe wordt die op dit moment verspreid/beheerd?
   (Niet gevonden op bakenharderwijk.nl of het IZB-profiel — graag toelichting of een
   voorbeeld/bron van de gebruiker.)
-- Moodboards of voorbeeldsites die de gewenste visuele stijl illustreren — later
-  opnieuw uitvragen bij de gebruiker.
 - Geschiedenis: klopt het dat Het Baken al sinds begin jaren '70 bestaat (25 jaar in
   Hierden + 25+ jaar op Kriemelberg), en wil de gebruiker deze langere geschiedenis
   op de nieuwe site vertellen?
-- Meivakantieweek 2026: datum en beschikbaarheid (stond niet op het IZB-profiel).
 - Mag het volledige overzicht van kerkambassadeurs (met namen) gepubliceerd worden op
   de nieuwe site, of liever niet/anoniemer?
 - Mag het persoonlijke 06-nummer van de voorzitter (Jodrik Zuurveld) publiek op de
