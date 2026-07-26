@@ -5,7 +5,7 @@ useHead({ title: 'Missie — Dabar Het Baken' })
 <template>
   <div>
     <PageHeader
-      image="/images/headers/teamportret-1.jpg"
+      image="/images/galerij/gezamenlijke-maaltijd.jpg"
       label="Missie"
       title="Evangelisatie door recreatie"
     />

@@ -15,7 +15,7 @@ function sendMessage() {
 <template>
   <div>
     <PageHeader
-      image="/images/headers/receptie-breed.jpg"
+      image="/images/galerij/team-groepsfoto-welkom.jpg"
       label="Contact"
       title="Contact"
     />

@@ -17,7 +17,7 @@ const zomerweken = [
 <template>
   <div>
     <PageHeader
-      image="/images/headers/terras-tafeltennis.jpg"
+      image="/images/galerij/broodjebakken-groep.jpg"
       label="Programma 2026"
       title="In 2026 zijn we weer zes weken op Kriemelberg Bushcamp"
     />

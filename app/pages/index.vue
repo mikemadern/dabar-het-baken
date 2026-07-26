@@ -22,7 +22,7 @@ const doeMeeChips = [
   <div>
     <!-- Hero -->
     <section
-      class="relative overflow-hidden bg-stone-900 text-white"
+      class="-mb-4 relative flex min-h-[560px] items-end overflow-hidden bg-stone-900 text-white sm:min-h-[680px]"
       style="clip-path: polygon(0 0, 100% 0, 100% 99%, 0 100%)"
     >
       <NuxtImg
@@ -33,56 +33,41 @@ const doeMeeChips = [
         format="webp"
       />
       <div
-        class="absolute inset-0 bg-gradient-to-t from-stone-900/95 via-stone-900/40 to-transparent"
+        class="absolute inset-0 bg-gradient-to-t from-stone-900/95 via-stone-900/50 to-transparent"
       />
       <div
-        class="relative mx-auto max-w-6xl px-4 pb-28 pt-24 sm:px-6 sm:pb-36 sm:pt-32"
+        class="relative mx-auto w-full max-w-2xl px-4 pb-16 text-center sm:px-6 sm:pb-20"
       >
-        <StickerLabel class="mb-3">
-          Evangelisatie door recreatie — op Camping Kriemelberg Bushcamp in
-          Ermelo
-        </StickerLabel>
+        <StickerLabel class="z-10 relative"
+          >Camping Kriemelberg Bushcamp, Ermelo</StickerLabel
+        >
         <h1
-          class="inline-block -rotate-1 rounded-lg bg-sky-400 px-4 py-2 font-display text-3xl font-bold text-white shadow-lg sm:px-6 sm:py-3 sm:text-5xl"
+          class="z-0 -mt-2 relative rotate-1 inline-block rounded-lg bg-sky-400 px-5 py-2 font-display text-4xl font-bold text-white shadow-lg sm:px-7 sm:py-3 sm:text-6xl"
         >
           Dabar Het Baken
         </h1>
-        <div class="mt-6 max-w-xl space-y-4 text-stone-200">
-          <p>
-            Dabar Het Baken is een interkerkelijke evangelisatie- en
-            recreatiecommissie. Tijdens de meivakantie en vijf zomerweken zorgt
-            een team van vrijwilligers voor clubs, activiteiten en een
-            luisterend oor — voor gasten van jong tot oud.
-          </p>
-          <p>
-            De organisatie draait volledig op vrijwilligers, en op de steun van
-            kerken en donateurs.
-          </p>
-        </div>
-        <div class="mt-10 flex flex-wrap gap-3">
+        <p class="mt-5 text-lg text-stone-200 sm:text-xl">
+          Evangelisatie door recreatie — zes weken per jaar op de camping, voor
+          gasten van jong tot oud.
+        </p>
+        <div class="mt-8 flex flex-wrap justify-center gap-3">
           <NuxtLink
             to="/activiteiten"
-            class="rounded-full bg-yellow-400 px-5 py-3 text-sm font-semibold text-stone-900 hover:bg-yellow-300 transition-colors"
+            class="rounded-full bg-yellow-400 px-6 py-3 text-sm font-semibold text-stone-900 hover:bg-yellow-300 transition-colors"
           >
             Programma voor gasten
           </NuxtLink>
           <NuxtLink
             to="/doe-mee"
-            class="rounded-full border border-white/40 px-5 py-3 text-sm font-semibold text-white hover:bg-white/10 transition-colors"
+            class="rounded-full border border-white/40 px-6 py-3 text-sm font-semibold text-white hover:bg-white/10 transition-colors"
           >
             Word vrijwilliger
-          </NuxtLink>
-          <NuxtLink
-            to="/steun-ons"
-            class="rounded-full border border-white/40 px-5 py-3 text-sm font-semibold text-white hover:bg-white/10 transition-colors"
-          >
-            Steun ons werk
           </NuxtLink>
         </div>
       </div>
     </section>
 
-    <ValueTicker class="-mt-4 sm:-mt-6" />
+    <ValueTicker />
 
     <!-- 01 Missie -->
     <section class="bg-white py-20 sm:py-24">
@@ -182,15 +167,15 @@ const doeMeeChips = [
               format="webp"
             />
             <NuxtImg
-              src="/images/headers/poppenkast.jpg"
-              alt="Een handbeschilderde poppenkast met Jos en Jet"
+              src="/images/galerij/limbo-hawaiifeest.jpg"
+              alt="Kinderen doen een limbo-wedstrijd tijdens het Hawaii-feest"
               class="aspect-square w-full rounded-2xl object-cover"
               sizes="260px"
               format="webp"
             />
             <NuxtImg
-              src="/images/headers/voetbal-alt.jpg"
-              alt="Kinderen voetballen samen met een teamlid"
+              src="/images/galerij/voetballen-in-kooi.jpg"
+              alt="Jongens voetballen in de voetbalkooi"
               class="aspect-square w-full rounded-2xl object-cover"
               sizes="260px"
               format="webp"
@@ -288,15 +273,15 @@ const doeMeeChips = [
       >
         <div class="relative lg:col-span-5">
           <NuxtImg
-            src="/images/headers/clowns-sprong.jpg"
-            alt="Teamleden verkleed als clowns rennen over de camping"
+            src="/images/galerij/verkleedpartij-rennen-camping.jpg"
+            alt="Verklede vrijwilligers rennen met kinderen over de camping"
             class="aspect-square w-full rounded-2xl object-cover shadow-lg"
             sizes="480px"
             format="webp"
           />
           <NuxtImg
-            src="/images/headers/teamportret-2.jpg"
-            alt="Teamleden voetballen met kinderen"
+            src="/images/galerij/team-armen-omhoog.jpg"
+            alt="Vier vrijwilligers juichen met de armen omhoog"
             class="absolute -bottom-6 -right-6 hidden aspect-square w-2/5 rounded-2xl border-4 border-white object-cover shadow-lg sm:block"
             sizes="200px"
             format="webp"

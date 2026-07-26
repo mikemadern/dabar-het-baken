@@ -21,7 +21,7 @@ const churches = [
 <template>
   <div>
     <PageHeader
-      image="/images/headers/team-gesprek-gast.jpg"
+      image="/images/galerij/team-groepsfoto-juichend.jpg"
       label="Doe mee"
       title="Word onderdeel van het team"
     />

@@ -109,25 +109,96 @@ een zin, een idee) — het hoeft niet compleet of netjes geformuleerd te zijn.
 
 ## Status
 
-- **Homepage-hero: schuine onderrand toegevoegd, bewust géén 1-op-1 kopie van de
-  subpagina's** (2026-07-20): de hero (in `index.vue`, blijft een eigen, andere
-  opzet dan `PageHeader.vue` omdat hij veel meer bevat — label, titel, twee
-  intro-alinea's én drie CTA-knoppen in één beeld i.p.v. alleen een titel):
-  - Dezelfde `clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%)` als op de
-    subpagina's toegepast op de hero-sectie, met dezelfde kantelrichting
-    (links lager, rechts hoger) als de `-rotate-1` van de `ValueTicker`
-    eronder — de schuine fotorand en de gekantelde ticker lopen zo optisch in
-    elkaar over.
-  - Bottom-padding vergroot (`pb-28 sm:pb-36` i.p.v. symmetrische `py-24 sm:py-32`)
-    zodat de CTA-knoppenrij ruim boven de schuine rand blijft en nooit wordt
-    weg geclipt.
-  - De `ValueTicker` direct na de hero krijgt een kleine negatieve margin
-    (`-mt-4 sm:-mt-6`, alleen op deze plek via een class-override — de ticker
-    onderaan elke pagina in `app/layouts/default.vue` blijft ongewijzigd) zodat
-    hij aansluit op de schuine rand in plaats van er los onder te "zweven".
-  - Geverifieerd dat de CTA-rij ruim boven de clip-lijn blijft (gemeten:
-    ~85px marge op desktop), op desktop + mobiel, en met een succesvolle
-    `nuxi build`.
+- **Activiteiten-pagina herbouwd tot volwaardige secties per club (2026-07-22)**:
+  op verzoek zijn de 6 club-items (Kinderclub, Teen Spirit, Chatpoint, No
+  Nonsense, Sing-In, Campingpastoraat) niet langer kleine tekstkaartjes, maar
+  volledige, afwisselende secties naar het voorbeeld van de homepage-teasers:
+  een fotocollage (2-3 foto's) naast uitgeschreven tekst (2 alinea's per club,
+  gebaseerd op de echte programmadetails uit de sectie Diensten/aanbod
+  hierboven — tijden, "sporen", Youth for Christ-programma's Rock Solid/Solid
+  Friends, de drie aspecten van het campingpastoraat), met per club een
+  afwisselende layout (foto links/rechts) en achtergrond (wit/`stone-50`) en
+  een label in de bijpassende kleur (geel/blauw, afwisselend).
+  - Drie extra foto's verwerkt (resize + kopie naar `public/images/galerij/`,
+    dezelfde `sips`-instellingen als eerder) om elke sectie een eigen collage
+    te geven: `poppenkast-publiek.jpg`, `ferdinand-in-gesprek.jpg` en
+    `volwassenen-gesprek.jpg` (dit laatste stel voor Campingpastoraat, samen
+    met het al bestaande `gasten-koffie-terras.jpg`).
+  - No Nonsense heeft (bewust) maar 2 foto's i.p.v. 3 — er was geen foto uit
+    deze shoot die een mannen-/vrouwenavond letterlijk toont; de collage-layout
+    is dynamisch (2 vs. 3 foto's geven een andere grid) om dat op te vangen
+    zonder lege vakken.
+  - Geverifieerd op desktop + mobiel (alle 6 secties, beide collage-varianten)
+    en met een succesvolle `nuxi build`.
+- **Nieuwe zomerweek-foto's ook verwerkt in headers en homepage-content**
+  (2026-07-22, vervolg op de albumuitbreiding hieronder): uit de 49 net
+  toegevoegde foto's een selectie gebruikt voor site-brede content, allemaal
+  rechtstreeks vanuit `/images/galerij/` (geen nieuwe resizes nodig):
+  - Paginaheaders vervangen (`PageHeader`'s `image`-prop): Missie →
+    `gezamenlijke-maaltijd.jpg`, Activiteiten → `vreugde-door-het-water.jpg`,
+    Programma 2026 → `broodjebakken-groep.jpg`, Doe mee →
+    `team-groepsfoto-juichend.jpg`, Contact → `team-groepsfoto-welkom.jpg`,
+    Jaarverslagen → `radslag-actie.jpg`, Foto's-overzicht →
+    `poppenkast-pippi.jpg` (vervangt de oudere `poppenkast.jpg`).
+    Fotobeleid en Steun ons bewust ongewijzigd gelaten: die headers zijn
+    neutraal (fotobeleid) of direct gekoppeld aan specifieke content ernaast
+    (de rode telefooncel bij Steun ons) en werden niet duidelijk verbeterd
+    door een van de nieuwe foto's.
+  - Homepage: in de Activiteiten-fotocollage `poppenkast.jpg` en
+    `voetbal-alt.jpg` vervangen door `limbo-hawaiifeest.jpg` en
+    `voetballen-in-kooi.jpg`; in de Doe mee-sectie `clowns-sprong.jpg` +
+    `teamportret-2.jpg` vervangen door `verkleedpartij-rennen-camping.jpg` +
+    `team-armen-omhoog.jpg`.
+  - Geverifieerd op elke aangepaste pagina (desktop + mobiel voor de homepage)
+    en met een succesvolle `nuxi build`.
+- **Zomerweek 1-album flink uitgebreid met vier nieuwe shootdagen** (2026-07-22):
+  nieuwe foto's ontvangen in `/Users/mike/Documents/20260719 - Baken Zomerweek 1 - ZO`
+  t/m `.../20260722 - Baken Zomerweek 1 - WO` (zondag t/m woensdag van dezelfde
+  zomerweek, bestandsnamen `baken-zw2-*` t/m `baken-zw5-*`; elke dagmap heeft een
+  `NEF`-map met ruwe camerabestanden — genegeerd, alleen de al-geselecteerde
+  `export-*`-map per dag is gebruikt). In totaal 147 export-foto's stuk voor stuk
+  bekeken (via 4 parallelle subagents, één per dag, om context te sparen — elke
+  agent moest elk bestand echt openen i.p.v. op bestandsnaam te gokken, vanwege
+  eerdere nummer-op-inhoud-fouten). Daaruit 49 foto's geselecteerd en verwerkt
+  (resize naar max 2000px breed, kwaliteit 82 via `sips`, beschrijvende
+  bestandsnamen) en toegevoegd aan het bestaande `zomerweek-1-2026`-album in
+  `app/data/albums.ts` — dat album ging van 9 naar 58 foto's. De week bleek veel
+  meer te omvatten dan eerder bekend: een Sing-In met live muziek en kerkbezoek
+  (zondag), een Hawaii-thema met limbo en een vintage-kostuumskit (maandag), een
+  grote gezamenlijke maaltijd, waterglijbaan/waterpistolen-middag en
+  broodjebakken-kampvuur (dinsdag), en een kinderclub-kringgesprek, poppenkast en
+  bingoavond (woensdag) — de albumbeschrijving is hierop aangepast. Album en
+  lightbox (navigatie, teller, wrap-around) geverifieerd met de volledige set
+  van 58 foto's, en met een succesvolle `nuxi build`. Nog niet gedaan: geen van
+  deze nieuwe foto's is gebruikt als vervanging van bestaande headerfoto's of
+  homepage-afbeeldingen elders op de site — dat was niet expliciet gevraagd,
+  maar er zitten sterke kandidaten tussen (bv. `gezamenlijke-maaltijd.jpg`,
+  `vreugde-door-het-water.jpg`, `lydia-kinderclub-kring.jpg`) mocht dat later
+  gewenst zijn.
+- **Homepage-hero volledig herbouwd tot een echte hero** (2026-07-20): de eerdere
+  poging (schuine `clip-path`-onderrand + negatieve margin om de `ValueTicker`
+  ertegenaan te laten sluiten) bleek in de praktijk stuk: de knoppenrij zat te
+  dicht op de clip-lijn (kon weg geclipt raken) en de kanteling was links dieper
+  dan rechts terwijl de ticker overal met dezelfde vaste marge omhoog werd
+  getrokken — sloot dus links wél en rechts niet goed aan. Geconstateerd dat de
+  hero sowieso te veel tekst bevatte voor een hero (lange label-zin, twee
+  intro-alinea's die grotendeels dezelfde inhoud als de Missie-sectie
+  herhaalden, drie CTA's) — helemaal herbouwd i.p.v. verder gepatcht:
+  - Geen `clip-path` meer op de hero: gewoon een rechthoekige, volle-breedte
+    foto-sectie (`min-h-[560px] sm:min-h-[680px]`, tekst onderaan via
+    `items-end`), met de `ValueTicker` er zonder negatieve margin direct onder
+    — sluit altijd netjes aan, ongeacht viewportbreedte of tekstlengte.
+  - Content drastisch ingekort en gecentreerd: kort label ("Camping
+    Kriemelberg Bushcamp, Ermelo"), `Dabar Het Baken` als titel, één regel
+    tagline ("Evangelisatie door recreatie — zes weken per jaar...") i.p.v. twee
+    alinea's, en nog maar 2 CTA's (Programma voor gasten / Word vrijwilliger —
+    "Steun ons werk" eruit, staat al in een eigen homepage-sectie en op zijn
+    eigen pagina).
+  - Dit is bewust een andere opzet dan `PageHeader.vue` (geen schuine rand, wél
+    gecentreerd) — de homepage-hero is de "voordeur" en hoeft niet dezelfde
+    formule als de subpagina-headers te volgen.
+  - Geverifieerd op meerdere breedtes (375, 800, 1440) en mobiel, en met een
+    succesvolle `nuxi build`.
 - **"Doe mee"-pagina overgezet op `PageHeader.vue` en opnieuw opgebouwd** (2026-07-20):
   had net als de albumdetailpagina nog een eigen bespoke donkere hero. Nu:
   - `PageHeader` met `/images/headers/team-gesprek-gast.jpg`, label "Doe mee",

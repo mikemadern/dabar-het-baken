@@ -7,7 +7,7 @@ useHead({ title: "Foto's — Dabar Het Baken" });
 <template>
   <div>
     <PageHeader
-      image="/images/headers/poppenkast.jpg"
+      image="/images/galerij/poppenkast-pippi.jpg"
       label="Foto's"
       title="Albums"
     >

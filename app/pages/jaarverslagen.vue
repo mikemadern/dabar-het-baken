@@ -15,7 +15,7 @@ const reports = [
 <template>
   <div>
     <PageHeader
-      image="/images/headers/voetbal-alt.jpg"
+      image="/images/galerij/radslag-actie.jpg"
       label="Jaarverslagen"
       title="Jaarverslagen"
     />
