@@ -1,0 +1,23 @@
+name: Wijziging of idee
+description: Iets nieuws, een verbetering, of aangepaste inhoud
+labels: [enhancement]
+body:
+  - type: textarea
+    id: wat
+    attributes:
+      label: Wat wil je veranderen of toevoegen?
+      description: Welke pagina's of onderdelen, en wat moet er anders zijn?
+    validations:
+      required: true
+  - type: textarea
+    id: waarom
+    attributes:
+      label: Waarom?
+      description: Wat is de aanleiding of de vraag achter deze wijziging?
+    validations:
+      required: true
+  - type: textarea
+    id: afronding
+    attributes:
+      label: Wanneer is het klaar?
+      description: Optioneel — een korte lijst van wat er af moet zijn.
