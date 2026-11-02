@@ -109,6 +109,29 @@ een zin, een idee) — het hoeft niet compleet of netjes geformuleerd te zijn.
 
 ## Status
 
+- **Vercel Web Analytics toegevoegd (2026-11-02)**: `@vercel/analytics` 2.0.1
+  geïnstalleerd en geactiveerd via de officiële Nuxt-module
+  (`'@vercel/analytics/nuxt'` in `modules` van `nuxt.config.ts`; die registreert zelf
+  een client-only plugin, er is dus geen eigen code). Geverifieerd: pageview bij het
+  laden én bij navigatie tussen pagina's (dynamische routes als `/fotos/[album]`
+  worden als routepatroon gemeten), in dev het debug-script (stuurt niets naar
+  Vercel), in productie `/_vercel/insights/script.js`; SSR/HTML en build-grootte
+  ongewijzigd.
+  - **Peer-conflict opgelost met een gerichte `override`**: `@vercel/analytics` 2.0.1
+    meldt als *optionele* peer `vue-router ^4`, terwijl Nuxt 4.6 vue-router 5 gebruikt,
+    waardoor `npm install` met `ERESOLVE` faalde. Alleen de losse `Analytics`-component
+    gebruikt vue-router; de Nuxt-module gebruikt Nuxts eigen `useRoute`/`useRouter` — de
+    oude range raakt ons dus niet. In `package.json`:
+    `"overrides": { "@vercel/analytics": { "vue-router": "$vue-router" } }`. Bewust
+    géén `--legacy-peer-deps`/`.npmrc` (zet de peer-controle voor het hele project uit).
+    Verwijder de override zodra een stabiele `@vercel/analytics` vue-router 5 toestaat
+    (nu alleen canary-builds).
+  - Lockfile-wijziging bewust minimaal gehouden (alleen het nieuwe pakket): lokaal npm
+    10.9 haalt anders de `libc`-metadata van optionele native pakketten uit de lockfile.
+  - **Nog te doen in het Vercel-dashboard** (kan niet vanuit de repo): Web Analytics aanzetten
+    bij het project (*Analytics → Enable*). Zolang dat uit staat geeft
+    `/_vercel/insights/script.js` in productie een 404 (onschuldig, maar de console
+    toont een fout en er worden geen cijfers verzameld).
 - **Activiteiten-pagina herbouwd tot volwaardige secties per club (2026-07-22)**:
   op verzoek zijn de 6 club-items (Kinderclub, Teen Spirit, Chatpoint, No
   Nonsense, Sing-In, Campingpastoraat) niet langer kleine tekstkaartjes, maar
@@ -509,6 +532,10 @@ Financieel:
 
 ## Open Vragen
 
+- Privacy: Vercel Web Analytics is cookieloos en verzamelt geen persoonsgegevens, maar de
+  site heeft nog geen privacyverklaring. Wil de organisatie een korte vermelding
+  (bv. op de Fotobeleid-pagina of in de footer) dat anonieme bezoekcijfers worden
+  bijgehouden?
 - Wat is de "bakenbrief" precies, en hoe wordt die op dit moment verspreid/beheerd?
   (Niet gevonden op bakenharderwijk.nl of het IZB-profiel — graag toelichting of een
   voorbeeld/bron van de gebruiker.)
