@@ -109,6 +109,24 @@ een zin, een idee) — het hoeft niet compleet of netjes geformuleerd te zijn.
 
 ## Status
 
+- **Navigatiebalk gefixt tussen ~770 en ~960px + dubbele "Doe mee" opgelost (2026-11-02)**
+  (`app/layouts/default.vue`): het volledige menu verscheen al vanaf `md` (768px), maar
+  gemeten (met `nowrap`) heeft het ≈ 963px nodig (logo 168 + 7 links 476 + 6×24px gaps
+  + knop 95 + padding/gaps 80) — daardoor braken "Programma 2026", "Doe mee" en
+  "Steun ons" over twee regels.
+  - "Doe mee" stond **twee keer**: als tekstlink én als gele knop (en op mobiel ook nog in
+    het uitklapmenu naast diezelfde knop). De link is uit `navLinks` gehaald; de gele knop
+    blijft, op elk schermformaat zichtbaar, de enige ingang. Op de Doe mee-pagina zelf
+    toont de knop nu een donkere ring (`active-class="ring-2 ring-stone-900"`) als
+    vervanger van de vroegere vette actieve link.
+  - Zonder die link is het menu nog ≈ 876px breed — dat past nog steeds niet op 768px, ook
+    niet met krappere gaps. Daarom schakelt het menu nu op `lg` (1024px) i.p.v. `md`:
+    daaronder hamburger + knop (één rij, 65px hoog), vanaf 1024px het volledige menu met
+    6 links en ≥ 90px speling. Links kregen `whitespace-nowrap` als extra vangnet.
+  - Gemeten op 375, 768, 869, 950, 1023, 1024, 1100 en 1440px: telkens één rij, geen
+    afgebroken links, knop binnen beeld, geen horizontale scroll.
+  - Niet gewijzigd (bestaand gedrag): op albumpagina's (`/fotos/[album]`) is "Foto's"
+    niet gemarkeerd, omdat de albumroute een zusterroute van `/fotos` is, geen kindroute.
 - **Vercel Web Analytics toegevoegd (2026-11-02)**: `@vercel/analytics` 2.0.1
   geïnstalleerd en geactiveerd via de officiële Nuxt-module
   (`'@vercel/analytics/nuxt'` in `modules` van `nuxt.config.ts`; die registreert zelf
