@@ -163,10 +163,11 @@ een zin, een idee) — het hoeft niet compleet of netjes geformuleerd te zijn.
     (nu alleen canary-builds).
   - Lockfile-wijziging bewust minimaal gehouden (alleen het nieuwe pakket): lokaal npm
     10.9 haalt anders de `libc`-metadata van optionele native pakketten uit de lockfile.
-  - **Nog te doen in het Vercel-dashboard** (kan niet vanuit de repo): Web Analytics aanzetten
-    bij het project (*Analytics → Enable*). Zolang dat uit staat geeft
-    `/_vercel/insights/script.js` in productie een 404 (onschuldig, maar de console
-    toont een fout en er worden geen cijfers verzameld).
+  - **Web Analytics is aangezet in het Vercel-dashboard** (*Analytics → Enable*; bevestigd
+    door de beheerder op 2026-11-02). Dat kan niet vanuit de repo. Van buitenaf nog niet
+    gecontroleerd: het unieke productie-adres van een deployment zit achter Vercel
+    Authentication, dus `/_vercel/insights/script.js` is daar niet te testen. De controle
+    op het eigen domein staat in issue #24.
 - **Activiteiten-pagina herbouwd tot volwaardige secties per club (2026-07-22)**:
   op verzoek zijn de 6 club-items (Kinderclub, Teen Spirit, Chatpoint, No
   Nonsense, Sing-In, Campingpastoraat) niet langer kleine tekstkaartjes, maar
