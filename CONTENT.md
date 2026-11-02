@@ -109,6 +109,23 @@ een zin, een idee) — het hoeft niet compleet of netjes geformuleerd te zijn.
 
 ## Status
 
+- **"Foto's" gemarkeerd in het menu op albumpagina's (2026-11-02)**
+  (`app/layouts/default.vue`): `/fotos` (overzicht) en `/fotos/[album]` zijn zusterroutes
+  zonder gedeelde ouderroute (`fotos.vue` bestaat niet), en vue-router's `active-class`
+  kijkt naar de routeketen — dus werd "Foto's" alleen op het overzicht vet, niet in een
+  album. Opgelost met een kleine padcontrole in de layout i.p.v. de routing te
+  verbouwen met een ouderroute:
+  `isActive = (to) => route.path === to || route.path.startsWith(`${to}/`)`, gebruikt
+  voor zowel het desktopmenu als het uitklapmenu (`:class` i.p.v. `active-class`).
+  - Bewust `${to}/` (met slash): anders zou `/fotobeleid` ook als "Foto's" tellen
+    (beide beginnen met `/foto`). Geldt automatisch ook voor toekomstige geneste pagina's.
+  - De "Doe mee"-knop in de header (ring op `/doe-mee`) werkt nog via `active-class`
+    en is ongewijzigd.
+  - Geverifieerd: alle hoofdpagina's markeren precies hun eigen link; `/fotos`,
+    `/fotos/camping` en `/fotos/zomerweek-1-2026` markeren "Foto's"; `/fotobeleid`
+    markeert niets; klikken van overzicht → album → terug → Missie schakelt correct mee
+    (desktop én uitklapmenu); server-gerenderde HTML = browser (geen hydratatieverschil);
+    `nuxi build` slaagt.
 - **Navigatiebalk gefixt tussen ~770 en ~960px + dubbele "Doe mee" opgelost (2026-11-02)**
   (`app/layouts/default.vue`): het volledige menu verscheen al vanaf `md` (768px), maar
   gemeten (met `nowrap`) heeft het ≈ 963px nodig (logo 168 + 7 links 476 + 6×24px gaps
@@ -125,8 +142,8 @@ een zin, een idee) — het hoeft niet compleet of netjes geformuleerd te zijn.
     6 links en ≥ 90px speling. Links kregen `whitespace-nowrap` als extra vangnet.
   - Gemeten op 375, 768, 869, 950, 1023, 1024, 1100 en 1440px: telkens één rij, geen
     afgebroken links, knop binnen beeld, geen horizontale scroll.
-  - Niet gewijzigd (bestaand gedrag): op albumpagina's (`/fotos/[album]`) is "Foto's"
-    niet gemarkeerd, omdat de albumroute een zusterroute van `/fotos` is, geen kindroute.
+  - Op albumpagina's (`/fotos/[album]`) was "Foto's" niet gemarkeerd, omdat de albumroute
+    een zusterroute van `/fotos` is, geen kindroute — opgelost in de volgende entry.
 - **Vercel Web Analytics toegevoegd (2026-11-02)**: `@vercel/analytics` 2.0.1
   geïnstalleerd en geactiveerd via de officiële Nuxt-module
   (`'@vercel/analytics/nuxt'` in `modules` van `nuxt.config.ts`; die registreert zelf
