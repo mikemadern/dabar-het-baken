@@ -1,3 +1,11 @@
+## Gekoppeld issue
+
+Closes #<nummer>
+
+<!-- Elke PR hoort in principe bij een issue (de check `linked-issue` bewaakt dit).
+Kleine klus zonder issue, zoals een typefout of onderhoud? Verwijder dan de regel hierboven
+en zet het label `geen-issue` op de PR. -->
+
 ## Wat verandert er?
 
 <!-- Korte omschrijving: welke pagina's/onderdelen en wat is het effect voor bezoekers. -->
@@ -12,6 +20,7 @@
 - [ ] Bekeken op desktop **en** mobiel
 - [ ] Geen fouten in de browserconsole
 - [ ] `CONTENT.md` bijgewerkt (status / besluiten / open vragen)
+- [ ] Geen `Co-authored-by`-regels in de commits (de check `no-coauthor` bewaakt dit)
 
 ### Alleen bij foto's
 

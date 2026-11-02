@@ -1,0 +1,22 @@
+name: Fout melden
+description: Iets op de website werkt niet of ziet er verkeerd uit
+labels: [bug]
+body:
+  - type: textarea
+    id: probleem
+    attributes:
+      label: Wat gaat er mis?
+      description: Op welke pagina, en op welk apparaat of welke schermbreedte?
+    validations:
+      required: true
+  - type: textarea
+    id: verwacht
+    attributes:
+      label: Wat verwacht je in plaats daarvan?
+    validations:
+      required: true
+  - type: textarea
+    id: extra
+    attributes:
+      label: Extra informatie
+      description: Screenshot, link of browser — alles wat helpt om het na te bootsen.
