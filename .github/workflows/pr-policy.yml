@@ -3,6 +3,8 @@ name: PR policy
 # Afspraken voor pull requests, zie CONTRIBUTING.md:
 #   - linked-issue: elke PR hoort in principe bij een issue (Closes #nummer)
 #   - no-coauthor:  geen "Co-authored-by"-regels in commits
+#   - milestone:    de PR neemt de milestone over van het issue dat hij sluit
+#                   (alleen een waarschuwing, geen verplichte check)
 
 on:
   pull_request:
@@ -98,3 +100,59 @@ jobs:
           fi
 
           echo "Geen Co-authored-by-regels in de commits van deze PR."
+
+  milestone:
+    name: milestone
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    # Deze taak schrijft (milestone zetten); de andere taken blijven read-only.
+    permissions:
+      contents: read
+      issues: write
+      pull-requests: write
+    steps:
+      - name: Give the PR the milestone of the issue it closes
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          PR: ${{ github.event.pull_request.number }}
+          AUTHOR: ${{ github.event.pull_request.user.login }}
+        run: |
+          set -euo pipefail
+
+          if [ "$AUTHOR" = "dependabot[bot]" ]; then
+            echo "Dependabot-PR's krijgen geen milestone."
+            exit 0
+          fi
+
+          current=$(gh pr view "$PR" --repo "$REPO" --json milestone --jq '.milestone.title // empty')
+          if [ -n "$current" ]; then
+            echo "De PR heeft al een milestone: $current"
+            exit 0
+          fi
+
+          # Net na het openen of aanpassen kan closingIssuesReferences even leeg zijn.
+          issues=""
+          for attempt in 1 2 3; do
+            issues=$(gh pr view "$PR" --repo "$REPO" --json closingIssuesReferences --jq '.closingIssuesReferences[].number')
+            [ -n "$issues" ] && break
+            sleep 5
+          done
+
+          for n in $issues; do
+            title=$(gh issue view "$n" --repo "$REPO" --json milestone --jq '.milestone.title // empty')
+            if [ -n "$title" ]; then
+              gh pr edit "$PR" --repo "$REPO" --milestone "$title"
+              echo "Milestone '$title' overgenomen van issue #$n."
+              exit 0
+            fi
+          done
+
+          echo "::warning title=Geen milestone::Geef het issue dat deze PR sluit een milestone (dan neemt de PR die automatisch over), of kies er zelf een in de zijbalk van de PR."
+          {
+            echo "### Geen milestone"
+            echo
+            echo "Deze PR heeft geen milestone en het issue dat hij sluit heeft er ook geen."
+            echo
+            echo "Kies een milestone bij het **issue** (de PR neemt die dan automatisch over), of direct in de zijbalk van de PR."
+          } >> "$GITHUB_STEP_SUMMARY"

@@ -4,7 +4,8 @@ Closes #<nummer>
 
 <!-- Elke PR hoort in principe bij een issue (de check `linked-issue` bewaakt dit).
 Kleine klus zonder issue, zoals een typefout of onderhoud? Verwijder dan de regel hierboven
-en zet het label `geen-issue` op de PR. -->
+en zet het label `geen-issue` op de PR.
+De milestone neemt de PR automatisch over van het issue; heeft het issue er geen, geef het er dan een. -->
 
 ## Wat verandert er?
 
