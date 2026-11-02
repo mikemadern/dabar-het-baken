@@ -1,6 +1,7 @@
 name: Fout melden
 description: Iets op de website werkt niet of ziet er verkeerd uit
 labels: [bug]
+projects: ["mikemadern/1"]
 body:
   - type: textarea
     id: probleem
