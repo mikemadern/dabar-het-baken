@@ -1,75 +1,54 @@
-# Nuxt Content Starter
+# Dabar Het Baken
 
-Look at the [Nuxt Content documentation](https://content.nuxt.com) to learn more.
+De website van **Dabar Het Baken** (tot nu toe Het Baken Harderwijk): een interkerkelijke evangelisatie- en recreatiecommissie die in de meivakantie en de zomerweken aanwezig is op Camping Kriemelberg Bushcamp in Ermelo. De site informeert campinggasten, werft teamleden en commissieleden, en ondersteunt de fondsenwerving.
 
-## Setup
+## Techniek
 
-Make sure to install dependencies:
+- [Nuxt 4](https://nuxt.com) (Vue 3, TypeScript) met [`@nuxt/content`](https://content.nuxt.com) en [`@nuxt/image`](https://image.nuxt.com)
+- [Tailwind CSS 4](https://tailwindcss.com) via `@tailwindcss/vite`; de lettertypen Fredoka en Poppins worden zelf gehost (Fontsource)
+- Hosting op [Vercel](https://vercel.com): elke PR krijgt een preview en elke merge naar `develop` wordt een productie-deployment. Bezoekcijfers lopen via Vercel Web Analytics
 
-```bash
-# npm
-npm install
+## Lokaal draaien
 
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
+De Node-versie staat in `.nvmrc`.
 
 ```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
+nvm use
+npm ci
+npm run dev       # ontwikkelserver op http://localhost:3000
+npm run build     # productiebuild, hetzelfde als de CI
+npm run preview   # de gebouwde site lokaal bekijken
 ```
 
-## Production
+## Indeling
 
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
+```
+app/pages/           de pagina's, één bestand per route (fotos/[album].vue is de albumpagina)
+app/components/      PageHeader, StickerLabel en ValueTicker
+app/layouts/         default.vue met het menu en de footer
+app/data/albums.ts   de fotoalbums
+app/assets/css/      Tailwind-instellingen, kleuren en lettertypen
+public/images/       afbeeldingen (galerij/ en headers/)
+public/documenten/   downloads, zoals de vacature
 ```
 
-Locally preview production build:
+## Foto's toevoegen
 
-```bash
-# npm
-npm run preview
+1. Verklein de foto tot maximaal 2000 px breed en zet hem in `public/images/galerij/`.
+2. Voeg hem toe aan het juiste album in `app/data/albums.ts` (`src` en een `alt`-tekst), of maak een nieuw album aan.
+3. Bekijk de foto zelf en houd je aan het fotobeleid op de site (pagina `/fotobeleid`).
 
-# pnpm
-pnpm preview
+Ruwe originelen horen niet in git; de map `photos/` wordt genegeerd.
 
-# yarn
-yarn preview
+## Documentatie in de repo
 
-# bun
-bun run preview
-```
+| Bestand | Waar het over gaat |
+|---|---|
+| [`CONTENT.md`](CONTENT.md) | alle feiten, besluiten en open vragen over de site, plus een Status-logboek |
+| [`SHOTLIST.md`](SHOTLIST.md) | de lijst met gewenste foto's |
+| [`CONTRIBUTING.md`](CONTRIBUTING.md) | de werkwijze (issue, branch, PR), de milestones en de checks |
+| [`SECURITY.md`](SECURITY.md) | hoe je een kwetsbaarheid vertrouwelijk meldt |
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+## Meewerken
+
+Direct pushen naar `develop` kan niet. Werk via een issue, een branch en een pull request; zie [`CONTRIBUTING.md`](CONTRIBUTING.md).
