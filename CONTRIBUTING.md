@@ -4,10 +4,25 @@ Korte afspraken, zodat `develop` altijd werkend en overzichtelijk blijft.
 
 ## Werkwijze
 
-1. **Issue** — begin met een [issue](https://github.com/mikemadern/dabar-het-baken/issues/new/choose) (fout of wijziging).
+1. **Issue** — begin met een [issue](https://github.com/mikemadern/dabar-het-baken/issues/new/choose) (fout of wijziging) en geef het een **milestone**.
 2. **Branch** — maak een branch vanaf `develop`, bijvoorbeeld `fix/korte-omschrijving` of `feature/korte-omschrijving`. Direct pushen naar `develop` kan niet.
 3. **Pull request** — open een PR naar `develop` en zet `Closes #<nummer>` in de beschrijving. Volg de checklist in het PR-template.
 4. **Merge** — zodra de checks groen zijn. Alleen *rebase-merge* is ingesteld, en de branch wordt daarna automatisch verwijderd.
+
+## Milestones
+
+Werk wordt per milestone gevolgd, zodat je per onderwerp de voortgang ziet:
+
+| Milestone | Waar het over gaat |
+|---|---|
+| **Lancering website** | alles wat nodig is om de site live te zetten |
+| **Inhoud & besluiten** | open vragen uit `CONTENT.md` waar een besluit over genomen moet worden |
+| **Uitbreidingen** | nice-to-haves na de lancering (nieuwsbrief, online doneren, nieuwspagina, plattegrond, beheer) |
+| **Onderhoud & techniek** | afhankelijkheden, beveiliging, CI en de werkwijze van de repository |
+
+- Geef het **issue** een milestone. De PR die het issue sluit neemt die **automatisch over** (taak `milestone`).
+- Is er geen milestone, dan toont de PR een waarschuwing. Dat blokkeert het mergen niet; kies er dan zelf een in de zijbalk van de PR.
+- Dependabot-PR's krijgen geen milestone.
 
 ## Een issue bij elke PR
 
@@ -31,6 +46,8 @@ Voordat een PR gemerged kan worden, moeten deze checks groen zijn:
 | `build` | `npm ci` en `npm run build` |
 | `linked-issue` | de PR is gekoppeld aan een issue (of heeft het label `geen-issue`) |
 | `no-coauthor` | geen `Co-authored-by` in de commits |
+
+De taak `milestone` hoort er niet bij: die waarschuwt alleen en is niet verplicht.
 
 ## Lokaal draaien
 
