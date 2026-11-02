@@ -9,6 +9,14 @@ const navLinks = [
 ];
 
 const mobileMenuOpen = ref(false);
+
+// Actief voor de pagina zelf én voor onderliggende paden (bv. /fotos/[album]).
+// vue-router's active-class kijkt naar de routeketen; albums zijn een zusterroute
+// van /fotos, dus daar is een padcontrole nodig. `${to}/` voorkomt dat /fotobeleid
+// als "Foto's" telt.
+const route = useRoute();
+const isActive = (to: string) =>
+  route.path === to || route.path.startsWith(`${to}/`);
 </script>
 
 <template>
@@ -37,7 +45,7 @@ const mobileMenuOpen = ref(false);
             :key="link.to"
             :to="link.to"
             class="hover:text-stone-950 transition-colors"
-            active-class="text-stone-950 font-semibold"
+            :class="{ 'text-stone-950 font-semibold': isActive(link.to) }"
             >{{ link.label }}</NuxtLink
           >
         </nav>
@@ -91,7 +99,7 @@ const mobileMenuOpen = ref(false);
           :key="link.to"
           :to="link.to"
           class="rounded-lg px-2 py-2 hover:bg-stone-50"
-          active-class="bg-stone-50 font-semibold text-stone-950"
+          :class="{ 'bg-stone-50 font-semibold text-stone-950': isActive(link.to) }"
           @click="mobileMenuOpen = false"
           >{{ link.label }}</NuxtLink
         >
