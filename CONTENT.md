@@ -109,6 +109,18 @@ een zin, een idee) — het hoeft niet compleet of netjes geformuleerd te zijn.
 
 ## Status
 
+- **Favicon ingesteld (2026-11-02, #30)**: vereenvoudigde vuurtoren (dak, twee
+  lichtbundels, galerij, toren, grond) in bijna-zwart op knalgeel (`#ffde59`). Het
+  woordmerk past niet in 16 × 16 px en het dunne lijnwerk van het logo verdwijnt op die
+  grootte, daarom is het geen kopie van het logo maar een vettere versie met dezelfde
+  onderdelen. De gele achtergrond houdt het icoon zichtbaar in een donkere tabbladbalk.
+  - Bron is [public/icon.svg](public/icon.svg) (viewBox 64 × 64). Daaruit zijn
+    `public/favicon.ico` (16, 32 en 48 px) en `public/apple-touch-icon.png` (180 px,
+    zonder afgeronde hoeken omdat iOS zelf afrondt) gerenderd. Bij een wijziging in de
+    SVG moeten die twee opnieuw gemaakt worden.
+  - De `<link>`-verwijzingen staan in `app.head.link` in `nuxt.config.ts`.
+  - Bij een nieuw logo voor "Dabar Het Baken" (zie Visueel / merk) hoort ook het icoon
+    mee te veranderen.
 - **"Foto's" gemarkeerd in het menu op albumpagina's (2026-11-02)**
   (`app/layouts/default.vue`): `/fotos` (overzicht) en `/fotos/[album]` zijn zusterroutes
   zonder gedeelde ouderroute (`fotos.vue` bestaat niet), en vue-router's `active-class`
