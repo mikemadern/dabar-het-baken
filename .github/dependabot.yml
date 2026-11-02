@@ -25,5 +25,7 @@ updates:
       time: "06:00"
       timezone: Europe/Amsterdam
     groups:
+      # Net als bij npm: minor en patch gebundeld, major-updates komen los binnen.
       actions:
         patterns: ["*"]
+        update-types: [minor, patch]
