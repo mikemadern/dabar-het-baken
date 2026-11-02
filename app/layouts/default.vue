@@ -4,7 +4,6 @@ const navLinks = [
   { to: "/activiteiten", label: "Activiteiten" },
   { to: "/programma", label: "Programma 2026" },
   { to: "/fotos", label: "Foto's" },
-  { to: "/doe-mee", label: "Doe mee" },
   { to: "/steun-ons", label: "Steun ons" },
   { to: "/contact", label: "Contact" },
 ];
@@ -31,7 +30,7 @@ const mobileMenuOpen = ref(false);
           />
         </NuxtLink>
         <nav
-          class="hidden md:flex items-center gap-6 text-sm font-medium text-stone-700"
+          class="hidden lg:flex items-center gap-6 whitespace-nowrap text-sm font-medium text-stone-700"
         >
           <NuxtLink
             v-for="link in navLinks"
@@ -46,11 +45,12 @@ const mobileMenuOpen = ref(false);
           <NuxtLink
             to="/doe-mee"
             class="shrink-0 rounded-full bg-yellow-400 px-4 py-2 text-sm font-semibold text-stone-900 hover:bg-yellow-300 transition-colors"
+            active-class="ring-2 ring-stone-900"
             >Doe mee</NuxtLink
           >
           <button
             type="button"
-            class="shrink-0 rounded-full border border-stone-300 p-2 md:hidden"
+            class="shrink-0 rounded-full border border-stone-300 p-2 lg:hidden"
             :aria-expanded="mobileMenuOpen"
             aria-label="Menu"
             @click="mobileMenuOpen = !mobileMenuOpen"
@@ -84,7 +84,7 @@ const mobileMenuOpen = ref(false);
       </div>
       <nav
         v-if="mobileMenuOpen"
-        class="flex flex-col gap-1 border-t border-stone-200 bg-white px-4 py-3 text-sm font-medium text-stone-700 md:hidden"
+        class="flex flex-col gap-1 border-t border-stone-200 bg-white px-4 py-3 text-sm font-medium text-stone-700 lg:hidden"
       >
         <NuxtLink
           v-for="link in navLinks"
