@@ -1,6 +1,7 @@
 name: Wijziging of idee
 description: Iets nieuws, een verbetering, of aangepaste inhoud
 labels: [enhancement]
+projects: ["mikemadern/1"]
 body:
   - type: textarea
     id: wat

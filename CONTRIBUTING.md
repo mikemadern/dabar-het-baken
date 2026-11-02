@@ -24,6 +24,21 @@ Werk wordt per milestone gevolgd, zodat je per onderwerp de voortgang ziet:
 - Is er geen milestone, dan toont de PR een waarschuwing. Dat blokkeert het mergen niet; kies er dan zelf een in de zijbalk van de PR.
 - Dependabot-PR's krijgen geen milestone.
 
+## Project
+
+Het werk wordt gevolgd in het GitHub Project **Website Dabar Het Baken** (privé, alleen zichtbaar voor de beheerder): https://github.com/users/mikemadern/projects/1
+
+- Issues uit de formulieren komen daar automatisch in terecht.
+- De *Status* gaat vanzelf naar *Done* bij een gesloten issue of gemergde PR.
+- Per milestone zie je de voortgang in de kolom *Milestone*.
+
+Via de terminal (GitHub CLI) geef je het Project en de milestone mee:
+
+```bash
+gh issue create --milestone "Onderhoud & techniek" --project "Website Dabar Het Baken"
+gh pr create --project "Website Dabar Het Baken"   # de milestone neemt de PR over van het issue
+```
+
 ## Een issue bij elke PR
 
 Elke PR hoort **in principe** bij een issue. De check `linked-issue` controleert dit.
