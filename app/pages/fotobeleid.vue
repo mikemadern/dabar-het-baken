@@ -1,5 +1,8 @@
 <script setup lang="ts">
-useHead({ title: "Fotobeleid — Dabar Het Baken" });
+useSeoMeta({
+  title: 'Fotobeleid',
+  description: "Hoe Dabar Het Baken omgaat met foto's en video's tijdens activiteiten, en wat je kunt doen als je daar bezwaar tegen hebt.",
+});
 </script>
 
 <template>

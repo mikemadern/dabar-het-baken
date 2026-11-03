@@ -1,5 +1,8 @@
 <script setup lang="ts">
-useHead({ title: 'Steun ons — Dabar Het Baken' })
+useSeoMeta({
+  title: 'Steun ons',
+  description: 'Dabar Het Baken draait volledig op vrijwilligers en giften. Zo steun je het clubwerk voor kinderen en jongeren en de teams op de camping.',
+})
 </script>
 
 <template>

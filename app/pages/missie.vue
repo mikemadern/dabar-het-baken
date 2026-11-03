@@ -1,5 +1,8 @@
 <script setup lang="ts">
-useHead({ title: 'Missie — Dabar Het Baken' })
+useSeoMeta({
+  title: 'Missie',
+  description: 'Evangelisatie door recreatie: Dabar Het Baken is aanwezig op Camping Kriemelberg Bushcamp met het evangelie, op een manier die uitnodigt in plaats van overtuigt.',
+})
 </script>
 
 <template>

@@ -8,7 +8,10 @@ if (!album) {
   throw createError({ statusCode: 404, statusMessage: "Album niet gevonden" })
 }
 
-useHead({ title: `${album.title} — Foto's — Dabar Het Baken` })
+useSeoMeta({
+  title: `${album.title} — Foto's`,
+  description: album.description,
+})
 
 const photos = album.photos
 const openIndex = ref<number | null>(null)

@@ -1,5 +1,8 @@
 <script setup lang="ts">
-useHead({ title: 'Activiteiten — Dabar Het Baken' })
+useSeoMeta({
+  title: 'Activiteiten',
+  description: 'Elke ochtend een club per leeftijdsgroep, op zondagavond de Sing-In en aandacht voor volwassenen: de activiteiten van Dabar Het Baken op Kriemelberg Bushcamp.',
+})
 
 const clubs = [
   {

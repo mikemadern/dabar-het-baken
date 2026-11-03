@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import { albums } from "~/data/albums";
 
-useHead({ title: "Foto's — Dabar Het Baken" });
+useSeoMeta({
+  title: "Foto's",
+  description: 'Foto-albums van Kriemelberg Bushcamp en eerdere bakenweken van Dabar Het Baken.',
+});
 </script>
 
 <template>

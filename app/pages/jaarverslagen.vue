@@ -1,5 +1,8 @@
 <script setup lang="ts">
-useHead({ title: 'Jaarverslagen — Dabar Het Baken' })
+useSeoMeta({
+  title: 'Jaarverslagen',
+  description: 'Alle beschikbare jaarverslagen van Dabar Het Baken om na te lezen.',
+})
 
 const reports = [
   { year: '2024', href: 'https://bakenharderwijk.nl/wp-content/uploads/2025/05/Jaarverslag-2024.pdf' },

@@ -1,5 +1,8 @@
 <script setup lang="ts">
-useHead({ title: 'Contact — Dabar Het Baken' })
+useSeoMeta({
+  title: 'Contact',
+  description: 'Vragen over vrijwilligerswerk, kerksamenwerking of een gift? Neem contact op met Dabar Het Baken, we horen graag van je.',
+})
 
 const name = ref('')
 const email = ref('')
