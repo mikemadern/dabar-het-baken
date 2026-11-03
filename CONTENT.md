@@ -109,11 +109,31 @@ een zin, een idee) — het hoeft niet compleet of netjes geformuleerd te zijn.
 
 ## Status
 
-- **Favicon ingesteld (2026-11-02, #30)**: vereenvoudigde vuurtoren (dak, twee
-  lichtbundels, galerij, toren, grond) in bijna-zwart op knalgeel (`#ffde59`). Het
-  woordmerk past niet in 16 × 16 px en het dunne lijnwerk van het logo verdwijnt op die
-  grootte, daarom is het geen kopie van het logo maar een vettere versie met dezelfde
-  onderdelen. De gele achtergrond houdt het icoon zichtbaar in een donkere tabbladbalk.
+- **Logo als SVG, favicon opnieuw afgeleid (2026-11-03, #34)**: het logo staat nu als
+  [public/images/logo-het-baken.svg](public/images/logo-het-baken.svg) en wordt in de
+  header en de footer gebruikt in plaats van het PNG.
+  - Het is een **nagetekende** versie, geen origineel. In de vacature-PDF zit het logo
+    alleen als JPEG van 294 × 121 px; het PNG in de repo is een vergroting daarvan. Woordmerk
+    en icoon zijn uit dat PNG getraceerd: rechte randen zijn exact recht, bogen glad, en dak,
+    lichtbundels en galerij zijn symmetrisch opnieuw opgebouwd. De ondertitel is niet
+    getraceerd maar gezet als letters in Oswald Regular (SIL OFL), op de gemeten plek en
+    breedte van elke letter; de I met dwarsstreepjes is zelf getekend. Details van de G, R
+    en C kunnen afwijken van het origineel.
+  - Zelfde canvas als het PNG (1402 × 333), dus de afmetingen in de layout zijn gelijk
+    gebleven. Het is een gewone `<img>` en geen `NuxtImg`: IPX optimaliseert SVG's en
+    herschrijft de paden, en een vector heeft geen resizing nodig.
+  - `logo-het-baken.png` en `-wit-bg.png` staan nog in de repo als bron van de trace.
+  - De favicon (`public/icon.svg`, `favicon.ico`, `apple-touch-icon.png`) is opnieuw
+    gemaakt met de verhoudingen van het icoon uit de logo-SVG (dak, lichtbundels, galerij,
+    open toren, grond), met dikkere lijnen zodat de toren op 16 px leesbaar blijft. Werkwijze
+    zoals bij #30.
+  - Dit is een stand-in. Het echte logo en de bijbehorende favicon blijven #31 en #32.
+- **Favicon ingesteld (2026-11-02, #30; opnieuw gemaakt in #34, zie hierboven)**:
+  vereenvoudigde vuurtoren (dak, twee lichtbundels, galerij, toren, grond) in bijna-zwart
+  op knalgeel (`#ffde59`). Het woordmerk past niet in 16 × 16 px en het dunne lijnwerk van
+  het logo verdwijnt op die grootte, daarom is het geen kopie van het logo maar een vettere
+  versie met dezelfde onderdelen. De gele achtergrond houdt het icoon zichtbaar in een
+  donkere tabbladbalk.
   - Bron is [public/icon.svg](public/icon.svg) (viewBox 64 × 64). Daaruit zijn
     `public/favicon.ico` (16, 32 en 48 px) en `public/apple-touch-icon.png` (180 px,
     zonder afgeronde hoeken omdat iOS zelf afrondt) gerenderd. Bij een wijziging in de
@@ -393,9 +413,11 @@ een zin, een idee) — het hoeft niet compleet of netjes geformuleerd te zijn.
   - Alle gebruikte foto's (ook de eerder gekozen 3) zijn achteraf verkleind naar
     max. 2000px breed — scheelde ruim 500MB aan bronbestanden in de git-repo.
 - **Logo**: het bestaande logo ("Het Baken — Evangelisatie en Recreatie", met
-  vuurtoren-icoon) is uit de vacature-PDF geëxtraheerd op hoge resolutie en staat als
+  vuurtoren-icoon) komt uit de vacature-PDF, waar het alleen als JPEG van 294 × 121 px
+  zit; de PNG's zijn een vergroting daarvan en dus wazig. Ze staan als
   [public/images/logo-het-baken.png](public/images/logo-het-baken.png) (transparante
-  achtergrond) en `-wit-bg.png` (witte achtergrond) in het project.
+  achtergrond) en `-wit-bg.png` (witte achtergrond) in het project. De site gebruikt sinds
+  #34 een nagetekende [SVG](public/images/logo-het-baken.svg) (zie Status).
 - De demo-content van de Nuxt Content-starter (Counter/Alert-componenten,
   `content/index.md`, `content/about.md`) is verwijderd — de homepage is nu een losse
   Vue-pagina in plaats van markdown-gedreven. `@nuxt/content` staat nog steeds

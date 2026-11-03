@@ -1,11 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <rect width="64" height="64" rx="14" fill="#ffde59"/>
   <g fill="#1c1917">
-    <polygon points="32,7 24.5,15 39.5,15"/>
-    <polygon points="9,14 27,17.5 27,26 9,29.5"/>
-    <polygon points="55,14 37,17.5 37,26 55,29.5"/>
-    <rect x="22.5" y="29" width="19" height="3.5" rx="1"/>
-    <polygon points="26,32.5 38,32.5 41,54 23,54"/>
-    <rect x="8" y="54" width="48" height="4.5" rx="2.25"/>
+    <polygon points="32,4.5 24.5,11 39.5,11"/>
+    <polygon points="10,9.5 27.4,12.5 27.4,17 10,19.5"/>
+    <polygon points="54,9.5 36.6,12.5 36.6,17 54,19.5"/>
+    <rect x="22.5" y="19.5" width="19" height="3.7"/>
+    <path fill-rule="evenodd" d="M25.4 23.2H38.6L43.5 56H20.5ZM30.4 23.2H33.6L38.1 53.5H25.9Z"/>
+    <rect x="7" y="54" width="50" height="5" rx="2.5"/>
   </g>
 </svg>
