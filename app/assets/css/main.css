@@ -1,13 +1,13 @@
 @import "tailwindcss";
-@import "@fontsource-variable/fredoka";
 @import "@fontsource/poppins/400.css";
 @import "@fontsource/poppins/500.css";
 @import "@fontsource/poppins/600.css";
 @import "@fontsource/poppins/700.css";
 @import "@fontsource/poppins/800.css";
+@import "@fontsource/ubuntu/700.css";
 
 @theme {
-  --font-display: "Fredoka Variable", "Fredoka", sans-serif;
+  --font-display: "Ubuntu", ui-sans-serif, system-ui, sans-serif;
   --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif;
 
   /* Brand kleuren, gemeten uit de officiële "Zoekt jou!"-poster van Dabar Het Baken */

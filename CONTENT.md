@@ -67,7 +67,8 @@ een zin, een idee) — het hoeft niet compleet of netjes geformuleerd te zijn.
 - **Huisstijl bevestigd** (2026-07-19, op basis van 3 bestaande social media-posts
   voor Dabar Het Baken): knalgeel **#ffe058** + lichtblauw **#38b0ff** (bevestigd
   door pixels uit de posters te meten), een vetgedrukt rond "bubble"-lettertype
-  (Fredoka geïnstalleerd als beste gratis match) voor koppen/labels, en gekantelde
+  (Fredoka geïnstalleerd als beste gratis match; sinds 2026-11-03 vervangen door
+  Ubuntu Bold, zie Status) voor koppen/labels, en gekantelde
   "sticker"-banners met witte/zwarte tekst voor titels/labels — vaak een gele
   naamsticker met een blauwe sticker eronder voor een subboodschap (bv. "Zoekt
   teamleden!"). Gebruiker koos expliciet om dit **overal consistent** door te
@@ -91,7 +92,8 @@ een zin, een idee) — het hoeft niet compleet of netjes geformuleerd te zijn.
     zit vol, net als zomerweek 1 en 2. Zomerweek 3, 4 en 5 hebben nog ruimte.
     Verwerkt op de Programma-pagina en hieronder bij "Programma 2026".
 - **Tweede lettertype toegevoegd** (2026-07-19): de poster gebruikt twee
-  lettertypen — het ronde "bubble"-font (Fredoka, al geïnstalleerd) alleen voor
+  lettertypen — het ronde "bubble"-font (Fredoka, al geïnstalleerd; later vervangen
+  door Ubuntu Bold, zie Status) alleen voor
   koppen/banners, en een strak vetgedrukt geometrisch schreefloos lettertype voor
   lopende tekst/subtitels ("EVANGELISATIE & RECREATIE"). **Poppins** geïnstalleerd
   als beste match en ingesteld als standaard bodyfont (`--font-sans` in
@@ -109,6 +111,22 @@ een zin, een idee) — het hoeft niet compleet of netjes geformuleerd te zijn.
 
 ## Status
 
+- **Titels in Ubuntu Bold in plaats van Fredoka (2026-11-03, #36)**: het titelfont
+  (`--font-display`) is Ubuntu Bold geworden. Het wordt gebruikt voor de basisstijl van
+  `h1`/`h2`/`h3`, de stickerlabels, het blauwe label in de homepage-hero en de grote
+  getallen op de homepage. Poppins blijft voor lopende tekst.
+  - Keuze van de gebruiker, na een proef waarin beide fonts naast elkaar bekeken zijn
+    (hero, paginakop, getallen-sectie en `/missie` op mobiel). Ubuntu is strakker en
+    serieuzer, Fredoka ronder en speelser. Het wijkt bewust af van de posters, die een
+    rond "bubble"-lettertype gebruiken.
+  - Ubuntu 700 komt via Fontsource (`@fontsource/ubuntu/700.css`, zelf gehost) en is het
+    enige geladen gewicht. Ubuntu bestaat alleen in 300, 400, 500 en 700, dus `font-semibold`
+    (600) valt op 700. Wie ooit een lichter titelgewicht wil, moet dat gewicht ook
+    importeren. Fredoka is verwijderd (import en afhankelijkheid).
+  - Gemeten op 12 pagina's, op 375 en 1280 px breed: nergens horizontale overloop. Enig
+    verschil is dat de titel op `/missie` op een telefoon twee regels wordt in plaats van één.
+  - Licentie: Ubuntu Font Licence 1.0 (vrij te gebruiken en in te sluiten, aangepaste
+    kopieën mogen de naam niet houden). Fredoka had de SIL OFL.
 - **Logo als SVG, favicon opnieuw afgeleid (2026-11-03, #34)**: het logo staat nu als
   [public/images/logo-het-baken.svg](public/images/logo-het-baken.svg) en wordt in de
   header en de footer gebruikt in plaats van het PNG.
