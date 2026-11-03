@@ -31,9 +31,11 @@ const isActive = (to: string) =>
         class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6"
       >
         <NuxtLink to="/" class="flex items-center gap-2 shrink-0">
-          <NuxtImg
-            src="/images/logo-het-baken.png"
+          <img
+            src="/images/logo-het-baken.svg"
             alt="Het Baken"
+            width="1402"
+            height="333"
             class="h-9 w-auto sm:h-10"
           />
         </NuxtLink>
@@ -117,9 +119,11 @@ const isActive = (to: string) =>
       <div class="mx-auto max-w-6xl px-4 sm:px-6">
         <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
           <div>
-            <NuxtImg
-              src="/images/logo-het-baken.png"
+            <img
+              src="/images/logo-het-baken.svg"
               alt="Het Baken"
+              width="1402"
+              height="333"
               class="h-10 w-auto brightness-0 invert opacity-90"
             />
             <p class="mt-4 text-sm">
