@@ -1,5 +1,8 @@
 <script setup lang="ts">
-useHead({ title: 'Programma 2026 — Dabar Het Baken' })
+useSeoMeta({
+  title: 'Programma 2026',
+  description: 'In 2026 is Dabar Het Baken zes weken te vinden op Camping Kriemelberg Bushcamp: de meivakantieweek en vijf zomerweken. Bekijk de weken en meld je aan voor een team.',
+})
 
 const meivakantie = [
   { label: 'Zaterdag 25 april t/m vrijdag 1 mei', vol: true },

@@ -111,6 +111,47 @@ een zin, een idee) — het hoeft niet compleet of netjes geformuleerd te zijn.
 
 ## Status
 
+- **SEO-basis op orde met `@nuxtjs/seo` (2026-11-03, #39)**: de bundel `@nuxtjs/seo` (versie 6)
+  is geïnstalleerd en ingesteld in `nuxt.config.ts` (`site`, `schemaOrg`, `sitemap`).
+  - **Per pagina** (`useSeoMeta`): een eigen beschrijving en een titel zónder de sitenaam. Het
+    titelsjabloon voegt " — Dabar Het Baken" toe (scheidingsteken `site.separator`), dus de
+    zichtbare titels zijn gelijk gebleven. De homepage heeft `titleTemplate: '%s'`. De albumpagina's
+    gebruiken de beschrijving uit `app/data/albums.ts`. Een nieuwe pagina krijgt dus altijd een
+    `useSeoMeta({ title, description })`.
+  - **Door de bundel gezet:** canonical, `og:title`, `og:description`, `og:type`, `og:site_name`,
+    `og:url`, `og:locale` (`nl_NL`), Twitter Card, `<html lang="nl-NL">`, `robots.txt` (alles toegestaan,
+    met verwijzing naar de sitemap), `sitemap.xml` en JSON-LD (WebSite, WebPage en Organization).
+  - **Sitemap:** de 10 pagina's komen vanzelf; de albums (een dynamische route) staan er via
+    `sitemap.urls` in `nuxt.config.ts`. Een nieuw album komt dus vanzelf mee, omdat die lijst uit
+    `app/data/albums.ts` komt.
+  - **Deelafbeelding:** `public/og-image.jpg` (1200 × 630, 121 KB). Een bestand met die naam wordt
+    automatisch als `og:image` en Twitter-afbeelding gebruikt. Gemaakt van
+    `public/images/headers/teamportret-1.jpg` met het logo in wit linksboven. Per pagina laten
+    genereren (`nuxt-og-image`) is niet gekozen: dat vraagt een renderer en meer in de build.
+  - **Organisatie (JSON-LD):** naam, andere naam (Het Baken Harderwijk), logo, e-mail en de drie
+    sociale kanalen uit de footer. **Geen evenementen:** alle weken van het programma 2026 liggen in
+    het verleden. Toevoegen kan zodra het programma van het volgende jaar bekend is.
+  - **Uitgezet uit de bundel:** `aiReady` (zou `llms.txt` en Markdown-versies van pagina's publiceren),
+    `skewProtection` (bewaart oude builds), de OG-afbeeldingen en de link checker bij het bouwen.
+  - **Domein:** `site.url` staat op `https://dabarhetbaken.nl` en moet bevestigd worden zodra het domein
+    aan Vercel gekoppeld is (#24). Alle canonical-, Open Graph- en sitemap-adressen volgen die waarde.
+  - **Previews niet indexeren:** `site.env` en `site.indexable` uit `nuxt.config.ts` worden bij het
+    bouwen niet overgenomen (geprobeerd). Wat wel werkt is de omgevingsvariabele `NUXT_SITE_ENV=preview`
+    op runtime: dan wordt de site `noindex` en geeft `robots.txt` `Disallow: /`. Instelling voor het
+    Vercel-project, alleen voor de Preview-omgeving. Previews zitten nu al achter Vercel-inlog.
+  - **Snelheid gemeten** (ingebouwde browser, gebouwde site op localhost, telefoonbreedte 375 px; geen
+    Lighthouse, want er staat geen Chrome op de machine): CLS 0, laden 67 ms. De homepage haalt 12
+    afbeeldingen op, waarvan 8 onder de vouw, **geen enkele met `loading="lazy"`**: samen ±1,5 MB. De
+    zwaarste zijn `galerij/welkom-camping.jpg` (434 KB, ver onder de vouw) en de hero (292 KB), beide
+    zonder breedte-instelling. Mogelijke winst: lazy loading en een breedte voor die twee. Niet
+    aangepast in deze wijziging.
+  - **Pakket:** `npm install` op macOS haalt `libc`-metadata uit `package-lock.json`; die is
+    hersteld en voor de nieuwe Linux-pakketten uit het npm-register aangevuld (16 stuks, 4 arm-pakketten
+    hebben ook in het register geen `libc`). Houd dat in de gaten bij elke nieuwe afhankelijkheid.
+  - **Nog te doen na het koppelen van het domein:** de Rich Results Test en de deelvoorbeelden van
+    Facebook en LinkedIn (die hebben een openbare URL nodig), Google Search Console en Bing Webmaster Tools
+    en het indienen van de sitemap, 301-redirects vanaf de oude site (`bakenharderwijk.nl`, waar ook de
+    jaarverslagen-PDF's nog staan), en een Lighthouse-run op de echte site.
 - **Titels in Ubuntu Bold in plaats van Fredoka (2026-11-03, #36)**: het titelfont
   (`--font-display`) is Ubuntu Bold geworden. Het wordt gebruikt voor de basisstijl van
   `h1`/`h2`/`h3`, de stickerlabels, het blauwe label in de homepage-hero en de grote

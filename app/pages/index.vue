@@ -1,5 +1,9 @@
 <script setup lang="ts">
-useHead({ title: "Dabar Het Baken — evangelisatie door recreatie" });
+useSeoMeta({
+  title: 'Dabar Het Baken — evangelisatie door recreatie',
+  titleTemplate: '%s',
+  description: 'Dabar Het Baken is een interkerkelijke evangelisatie- en recreatiecommissie op Camping Kriemelberg Bushcamp in Ermelo: zes weken per jaar, voor gasten van jong tot oud.',
+});
 
 const activiteitenChips = [
   "Kinderclub 4-8",

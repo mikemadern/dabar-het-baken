@@ -6,6 +6,7 @@ De website van **Dabar Het Baken** (tot nu toe Het Baken Harderwijk): een interk
 
 - [Nuxt 4](https://nuxt.com) (Vue 3, TypeScript) met [`@nuxt/content`](https://content.nuxt.com) en [`@nuxt/image`](https://image.nuxt.com)
 - [Tailwind CSS 4](https://tailwindcss.com) via `@tailwindcss/vite`; de lettertypen Ubuntu (titels) en Poppins (tekst) worden zelf gehost (Fontsource)
+- Zoekmachine-optimalisatie via [`@nuxtjs/seo`](https://nuxtseo.com): meta-beschrijvingen, Open Graph, canonical, `sitemap.xml`, `robots.txt` en JSON-LD. De instellingen staan in `nuxt.config.ts`
 - Hosting op [Vercel](https://vercel.com): elke PR krijgt een preview en elke merge naar `develop` wordt een productie-deployment. Bezoekcijfers lopen via Vercel Web Analytics
 
 ## Lokaal draaien
@@ -23,12 +24,15 @@ npm run preview   # de gebouwde site lokaal bekijken
 ## Indeling
 
 ```
-app/pages/           de pagina's, één bestand per route (fotos/[album].vue is de albumpagina)
+app/pages/           de pagina's, één bestand per route (fotos/[album].vue is de albumpagina);
+                     elke pagina zet `title` en `description` met `useSeoMeta`, zonder de sitenaam
+                     (die voegt het titelsjabloon zelf toe)
 app/components/      PageHeader, StickerLabel en ValueTicker
 app/layouts/         default.vue met het menu en de footer
 app/data/albums.ts   de fotoalbums
 app/assets/css/      Tailwind-instellingen, kleuren en lettertypen
 public/images/       afbeeldingen (galerij/ en headers/)
+public/og-image.jpg  de deelafbeelding bij het delen van een link (1200 × 630)
 public/documenten/   downloads, zoals de vacature
 ```
 

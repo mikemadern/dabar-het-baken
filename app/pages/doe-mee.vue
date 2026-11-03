@@ -1,5 +1,8 @@
 <script setup lang="ts">
-useHead({ title: 'Doe mee — Dabar Het Baken' })
+useSeoMeta({
+  title: 'Doe mee',
+  description: 'Dabar Het Baken draait op vrijwilligers. Word onderdeel van het team: van een enkele week op de camping tot een rol door het hele jaar heen.',
+})
 
 const roles = [
   { name: 'Commissielid', requirement: '24 jaar of ouder', description: 'Je denkt het jaar door mee over voorbereiding, uitvoering en evaluatie, vergadert één keer per maand en begeleidt één week per jaar een team op de camping.' },
