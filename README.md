@@ -5,7 +5,7 @@ De website van **Dabar Het Baken** (tot nu toe Het Baken Harderwijk): een interk
 ## Techniek
 
 - [Nuxt 4](https://nuxt.com) (Vue 3, TypeScript) met [`@nuxt/content`](https://content.nuxt.com) en [`@nuxt/image`](https://image.nuxt.com)
-- [Tailwind CSS 4](https://tailwindcss.com) via `@tailwindcss/vite`; de lettertypen Fredoka en Poppins worden zelf gehost (Fontsource)
+- [Tailwind CSS 4](https://tailwindcss.com) via `@tailwindcss/vite`; de lettertypen Ubuntu (titels) en Poppins (tekst) worden zelf gehost (Fontsource)
 - Hosting op [Vercel](https://vercel.com): elke PR krijgt een preview en elke merge naar `develop` wordt een productie-deployment. Bezoekcijfers lopen via Vercel Web Analytics
 
 ## Lokaal draaien
