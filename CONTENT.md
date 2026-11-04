@@ -111,6 +111,24 @@ een zin, een idee) — het hoeft niet compleet of netjes geformuleerd te zijn.
 
 ## Status
 
+- **Toegankelijkheidscontrole WCAG 2.2 AA (2026-11-04, #38)**: de site is getoetst en de bevindingen
+  staan als losse issues. De volledige tabel met criterium, niveau en ernst staat als reactie op
+  [#38](https://github.com/mikemadern/dabar-het-baken/issues/38). Er is in deze stap **niets aan de
+  site veranderd**; de oplossingen komen per issue.
+  - **Getest:** productiebuild van `develop`, 12 routes op 1280 en 375 px, met axe-core 4.14.0
+    (WCAG 2.0, 2.1 en 2.2 A en AA plus best practices) en handmatig: echte toetsaanslagen, inzoomen tot
+    320 px breed, vergrote tekstafstand, contrast over de herofoto per pixel en alle alt-teksten.
+  - **Bevindingen:** #47 wit op het lichtblauw haalt 2,25:1 (huisstijl, besluit nodig); #48 kleine rode
+    en grijze tekst en de hero-ondertitel op een telefoon; #49 contactformulier (focus, rand,
+    `autocomplete`); #50 lightbox (dialoog, focus, Tab); #51 footerkoppen en clubnamen; #52 vacature-PDF
+    niet getagd; #53 header plakt niet door `overflow-x-hidden`; #54 kleine verbeteringen en wat nog
+    handmatig getest moet worden.
+  - **Goed:** `lang="nl-NL"`, landmarks, alt-teksten, geen links of knoppen zonder naam, reflow en
+    tekstafstand zonder afgekapte tekst, doelgrootte, hamburgermenu met het toetsenbord, statische ticker.
+  - **Niet getest:** VoiceOver/TalkBack, een echt apparaat, WAVE, en de PDF's van de jaarverslagen op de
+    oude site. De routelijst voor VoiceOver staat in #54.
+  - **Open besluiten:** welke oplossing voor het blauw (#47, raakt ook #31), of de header moet plakken
+    (#53), en of er een toegankelijkheidsverklaring komt (vinkje in #54).
 - **Afbeeldingen sneller laden (2026-11-04, #44)**: de afbeeldingen waren de zwaarste onderdelen van
   elke pagina. Gemeten op de gebouwde site, op telefoonbreedte (375 px), lokaal met IPX en vóór en ná
   op dezelfde manier: 11 pagina's samen **7553 KB → 3057 KB** als alles geladen is (−60%) en
