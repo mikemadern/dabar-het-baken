@@ -71,8 +71,9 @@ const churches = [
             src="/images/team-kind-spelen.jpg"
             alt="Een vrijwilliger speelt met een campingkind"
             class="aspect-[4/3] w-full rounded-2xl object-cover"
-            sizes="600px"
+            sizes="375:100vw sm:100vw lg:560px"
             format="webp"
+            loading="lazy"
           />
         </div>
       </div>

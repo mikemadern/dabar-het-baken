@@ -139,6 +139,7 @@ const clubs = [
                   class="w-full rounded-2xl object-cover"
                   sizes="280px"
                   format="webp"
+                  loading="lazy"
                 />
               </template>
             </div>

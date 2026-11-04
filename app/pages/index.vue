@@ -33,8 +33,9 @@ const doeMeeChips = [
         src="/images/team-onderweg-camping.jpg"
         alt=""
         class="absolute inset-0 h-full w-full object-cover"
-        fill
+        sizes="sm:100vw md:100vw lg:100vw xl:100vw"
         format="webp"
+        fetchpriority="high"
       />
       <div
         class="absolute inset-0 bg-gradient-to-t from-stone-900/95 via-stone-900/50 to-transparent"
@@ -83,8 +84,9 @@ const doeMeeChips = [
             src="/images/headers/team-gesprek-gast.jpg"
             alt="Teamleden in gesprek met een campinggast"
             class="aspect-[4/3] w-full rounded-2xl object-cover shadow-lg"
-            sizes="480px"
+            sizes="375:100vw sm:100vw lg:480px"
             format="webp"
+            loading="lazy"
           />
           <StickerLabel
             color="blue"
@@ -167,29 +169,33 @@ const doeMeeChips = [
               src="/images/galerij/trampoline-lachen.jpg"
               alt="Een meisje lacht op de trampoline"
               class="row-span-2 aspect-[3/4] w-full rounded-2xl object-cover"
-              sizes="280px"
+              sizes="375:45vw lg:252px"
               format="webp"
+              loading="lazy"
             />
             <NuxtImg
               src="/images/galerij/limbo-hawaiifeest.jpg"
               alt="Kinderen doen een limbo-wedstrijd tijdens het Hawaii-feest"
               class="aspect-square w-full rounded-2xl object-cover"
-              sizes="260px"
+              sizes="375:45vw lg:252px"
               format="webp"
+              loading="lazy"
             />
             <NuxtImg
               src="/images/galerij/voetballen-in-kooi.jpg"
               alt="Jongens voetballen in de voetbalkooi"
               class="aspect-square w-full rounded-2xl object-cover"
-              sizes="260px"
+              sizes="375:45vw lg:252px"
               format="webp"
+              loading="lazy"
             />
             <NuxtImg
               src="/images/galerij/high-five.jpg"
               alt="Een teamlid geeft een high-five tijdens een groepsspel"
               class="col-span-2 aspect-[2/1] w-full rounded-2xl object-cover"
-              sizes="560px"
+              sizes="375:100vw sm:100vw lg:560px"
               format="webp"
+              loading="lazy"
             />
           </div>
         </div>
@@ -204,8 +210,11 @@ const doeMeeChips = [
         src="/images/galerij/welkom-camping.jpg"
         alt=""
         class="absolute inset-0 h-full w-full object-cover opacity-10"
-        fill
+        width="640"
+        quality="30"
+        densities="1"
         format="webp"
+        loading="lazy"
       />
       <div
         class="absolute inset-0 bg-linear-to-t from-stone-900 via-stone-900/90 to-stone-900/70"
@@ -280,8 +289,9 @@ const doeMeeChips = [
             src="/images/galerij/verkleedpartij-rennen-camping.jpg"
             alt="Verklede vrijwilligers rennen met kinderen over de camping"
             class="aspect-square w-full rounded-2xl object-cover shadow-lg"
-            sizes="480px"
+            sizes="375:100vw sm:100vw lg:480px"
             format="webp"
+            loading="lazy"
           />
           <NuxtImg
             src="/images/galerij/team-armen-omhoog.jpg"
@@ -289,6 +299,7 @@ const doeMeeChips = [
             class="absolute -bottom-6 -right-6 hidden aspect-square w-2/5 rounded-2xl border-4 border-white object-cover shadow-lg sm:block"
             sizes="200px"
             format="webp"
+            loading="lazy"
           />
         </div>
         <div class="lg:col-span-7">
@@ -373,8 +384,9 @@ const doeMeeChips = [
             src="/images/headers/receptie-breed.jpg"
             alt="Het receptiegebouw van Kriemelberg Bushcamp"
             class="aspect-[4/3] w-full rounded-2xl object-cover shadow-lg"
-            sizes="560px"
+            sizes="375:100vw sm:100vw lg:560px"
             format="webp"
+            loading="lazy"
           />
           <StickerLabel
             color="blue"
