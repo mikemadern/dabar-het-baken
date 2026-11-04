@@ -60,9 +60,8 @@ vul aan waar nodig.
 - [ ] Bijbel/tekst-moment — sfeervol, niet geposeerd
 - [ ] Sfeerbeeld van de ruimte (Ruif) waar de clubs samenkomen
 
-## 5. No Nonsense (17+) & Sing-In
+## 5. Sing-In
 
-- [ ] Mannen-/vrouwenavond: sfeerbeeld van een avondbijeenkomst met diepgang
 - [ ] Sing-In op zondagavond: samenzang, gitaar/band, avondlicht
 - [ ] Close-up van een overdenking/voorlezer tijdens de Sing-In
 

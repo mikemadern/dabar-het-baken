@@ -111,6 +111,19 @@ een zin, een idee) — het hoeft niet compleet of netjes geformuleerd te zijn.
 
 ## Status
 
+- **No Nonsense (17+) van de site gehaald (2026-11-04, #42)**: de mannen- en vrouwenavond is niet
+  langer onderdeel van het programma. Weggehaald zijn de sectie op de pagina Activiteiten en het
+  label "No Nonsense 17+" bij "Voor iedere leeftijd" op de homepage.
+  - De secties op Activiteiten wisselen af in achtergrond en kleur van het label, en dat staat per
+    club vast in `app/pages/activiteiten.vue` (`bg` en `color`). Daarom zijn Sing-In (nu blauw op
+    grijs) en Campingpastoraat (nu geel op wit) omgewisseld, en is de afsluitende "Vragen"-sectie
+    grijs geworden. Het patroon is nu geel/wit, blauw/grijs, geel/wit, blauw/grijs, geel/wit en
+    dan grijs. Wie een club toevoegt of weghaalt, moet `color`, `bg` en de achtergrond van de
+    afsluiter opnieuw laten kloppen.
+  - De foto's `groepsknuffel.jpg` en `vrijwilligers-knuffel.jpg` blijven in
+    `public/images/galerij/`; ze staan ook in het album Zomerweek 1.
+  - Het aanbod hieronder (Diensten) en `SHOTLIST.md` zijn bijgewerkt. De oude aantekening van
+    juli 2026 over de activiteitenpagina laat ik staan als geschiedenis.
 - **SEO-basis op orde met `@nuxtjs/seo` (2026-11-03, #39)**: de bundel `@nuxtjs/seo` (versie 6)
   is geïnstalleerd en ingesteld in `nuxt.config.ts` (`site`, `schemaOrg`, `sitemap`).
   - **Per pagina** (`useSeoMeta`): een eigen beschrijving en een titel zónder de sitenaam. Het
@@ -536,8 +549,8 @@ zomerweken. Elke ochtend zijn er clubs per leeftijdsgroep (tot en met 16 jaar):
 - **Chatpoint** (12 t/m 16 jaar) — dagelijks, gebaseerd op "Solid Friends" van
   Youth for Christ. Gesprek, spel en Bijbel, met veel ruimte voor inbreng van de
   tieners zelf en actuele onderwerpen.
-- **No Nonsense** (17+) — tijdens de mannen- en vrouwenavond (2x per week), een
-  avond met meer diepgang, in samenwerking met een mentor en/of het pastorale team.
+- **No Nonsense** (17+) — **vervallen**: niet meer in het programma sinds 2026-11-04
+  (#42) en niet meer op de site. Het was de mannen- en vrouwenavond (2x per week).
 - **Sing-In** — zondagavond, samenzang gericht op het lofprijzen van God, afgewisseld
   met overdenkingen/stukjes die het team heeft voorbereid.
 - **Campingpastoraat** — zie Missie/verhaal hierboven.
