@@ -111,6 +111,38 @@ een zin, een idee) — het hoeft niet compleet of netjes geformuleerd te zijn.
 
 ## Status
 
+- **Afbeeldingen sneller laden (2026-11-04, #44)**: de afbeeldingen waren de zwaarste onderdelen van
+  elke pagina. Gemeten op de gebouwde site, op telefoonbreedte (375 px), lokaal met IPX en vóór en ná
+  op dezelfde manier: 11 pagina's samen **7553 KB → 3057 KB** als alles geladen is (−60%) en
+  **2203 KB** bij het eerste laden (−71%). De zwaarste afbeelding per pagina ging van maximaal
+  649 KB naar maximaal 221 KB; de homepage van 1584 KB naar 522 KB (166 KB bij het laden).
+  - **Paginakoppen en homepage-hero** (`PageHeader.vue`, `index.vue`): `sizes="sm:100vw md:100vw
+    lg:100vw xl:100vw"` en `fetchpriority="high"`. Er stond `fill` op, maar dat is geen instelling
+    van `NuxtImg`: het kwam als los attribuut op de `<img>` en de afbeelding kreeg dus geen breedte.
+  - **Alles onder de vouw** is `loading="lazy"` (homepage, Activiteiten, Doe mee, Steun ons en het
+    albumoverzicht). De albumminiaturen waren dat al; de lightbox laadt pas bij openen.
+  - **`sizes` met een telefoonsleutel** (`375:100vw sm:100vw lg:480px`): een telefoon (375 px, 2×) krijgt
+    dan 750 px in plaats van 960 tot 1120. Let op: `@nuxt/image` slaat een grootte **zonder
+    schermnaam** (`100vw`) over en levert dan een afbeelding van 2 px. Gebruik een sleutel (`sm:`,
+    `lg:` of een getal), of een vaste pixelbreedte (`480px`).
+  - **Bijna onzichtbare achtergrond** (`welkom-camping.jpg` met 10% dekking in de donkere sectie op de
+    homepage): 640 px, kwaliteit 30, één resolutie en lazy. 434 KB werd 34 KB.
+  - **`nuxt.config.ts`, blok `image`:** `quality: 75`, extra schermbreedtes 320 en 480, en
+    `vercel.minimumCacheTTL` van 7 dagen.
+  - **Op Vercel werkt het anders dan lokaal.** `@nuxt/image` kiest daar automatisch de
+    afbeeldingsdienst van Vercel (`provider: "auto"`). Zonder instelling was de kwaliteit 100, kreeg
+    een afbeelding zonder breedte 1536 px, werd elke breedte afgerond naar de lijst `image.screens`
+    en bewaarde Vercel bewerkte afbeeldingen maar 5 minuten. Gecontroleerd met een build met de
+    Vercel-provider: 110 URL's, alle breedtes staan in de toegestane lijst (320 tot 1536) en de
+    kwaliteit is overal 75 (30 voor de achtergrond). `.vercel/output/config.json` bevat de nieuwe
+    lijst en `minimumCacheTTL: 604800`. Vercel staat elke kwaliteit van 1 tot 100 toe zolang
+    `qualities` niet is ingesteld.
+  - **Niet gemeten:** de echte snelheid op Vercel (de site staat nog achter inloggen). Dat hoort bij
+    het meten na het koppelen van het domein (#40).
+  - **CLS** bleef 0 bij herhaalde metingen. Eén eerste run na het laden van het tabblad gaf eenmalig
+    0,038 en kwam in vijf herhalingen niet terug (waarschijnlijk een letterwissel op een koude cache).
+  - **Voor een nieuwe afbeelding:** standaard `loading="lazy"`, behalve de eerste grote afbeelding
+    van een pagina (`fetchpriority="high"`), en geef een `sizes` die bij de plek past.
 - **No Nonsense (17+) van de site gehaald (2026-11-04, #42)**: de mannen- en vrouwenavond is niet
   langer onderdeel van het programma. Weggehaald zijn de sectie op de pagina Activiteiten en het
   label "No Nonsense 17+" bij "Voor iedere leeftijd" op de homepage.
