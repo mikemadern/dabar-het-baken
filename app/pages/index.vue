@@ -9,7 +9,6 @@ const activiteitenChips = [
   "Kinderclub 4-8",
   "Teen Spirit 9-11",
   "Chatpoint 12-16",
-  "No Nonsense 17+",
   "Sing-In",
   "Campingpastoraat",
 ];

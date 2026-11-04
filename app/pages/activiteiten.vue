@@ -51,24 +51,10 @@ const clubs = [
     ],
   },
   {
-    name: 'No Nonsense',
-    age: '17+',
-    color: 'blue',
-    bg: 'stone-50',
-    paragraphs: [
-      'Twee keer per week is er de mannen- en vrouwenavond: No Nonsense. Een avond met meer diepgang dan de clubs overdag, in samenwerking met een mentor en/of het pastorale team.',
-      'Eerlijke gesprekken, zonder omwegen — precies zoals de naam belooft.',
-    ],
-    photos: [
-      { src: '/images/galerij/groepsknuffel.jpg', alt: 'Een warme groepsknuffel tussen een mentor en teamleden' },
-      { src: '/images/galerij/vrijwilligers-knuffel.jpg', alt: 'Drie vrijwilligers knuffelen elkaar' },
-    ],
-  },
-  {
     name: 'Sing-In',
     age: 'zondagavond',
-    color: 'yellow',
-    bg: 'white',
+    color: 'blue',
+    bg: 'stone-50',
     paragraphs: [
       'Op zondagavond is er de Sing-In: samenzang gericht op het lofprijzen van God, live begeleid door teamleden op onder meer gitaar en viool.',
       'Tussen de liederen door zijn er korte overdenkingen die het team gedurende de week heeft voorbereid — een laagdrempelig moment van bezinning, open voor alle campinggasten.',
@@ -82,8 +68,8 @@ const clubs = [
   {
     name: 'Campingpastoraat',
     age: 'volwassenen',
-    color: 'blue',
-    bg: 'stone-50',
+    color: 'yellow',
+    bg: 'white',
     paragraphs: [
       'Waar het recreatieteam zich vooral richt op kinderen, jongeren en jongvolwassenen, is er voor de volwassen gasten het campingpastoraat — met drie aspecten: pastoraal, diaconaal en missionair.',
       'Dat betekent een luisterend oor (voor gasten én team), een helpende hand, en waar mogelijk een getuigenis van hun geloof. De campingpastors verzorgen elke week twee avondsluitingen en zoeken actief aansluiting bij volwassenen tijdens activiteiten.',
@@ -161,7 +147,7 @@ const clubs = [
       </div>
     </section>
 
-    <section class="bg-white py-12 sm:py-16">
+    <section class="bg-stone-50 py-12 sm:py-16">
       <div class="mx-auto max-w-3xl px-4 sm:px-6">
         <a href="mailto:dabarhetbaken@gmail.com" class="inline-block font-semibold text-stone-900 underline decoration-yellow-400 decoration-2 underline-offset-4 hover:text-stone-700">
           Vragen over het programma? Mail naar dabarhetbaken@gmail.com
