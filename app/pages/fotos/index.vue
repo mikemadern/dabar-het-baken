@@ -36,6 +36,7 @@ useSeoMeta({
                 width="500"
                 height="375"
                 format="webp"
+                loading="lazy"
               />
             </div>
             <div class="p-5">

@@ -58,8 +58,9 @@ useSeoMeta({
             src="/images/telefooncel-informatiebord.jpg"
             alt="De rode telefooncel bij de receptie van Kriemelberg Bushcamp"
             class="aspect-[4/3] w-full rounded-2xl object-cover"
-            sizes="600px"
+            sizes="375:100vw sm:100vw lg:560px"
             format="webp"
+            loading="lazy"
           />
         </div>
       </div>

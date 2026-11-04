@@ -19,12 +19,14 @@ withDefaults(
     class="relative overflow-hidden bg-stone-900 text-white"
     style="clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%)"
   >
+    <!-- Eerste grote afbeelding op elke pagina: geen lazy loading, wel meteen ophalen -->
     <NuxtImg
       :src="image"
       :alt="imageAlt"
       class="absolute inset-0 h-full w-full object-cover"
-      fill
+      sizes="sm:100vw md:100vw lg:100vw xl:100vw"
       format="webp"
+      fetchpriority="high"
     />
     <div
       class="absolute inset-0 bg-linear-to-t from-stone-900/90 via-stone-900/15 to-transparent"

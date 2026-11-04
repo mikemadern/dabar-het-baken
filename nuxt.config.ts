@@ -46,6 +46,15 @@ export default defineNuxtConfig({
   ogImage: { enabled: false },
   // De site wordt niet vooraf gegenereerd, dus er is op build-tijd niets te controleren
   linkChecker: { runOnBuild: false },
+  // Op Vercel is de standaardkwaliteit van @nuxt/image 100, een afbeelding zonder breedte wordt
+  // 1536 px en elke breedte wordt afgerond naar een waarde uit screens. Daarom kwaliteit 75 en
+  // extra kleine breedtes. Vercel bewaart bewerkte afbeeldingen standaard maar 5 minuten; de
+  // foto's veranderen zelden, dus een week.
+  image: {
+    quality: 75,
+    screens: { xxs: 320, xs: 480 },
+    vercel: { minimumCacheTTL: 60 * 60 * 24 * 7 },
+  },
   devtools: { enabled: true },
   compatibilityDate: '2024-04-03',
   css: ['~/assets/css/main.css'],
