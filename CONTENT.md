@@ -119,7 +119,10 @@ een zin, een idee) — het hoeft niet compleet of netjes geformuleerd te zijn.
     (220 ms), in de richting van de wissel: volgende van rechts naar links, vorige andersom.
   - **Geen flits:** de vorige en volgende foto worden alvast opgehaald met verborgen afbeeldingen die
     dezelfde instellingen hebben als de foto in de lightbox (`width="1600"`, `webp`), zodat de browser ze
-    uit zijn cache haalt.
+    uit zijn cache haalt. Dat begint pas als de getoonde foto klaar is (`@load`), zodat ze er niet mee
+    concurreren. Gemeten in dev op een 2×-scherm (IPX levert dan `w_3200`): 238 en 363 KB per foto, dus
+    ±600 KB extra bij het openen van een foto. Op Vercel wordt de breedte afgerond naar de lijst in
+    `image.screens` (zie #44), dus daar verwacht ik minder; niet gemeten.
   - **Beweging verminderen:** met `prefers-reduced-motion: reduce` geen zoom en geen verschuiving, alleen
     een fade van 100 ms (WCAG 2.3.3 is AAA, maar het hoort bij de toegankelijkheidswerkwijze, #38).
   - **Vue-valkuil:** bij een dynamische transitienaam (de richting) gebruikt de vertrekkende foto de naam
