@@ -111,6 +111,17 @@ een zin, een idee) — het hoeft niet compleet of netjes geformuleerd te zijn.
 
 ## Status
 
+- **Sociale media als iconen in de footer (2026-11-05, #63)**: Facebook, Instagram en YouTube staan in de
+  footer (`app/layouts/default.vue`, kolom Contact) niet meer als tekstlinks maar als drie ronde iconen
+  naast elkaar, onder het e-mailadres.
+  - **Iconen:** inline SVG (geen extra pakket), getekend in de stijl van Lucide (ISC-licentie), in de
+    footerkleur (11,7:1 op `stone-900`), wit met donkere icoon bij hover.
+  - **Toegankelijk:** elke icoon is een link met `aria-label` ("Facebook (opent in een nieuw venster)" en
+    zo verder), de SVG zelf is verborgen voor hulpmiddelen (`aria-hidden`), 40 × 40 px (WCAG 2.5.8 vraagt
+    24 × 24) en een witte focusomlijning bij toetsenbordgebruik. De lijst heeft de naam "Sociale media".
+  - Adressen en `target="_blank" rel="noopener"` zijn gelijk gebleven.
+  - **Niet veranderd:** de pagina Contact heeft dezelfde drie tekstlinks (met de accountnamen) en houdt
+    die. De accountnamen zijn uit de footer verdwenen; ze staan nog op Contact.
 - **Steun ons op wit (2026-11-05, #62)**: de sectie op `app/pages/steun-ons.vue` was lichtgrijs
   (`bg-stone-50`) en is nu wit (`bg-white`), net als Missie, Programma en Contact. De twee gift-kaartjes
   (gewone gift en ANBI-gift) waren wit op grijs en zijn nu lichtgrijs (`bg-stone-50`) met dezelfde rand
