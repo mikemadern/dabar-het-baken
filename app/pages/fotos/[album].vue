@@ -1,19 +1,37 @@
 <script setup lang="ts">
-import { albums, findAlbum } from '~/data/albums'
+import { findAlbum } from '~/data/albums'
 
 const route = useRoute()
+const router = useRouter()
 const album = findAlbum(route.params.album as string)
 
 if (!album) {
   throw createError({ statusCode: 404, statusMessage: "Album niet gevonden" })
 }
 
+const photos = album.photos
+
+// Een foto heet in het adres als zijn bestandsnaam zonder extensie (?foto=welkom-camping): leesbaar en
+// stabiel, ook als er foto's bijkomen of de volgorde verandert. In alle albums zijn die namen uniek.
+const photoIds = photos.map((photo) => photo.src.split('/').pop()!.replace(/\.[^.]+$/, ''))
+function indexOfPhoto(id: unknown) {
+  const index = typeof id === 'string' ? photoIds.indexOf(id) : -1
+  return index === -1 ? null : index
+}
+
+// Een gedeelde link (?foto=...) krijgt die foto als voorbeeldafbeelding (Facebook, WhatsApp) en de
+// beschrijving van die foto. Dit wordt op de server gelezen, dus ook crawlers zien het.
+const linkedPhoto = computed(() => {
+  const index = indexOfPhoto(route.query.foto)
+  return index === null ? null : photos[index]
+})
 useSeoMeta({
   title: `${album.title} — Foto's`,
-  description: album.description,
+  description: () => linkedPhoto.value?.alt ?? album.description,
+  ogImage: () => linkedPhoto.value?.src,
+  ogImageAlt: () => linkedPhoto.value?.alt,
 })
 
-const photos = album.photos
 const openIndex = ref<number | null>(null)
 
 // De miniaturen (om de focus bij sluiten terug te zetten) en de lightbox zelf
@@ -21,35 +39,50 @@ const thumbs: (HTMLElement | null)[] = []
 const dialog = ref<HTMLElement | null>(null)
 const closeButton = ref<HTMLButtonElement | null>(null)
 
-async function open(index: number) {
+// Het adres bepaalt wat open is, maar alleen als de router navigeert: een directe link, Terug en
+// Vooruit. Bladeren door de foto's past het adres rechtstreeks aan (zie go()), zonder router.
+let mounted = false
+watch(() => route.query.foto, (id) => {
+  if (mounted) openIndex.value = indexOfPhoto(id)
+})
+
+// Een foto openen is één stap in de geschiedenis: Terug sluit hem weer en Vooruit opent hem opnieuw
+function open(index: number) {
   openIndex.value = index
-  // De focus gaat de lightbox in, anders blijft hij op de miniatuur achter de donkere laag staan
-  await nextTick()
-  closeButton.value?.focus()
+  router.push({ query: { ...route.query, foto: photoIds[index] } })
 }
 function close() {
-  const index = openIndex.value
+  if (openIndex.value === null) return
   openIndex.value = null
-  // Terug naar de miniatuur van de foto die je het laatst zag
-  if (index !== null) nextTick(() => thumbs[index]?.focus())
+  // Zelf geopend vanuit dit album: dan staat de stap ervoor het album zonder foto, en is Terug de nette
+  // manier om te sluiten. Bij een directe link is er niets om naartoe terug te gaan: alleen de foto uit
+  // het adres halen, in dezelfde stap.
+  if (window.history.state?.back === route.path) router.back()
+  else router.replace({ query: {} })
 }
+
 // Richting van de laatste wissel: de foto schuift mee in die richting. De richting wordt eerst gezet en
 // de foto pas een tick later gewisseld: de vertrekkende foto gebruikt de transitienaam van de vorige
 // render, dus anders schuift hij nog de vorige richting op.
 const direction = ref<'next' | 'prev'>('next')
 
-async function next() {
+async function go(step: 1 | -1) {
   if (openIndex.value === null) return
-  direction.value = 'next'
+  direction.value = step === 1 ? 'next' : 'prev'
   await nextTick()
-  if (openIndex.value !== null) openIndex.value = (openIndex.value + 1) % photos.length
-}
-async function prev() {
   if (openIndex.value === null) return
-  direction.value = 'prev'
-  await nextTick()
-  if (openIndex.value !== null) openIndex.value = (openIndex.value - 1 + photos.length) % photos.length
+  const index = (openIndex.value + step + photos.length) % photos.length
+  openIndex.value = index
+  // Het adres volgt de foto, maar er komt geen stap bij in de geschiedenis (replaceState). Dit gaat niet
+  // via de router: Vercel Analytics telt elke routewijziging als paginaweergave, en dan levert een
+  // bezoeker die tien foto's bekijkt er tien op. De bestaande history.state blijft behouden, zodat de
+  // router Terug en Vooruit blijft begrijpen.
+  const url = new URL(window.location.href)
+  url.searchParams.set('foto', photoIds[index]!)
+  window.history.replaceState(window.history.state, '', url.pathname + url.search + url.hash)
 }
+const next = () => go(1)
+const prev = () => go(-1)
 
 // De vorige en de volgende foto worden alvast opgehaald (verborgen, met dezelfde instellingen als de
 // foto in de lightbox, zodat de browser ze uit zijn cache haalt). Anders is er bij wisselen even niets
@@ -64,12 +97,48 @@ const neighbours = computed(() => {
   return list.filter((photo, k): photo is NonNullable<typeof photo> => !!photo && photo !== photos[i] && list.indexOf(photo) === k)
 })
 
-// Tab blijft in de lightbox: van de laatste knop naar de eerste en omgekeerd
+// Delen en downloaden van de foto die open is
+const currentPhoto = computed(() => (openIndex.value === null ? null : photos[openIndex.value]))
+const downloadName = computed(() => currentPhoto.value?.src.split('/').pop() ?? '')
+const notice = ref('')
+let noticeTimer: ReturnType<typeof setTimeout> | undefined
+function showNotice(text: string) {
+  notice.value = text
+  clearTimeout(noticeTimer)
+  noticeTimer = setTimeout(() => (notice.value = ''), 2500)
+}
+
+// Met het deelmenu van het apparaat als dat er is (telefoons, Safari, Chrome op Windows), anders de
+// link kopiëren. Het adres in de adresbalk is altijd dat van de getoonde foto.
+async function share() {
+  if (!currentPhoto.value) return
+  const data = { title: `${album!.title} — Dabar Het Baken`, text: currentPhoto.value.alt, url: window.location.href }
+  if (navigator.share) {
+    try {
+      await navigator.share(data)
+      return
+    } catch (error) {
+      // Het deelmenu zelf wegklikken is geen fout; bij een echte fout vallen we terug op kopiëren
+      if ((error as DOMException).name === 'AbortError') return
+    }
+  }
+  try {
+    await navigator.clipboard.writeText(data.url)
+    showNotice('Link gekopieerd')
+  } catch {
+    showNotice('Kopiëren is niet gelukt. Kopieer de link uit de adresbalk.')
+  }
+}
+
+const lightboxButton =
+  'rounded-full bg-white/10 p-2 text-white hover:bg-white/20 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white'
+
+// Tab blijft in de lightbox: van het laatste element naar het eerste en omgekeerd
 function trapFocus(event: KeyboardEvent) {
-  const buttons = dialog.value?.querySelectorAll<HTMLElement>('button')
-  if (!dialog.value || !buttons?.length) return
-  const first = buttons[0]!
-  const last = buttons[buttons.length - 1]!
+  const items = dialog.value?.querySelectorAll<HTMLElement>('button, a[href]')
+  if (!dialog.value || !items?.length) return
+  const first = items[0]!
+  const last = items[items.length - 1]!
   const outside = !dialog.value.contains(document.activeElement)
   if (event.shiftKey && (document.activeElement === first || outside)) {
     event.preventDefault()
@@ -94,15 +163,32 @@ function setPageInert(inert: boolean) {
   document.getElementById('__nuxt')?.toggleAttribute('inert', inert)
 }
 
-watch(openIndex, (value) => {
+let lastIndex: number | null = null
+watch(openIndex, (value, previous) => {
   document.body.style.overflow = value === null ? '' : 'hidden'
   setPageInert(value !== null)
   photoLoaded.value = false
+  if (value !== null) lastIndex = value
+  // De focus gaat de lightbox in (anders blijft hij achter de donkere laag staan) en bij sluiten terug
+  // naar de miniatuur van de foto die je het laatst zag, ook als het Terug van de browser was
+  if (previous === null && value !== null) nextTick(() => closeButton.value?.focus())
+  if (previous !== null && value === null && lastIndex !== null) {
+    const index = lastIndex
+    nextTick(() => thumbs[index]?.focus())
+  }
 })
 
-onMounted(() => window.addEventListener('keydown', handleKeydown))
+onMounted(() => {
+  window.addEventListener('keydown', handleKeydown)
+  mounted = true
+  // De lightbox opent pas na het laden van de pagina, zodat de server en de eerste render hetzelfde zijn
+  const index = indexOfPhoto(route.query.foto)
+  if (index !== null) openIndex.value = index
+  else if (route.query.foto !== undefined) router.replace({ query: {} })
+})
 onUnmounted(() => {
   window.removeEventListener('keydown', handleKeydown)
+  clearTimeout(noticeTimer)
   document.body.style.overflow = ''
   setPageInert(false)
 })
@@ -165,18 +251,39 @@ onUnmounted(() => {
           class="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-4"
           @click.self="close"
         >
+          <!-- Delen, downloaden en sluiten rechtsboven. Iconen: Lucide (ISC). -->
+          <div class="absolute right-4 top-4 flex gap-2">
+            <button
+              type="button"
+              :class="lightboxButton"
+              aria-label="Foto delen"
+              title="Foto delen"
+              @click="share"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8" /><polyline points="16 6 12 2 8 6" /><line x1="12" y1="2" x2="12" y2="15" /></svg>
+            </button>
+            <a
+              :href="currentPhoto?.src"
+              :download="downloadName"
+              :class="lightboxButton"
+              aria-label="Foto downloaden"
+              title="Foto downloaden"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="7 10 12 15 17 10" /><line x1="12" y1="15" x2="12" y2="3" /></svg>
+            </a>
+            <button
+              ref="closeButton"
+              type="button"
+              :class="lightboxButton"
+              aria-label="Sluiten (Esc)"
+              @click="close"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18" /></svg>
+            </button>
+          </div>
           <button
-            ref="closeButton"
             type="button"
-            class="absolute right-4 top-4 rounded-full bg-white/10 p-2 text-white hover:bg-white/20 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-            aria-label="Sluiten (Esc)"
-            @click="close"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18" /></svg>
-          </button>
-          <button
-            type="button"
-            class="absolute left-4 top-1/2 -translate-y-1/2 rounded-full bg-white/10 p-2 text-white hover:bg-white/20 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+            :class="[lightboxButton, 'absolute left-4 top-1/2 -translate-y-1/2']"
             aria-label="Vorige foto"
             @click.stop="prev"
           >
@@ -184,7 +291,7 @@ onUnmounted(() => {
           </button>
           <button
             type="button"
-            class="absolute right-4 top-1/2 -translate-y-1/2 rounded-full bg-white/10 p-2 text-white hover:bg-white/20 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+            :class="[lightboxButton, 'absolute right-4 top-1/2 -translate-y-1/2']"
             aria-label="Volgende foto"
             @click.stop="next"
           >
@@ -214,6 +321,15 @@ onUnmounted(() => {
           />
           <p class="absolute bottom-4 left-1/2 -translate-x-1/2 text-sm text-stone-400">
             {{ openIndex + 1 }} / {{ photos.length }}
+          </p>
+          <!-- Melding na delen (Link gekopieerd). Het element blijft staan, zodat een schermlezer de
+               verandering meldt. -->
+          <p
+            role="status"
+            class="pointer-events-none absolute bottom-14 left-1/2 -translate-x-1/2 rounded-full bg-white px-4 py-2 text-sm font-medium text-stone-900 shadow-lg transition-opacity duration-200"
+            :class="notice ? 'opacity-100' : 'opacity-0'"
+          >
+            {{ notice }}
           </p>
         </div>
       </Transition>
