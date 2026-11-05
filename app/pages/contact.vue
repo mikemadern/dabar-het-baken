@@ -8,6 +8,11 @@ const name = ref('')
 const email = ref('')
 const message = ref('')
 
+// Rand: stone-500 haalt 4,8:1 op wit (WCAG 1.4.11 vraagt 3:1). Focus: donkere rand plus een
+// donkere omlijning met ruimte erbuiten, want geel op wit haalt maar 1,3:1 (2.4.7).
+const fieldClass =
+  'mt-1 w-full rounded-lg border border-stone-500 px-3 py-2 text-sm focus:border-stone-900 focus:outline-2 focus:outline-offset-2 focus:outline-stone-900'
+
 function sendMessage() {
   const subject = `Bericht via de website van ${name.value || 'iemand'}`
   const body = `Naam: ${name.value}\nE-mail: ${email.value}\n\n${message.value}`
@@ -65,8 +70,9 @@ function sendMessage() {
               id="name"
               v-model="name"
               type="text"
+              autocomplete="name"
               required
-              class="mt-1 w-full rounded-lg border border-stone-300 px-3 py-2 text-sm focus:border-yellow-400 focus:outline-none focus:ring-1 focus:ring-yellow-400"
+              :class="fieldClass"
             >
           </div>
           <div>
@@ -75,8 +81,9 @@ function sendMessage() {
               id="email"
               v-model="email"
               type="email"
+              autocomplete="email"
               required
-              class="mt-1 w-full rounded-lg border border-stone-300 px-3 py-2 text-sm focus:border-yellow-400 focus:outline-none focus:ring-1 focus:ring-yellow-400"
+              :class="fieldClass"
             >
           </div>
         </div>
@@ -87,7 +94,7 @@ function sendMessage() {
             v-model="message"
             rows="5"
             required
-            class="mt-1 w-full rounded-lg border border-stone-300 px-3 py-2 text-sm focus:border-yellow-400 focus:outline-none focus:ring-1 focus:ring-yellow-400"
+            :class="fieldClass"
           />
         </div>
         <button
