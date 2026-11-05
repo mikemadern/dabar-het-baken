@@ -42,16 +42,16 @@ public/documenten/   downloads, zoals de vacature
 2. Voeg hem toe aan het juiste album in `app/data/albums.ts` (`src` en een `alt`-tekst), of maak een nieuw album aan.
 3. Bekijk de foto zelf en houd je aan het fotobeleid op de site (pagina `/fotobeleid`).
 
-Ruwe originelen horen niet in git; de map `photos/` wordt genegeerd.
+Ruwe originelen horen niet in deze repository; ze worden bewaard in de aparte documentenmap, buiten deze repository.
 
 ## Documentatie in de repo
 
 | Bestand | Waar het over gaat |
 |---|---|
-| [`CONTENT.md`](CONTENT.md) | alle feiten, besluiten en open vragen over de site, plus een Status-logboek |
-| [`SHOTLIST.md`](SHOTLIST.md) | de lijst met gewenste foto's |
 | [`CONTRIBUTING.md`](CONTRIBUTING.md) | de werkwijze (issue, branch, PR), de milestones en de checks |
 | [`SECURITY.md`](SECURITY.md) | hoe je een kwetsbaarheid vertrouwelijk meldt |
+
+Feiten, besluiten en open vragen over de site, de shotlist, de huisstijl en de communicatie staan niet in deze (openbare) repository, maar in een aparte documentenmap.
 
 ## Meewerken
 

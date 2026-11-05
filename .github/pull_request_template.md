@@ -20,7 +20,7 @@ De milestone neemt de PR automatisch over van het issue; heeft het issue er geen
 - [ ] `npm run build` slaagt (de CI-check doet dit ook)
 - [ ] Bekeken op desktop **en** mobiel
 - [ ] Geen fouten in de browserconsole
-- [ ] `CONTENT.md` bijgewerkt (status / besluiten / open vragen)
+- [ ] Documenten bijgewerkt, indien van toepassing (besluiten / open vragen)
 - [ ] Geen `Co-authored-by`-regels in de commits (de check `no-coauthor` bewaakt dit)
 
 ### Alleen bij foto's
