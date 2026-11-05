@@ -43,16 +43,15 @@ const doeMeeChips = [
         class="relative mx-auto w-full max-w-2xl px-4 pb-16 text-center sm:px-6 sm:pb-20"
       >
         <StickerLabel class="z-10 relative"
-          >Camping Kriemelberg Bushcamp, Ermelo</StickerLabel
+          >Evangelisatie door recreatie</StickerLabel
         >
         <h1
           class="z-0 -mt-2 relative rotate-1 inline-block rounded-lg bg-sky-400 px-5 py-2 font-display text-4xl font-bold text-white shadow-lg sm:px-7 sm:py-3 sm:text-6xl"
         >
           Dabar Het Baken
         </h1>
-        <p class="mt-5 text-lg text-stone-200 sm:text-xl">
-          Evangelisatie door recreatie — zes weken per jaar op de camping, voor
-          gasten van jong tot oud.
+        <p class="mt-5 text-balance text-lg text-stone-200 sm:text-xl">
+          Zes weken per jaar op de camping, voor gasten van jong tot oud.
         </p>
         <div class="mt-8 flex flex-wrap justify-center gap-3">
           <NuxtLink
