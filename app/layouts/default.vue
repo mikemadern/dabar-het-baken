@@ -21,9 +21,10 @@ const isActive = (to: string) =>
 
 <template>
   <div
-    class="flex min-h-screen flex-col bg-white text-stone-900 overflow-x-hidden"
+    class="flex min-h-screen flex-col bg-white text-stone-900 overflow-x-clip"
   >
-    <!-- Nav -->
+    <!-- Nav. De wrapper hierboven heeft overflow-x-clip, niet -hidden: hidden maakt er een
+         scrollcontainer van en dan blijft deze plakkende header niet bovenaan staan. -->
     <header
       class="sticky top-0 z-50 border-b border-stone-200 bg-white/95 backdrop-blur"
     >
@@ -94,7 +95,7 @@ const isActive = (to: string) =>
       </div>
       <nav
         v-if="mobileMenuOpen"
-        class="flex flex-col gap-1 border-t border-stone-200 bg-white px-4 py-3 text-sm font-medium text-stone-700 lg:hidden"
+        class="flex max-h-[calc(100dvh-4.5rem)] flex-col gap-1 overflow-y-auto border-t border-stone-200 bg-white px-4 py-3 text-sm font-medium text-stone-700 lg:hidden"
       >
         <NuxtLink
           v-for="link in navLinks"
