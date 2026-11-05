@@ -23,5 +23,6 @@ logs
 .env.*
 !.env.example
 
-# Raw photo exports (too large for git — originals live on disk only)
+# Raw photo exports stay out of this repo (too large, and children are on them);
+# they live in the separate documents folder. Safety net in case they end up here.
 /photos/

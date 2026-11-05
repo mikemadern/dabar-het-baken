@@ -16,7 +16,7 @@ Werk wordt per milestone gevolgd, zodat je per onderwerp de voortgang ziet:
 | Milestone | Waar het over gaat |
 |---|---|
 | **Lancering website** | alles wat nodig is om de site live te zetten |
-| **Inhoud & besluiten** | open vragen uit `CONTENT.md` waar een besluit over genomen moet worden |
+| **Inhoud & besluiten** | open vragen over de inhoud van de site waar een besluit over genomen moet worden |
 | **Uitbreidingen** | nice-to-haves na de lancering (nieuwsbrief, online doneren, nieuwspagina, plattegrond, beheer) |
 | **Onderhoud & techniek** | afhankelijkheden, beveiliging, CI en de werkwijze van de repository |
 
@@ -74,4 +74,4 @@ npm run dev      # ontwikkelserver op http://localhost:3000
 npm run build    # productiebuild, hetzelfde als de CI
 ```
 
-Voor inhoud en besluiten over de site: zie [`CONTENT.md`](CONTENT.md). Beveiligingsproblemen: zie [`SECURITY.md`](SECURITY.md).
+Inhoud en besluiten over de site staan niet in deze repository, maar in de aparte documentenmap. Beveiligingsproblemen: zie [`SECURITY.md`](SECURITY.md).
