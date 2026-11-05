@@ -111,6 +111,22 @@ een zin, een idee) — het hoeft niet compleet of netjes geformuleerd te zijn.
 
 ## Status
 
+- **Transities in de lightbox (2026-11-05, #64)**: openen, sluiten en wisselen van foto in de albums
+  (`app/pages/fotos/[album].vue`) gaan nu vloeiend in plaats van in één keer.
+  - **Openen en sluiten:** de donkere laag fadet in (200 ms) en uit (150 ms) en de foto zoomt er van 94% naar
+    100% in (250 ms). Een sluitende lightbox laat klikken door (`pointer-events: none`).
+  - **Wisselen:** de oude foto schuift 32 px weg en fadet uit (150 ms), de nieuwe schuift erin en fadet in
+    (220 ms), in de richting van de wissel: volgende van rechts naar links, vorige andersom.
+  - **Geen flits:** de vorige en volgende foto worden alvast opgehaald met verborgen afbeeldingen die
+    dezelfde instellingen hebben als de foto in de lightbox (`width="1600"`, `webp`), zodat de browser ze
+    uit zijn cache haalt.
+  - **Beweging verminderen:** met `prefers-reduced-motion: reduce` geen zoom en geen verschuiving, alleen
+    een fade van 100 ms (WCAG 2.3.3 is AAA, maar het hoort bij de toegankelijkheidswerkwijze, #38).
+  - **Vue-valkuil:** bij een dynamische transitienaam (de richting) gebruikt de vertrekkende foto de naam
+    van de *vorige* render. Daarom zet `next()`/`prev()` eerst de richting, wacht een tick en wisselt dan
+    pas de foto; anders schuift de oude foto nog de vorige kant op.
+  - Ongewijzigd: focus naar binnen en terug, Tab binnen de lightbox, Esc en de pijltjestoetsen, `inert`
+    op de rest van de pagina (#50). Er is geen veeg-gebaar op een telefoon toegevoegd.
 - **Sociale media als iconen in de footer (2026-11-05, #63)**: Facebook, Instagram en YouTube staan in de
   footer (`app/layouts/default.vue`, kolom Contact) niet meer als tekstlinks maar als drie ronde iconen
   naast elkaar, onder het e-mailadres.
