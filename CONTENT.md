@@ -111,6 +111,10 @@ een zin, een idee) — het hoeft niet compleet of netjes geformuleerd te zijn.
 
 ## Status
 
+- **Steun ons op wit (2026-11-05, #62)**: de sectie op `app/pages/steun-ons.vue` was lichtgrijs
+  (`bg-stone-50`) en is nu wit (`bg-white`), net als Missie, Programma en Contact. De twee gift-kaartjes
+  (gewone gift en ANBI-gift) waren wit op grijs en zijn nu lichtgrijs (`bg-stone-50`) met dezelfde rand
+  op wit, zodat ze als kaartje herkenbaar blijven; de tekst haalt daar 9,9:1.
 - **Ruimte voor en na de inhoud gelijk (2026-11-05, #61)**: op de gewone pagina's was er ±40 px
   (mobiel ±28 px) meer ruimte onder de paginatitel dan boven de blauwe ticker. De titel-sticker in
   `app/components/PageHeader.vue` schuift met `translate` omhoog, maar zijn plek in de opmaak bleef

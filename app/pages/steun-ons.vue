@@ -13,7 +13,7 @@ useSeoMeta({
       title="Steun ons"
     />
 
-    <section class="bg-stone-50 py-16 sm:py-20">
+    <section class="bg-white py-16 sm:py-20">
       <div class="mx-auto max-w-6xl px-4 sm:px-6">
         <div class="grid gap-12 lg:grid-cols-2 lg:items-center">
           <div>
@@ -41,11 +41,11 @@ useSeoMeta({
               </p>
             </div>
             <ul class="mt-6 space-y-3 text-sm text-stone-700">
-              <li class="rounded-xl border border-stone-200 bg-white p-4">
+              <li class="rounded-xl border border-stone-200 bg-stone-50 p-4">
                 <span class="block font-semibold text-stone-900">Gewone gift</span>
                 IBAN NL43 INGB 0001 1478 23, t.n.v. Het Baken Harderwijk
               </li>
-              <li class="rounded-xl border border-stone-200 bg-white p-4">
+              <li class="rounded-xl border border-stone-200 bg-stone-50 p-4">
                 <span class="block font-semibold text-stone-900">Fiscaal aftrekbare (ANBI-)gift, via de IZB</span>
                 IBAN NL26 RABO 0302 2061 91, o.v.v. &ldquo;Het Baken, De Kriemelberg, Dabar&rdquo;
               </li>
