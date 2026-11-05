@@ -111,6 +111,17 @@ een zin, een idee) — het hoeft niet compleet of netjes geformuleerd te zijn.
 
 ## Status
 
+- **Contactformulier toegankelijker (2026-11-05, #49)**: eerste oplossing uit de toegankelijkheidscontrole
+  (#38). Op `/contact` (`app/pages/contact.vue`):
+  - **Focus zichtbaar (2.4.7):** een veld met focus krijgt een donkere rand en een donkere omlijning van
+    2 px met 2 px ruimte (`stone-900`, 17,5:1 op wit). Daarvoor was het een gele rand van 1,3:1 en
+    `focus:outline-none`.
+  - **Rand van de velden (1.4.11):** `stone-500` in plaats van `stone-300`: 4,8:1 in plaats van 1,5:1
+    (nodig: 3:1).
+  - **`autocomplete` (1.3.5):** `name` en `email` bij die twee velden, het berichtveld blijft zonder.
+  - De drie klassenlijsten zijn één constante (`fieldClass`) geworden, zodat de velden gelijk blijven.
+  - Niet veranderd: het formulier opent nog steeds het mailprogramma en toont geen eigen melding
+    (staat als voorstel in #54).
 - **Toegankelijkheidscontrole WCAG 2.2 AA (2026-11-04, #38)**: de site is getoetst en de bevindingen
   staan als losse issues. De volledige tabel met criterium, niveau en ernst staat als reactie op
   [#38](https://github.com/mikemadern/dabar-het-baken/issues/38). Er is in deze stap **niets aan de
