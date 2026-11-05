@@ -380,8 +380,8 @@ const doeMeeChips = [
         </div>
         <div class="relative lg:col-span-6">
           <NuxtImg
-            src="/images/headers/receptie-breed.jpg"
-            alt="Het receptiegebouw van Kriemelberg Bushcamp"
+            src="/images/telefooncel-informatiebord.jpg"
+            alt="De rode telefooncel naast het informatiebord"
             class="aspect-[4/3] w-full rounded-2xl object-cover shadow-lg"
             sizes="375:100vw sm:100vw lg:560px"
             format="webp"
