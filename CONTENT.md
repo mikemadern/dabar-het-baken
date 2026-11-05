@@ -111,6 +111,22 @@ een zin, een idee) — het hoeft niet compleet of netjes geformuleerd te zijn.
 
 ## Status
 
+- **Header blijft bovenaan staan (2026-11-05, #53)**: de header had `sticky top-0`, maar scrolde
+  gewoon weg. De wrapper in `app/layouts/default.vue` had `overflow-x-hidden`, en dat maakt van die
+  `div` een scrollcontainer waarin de header "plakt" aan een container die zelf niet scrolt. Besluit:
+  de header **blijft plakken** (dat was de bedoeling van de code).
+  - **`overflow-x-hidden` → `overflow-x-clip`:** knipt horizontaal hetzelfde af zonder scrollcontainer
+    te worden. Gecontroleerd op 11 pagina's op 375 px: geen horizontaal scrollen (`scrollX` blijft 0),
+    de brede ticker wordt nog steeds afgeknipt.
+  - **`scroll-padding-top: 5rem` op `html`** (`app/assets/css/main.css`): de header is ±65 px hoog. Zonder
+    deze ruimte komt een link of veld dat met het toetsenbord omhoog scrolt tegen de bovenrand te
+    staan, dus achter de header (WCAG 2.4.11). Gemeten: zonder de instelling op 0 px, met de
+    instelling op 80 px.
+  - **Mobiel menu scrolt binnen zichzelf** (`max-h-[calc(100dvh-4.5rem)] overflow-y-auto`): een
+    geopend menu is 324 px hoog. Op een liggende kleine telefoon (≈320 px hoog) viel het onderste
+    deel buiten beeld, en omdat de header nu plakt kon je er niet naartoe scrollen.
+  - Wil je de header toch niet laten plakken? Haal dan `sticky top-0 z-50` weg; `overflow-x-clip` en
+    `scroll-padding-top` kunnen blijven staan.
 - **Toegankelijkheidscontrole WCAG 2.2 AA (2026-11-04, #38)**: de site is getoetst en de bevindingen
   staan als losse issues. De volledige tabel met criterium, niveau en ernst staat als reactie op
   [#38](https://github.com/mikemadern/dabar-het-baken/issues/38). Er is in deze stap **niets aan de
