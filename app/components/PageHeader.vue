@@ -38,8 +38,14 @@ withDefaults(
     </div>
   </section>
   <div class="relative mx-auto max-w-3xl px-4 sm:px-6">
+    <!-- De sticker schuift met translate omhoog, maar zijn plek in de opmaak blijft staan. De negatieve
+         onderrand (even groot als de verschuiving) haalt die weg, zodat de ruimte onder de titel gelijk
+         is aan de ruimte onder de inhoud. Dat werkt alleen als de titel een blok is: bij inline-block
+         houdt de regel eromheen zelf nog ruimte vast. Met tekst onder de titel (slot) blijft het
+         zoals het was. -->
     <h1
-      class="inline-block -translate-y-6.75 -rotate-1 rounded-lg bg-sky-400 px-4 py-2 font-display text-2xl font-bold text-white shadow-lg sm:-translate-y-9 sm:px-6 sm:py-3 sm:text-4xl"
+      class="-translate-y-6.75 -rotate-1 rounded-lg bg-sky-400 px-4 py-2 font-display text-2xl font-bold text-white shadow-lg sm:-translate-y-9 sm:px-6 sm:py-3 sm:text-4xl"
+      :class="$slots.default ? 'inline-block' : 'block w-fit -mb-6.75 sm:-mb-9'"
     >
       {{ title }}
     </h1>

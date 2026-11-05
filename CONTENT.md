@@ -111,6 +111,22 @@ een zin, een idee) — het hoeft niet compleet of netjes geformuleerd te zijn.
 
 ## Status
 
+- **Ruimte voor en na de inhoud gelijk (2026-11-05, #61)**: op de gewone pagina's was er ±40 px
+  (mobiel ±28 px) meer ruimte onder de paginatitel dan boven de blauwe ticker. De titel-sticker in
+  `app/components/PageHeader.vue` schuift met `translate` omhoog, maar zijn plek in de opmaak bleef
+  staan en kwam bovenop de `py-16 sm:py-20` van de sectie eronder.
+  - **Oplossing:** zonder tekst onder de titel is de sticker een blok (`block w-fit`) met een negatieve
+    onderrand die gelijk is aan de verschuiving (`-mb-6.75 sm:-mb-9`). `inline-block` werkte niet: de
+    regel eromheen houdt dan zelf nog ruimte vast (12 van de 36 px verdwenen).
+  - **Gemeten** (afstand titel tot eerste tekst, laatste tekst tot ticker, op het midden van de
+    schuine sticker en band): overal 80 en 80 px op desktop en 64 en 64 px op mobiel. Voorheen op
+    Missie 111 en 70 px (desktop).
+  - **Foto's en de albums zijn niet veranderd:** die hebben tekst onder de titel (slot) en houden de
+    `inline-block`-sticker.
+  - **Twee pagina's aangepast aan de nieuwe maat:** Fotobeleid had `pt-4 sm:pt-6` om het verschil op te
+    vangen en heeft nu de gewone `py-16 sm:py-20`; de sluitsectie van Activiteiten was `py-12 sm:py-16`
+    en is nu `py-16 sm:py-20`, zodat begin en einde gelijk zijn.
+  - Voor een nieuwe pagina: gebruik `PageHeader` zonder slot, en een sectie met `py-16 sm:py-20`.
 - **Header blijft bovenaan staan (2026-11-05, #53)**: de header had `sticky top-0`, maar scrolde
   gewoon weg. De wrapper in `app/layouts/default.vue` had `overflow-x-hidden`, en dat maakt van die
   `div` een scrollcontainer waarin de header "plakt" aan een container die zelf niet scrolt. Besluit:

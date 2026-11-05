@@ -148,7 +148,7 @@ const clubs = [
       </div>
     </section>
 
-    <section class="bg-stone-50 py-12 sm:py-16">
+    <section class="bg-stone-50 py-16 sm:py-20">
       <div class="mx-auto max-w-3xl px-4 sm:px-6">
         <a href="mailto:dabarhetbaken@gmail.com" class="inline-block font-semibold text-stone-900 underline decoration-yellow-400 decoration-2 underline-offset-4 hover:text-stone-700">
           Vragen over het programma? Mail naar dabarhetbaken@gmail.com
