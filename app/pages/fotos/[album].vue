@@ -53,10 +53,12 @@ async function prev() {
 
 // De vorige en de volgende foto worden alvast opgehaald (verborgen, met dezelfde instellingen als de
 // foto in de lightbox, zodat de browser ze uit zijn cache haalt). Anders is er bij wisselen even niets
-// te zien terwijl de nieuwe foto laadt.
+// te zien terwijl de nieuwe foto laadt. Dat gebeurt pas als de getoonde foto klaar is, zodat ze niet
+// met die foto om de verbinding concurreren.
+const photoLoaded = ref(false)
 const neighbours = computed(() => {
   const i = openIndex.value
-  if (i === null) return []
+  if (i === null || !photoLoaded.value) return []
   const list = [photos[(i + 1) % photos.length], photos[(i - 1 + photos.length) % photos.length]]
   // zonder dubbelen (bij een album van 2 foto's zijn vorige en volgende dezelfde) en zonder de foto zelf
   return list.filter((photo, k): photo is NonNullable<typeof photo> => !!photo && photo !== photos[i] && list.indexOf(photo) === k)
@@ -95,6 +97,7 @@ function setPageInert(inert: boolean) {
 watch(openIndex, (value) => {
   document.body.style.overflow = value === null ? '' : 'hidden'
   setPageInert(value !== null)
+  photoLoaded.value = false
 })
 
 onMounted(() => window.addEventListener('keydown', handleKeydown))
@@ -196,6 +199,7 @@ onUnmounted(() => {
               class="lightbox-photo max-h-[85vh] max-w-full rounded-lg object-contain"
               format="webp"
               width="1600"
+              @load="photoLoaded = true"
             />
           </Transition>
           <NuxtImg
