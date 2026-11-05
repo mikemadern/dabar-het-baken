@@ -111,6 +111,20 @@ een zin, een idee) — het hoeft niet compleet of netjes geformuleerd te zijn.
 
 ## Status
 
+- **Lightbox met toetsenbord en schermlezer bruikbaar (2026-11-05, #50)**: oplossing uit de
+  toegankelijkheidscontrole (#38), in `app/pages/fotos/[album].vue`.
+  - **Dialoog (4.1.2):** `role="dialog"`, `aria-modal="true"` en `aria-label="Foto vergroten"`.
+  - **Focus (2.4.3):** bij openen gaat de focus naar de sluitknop; Tab en Shift+Tab blijven in de
+    lightbox; bij sluiten (Esc, knop of klik naast de foto) komt de focus terug op de miniatuur van de
+    foto die je het laatst zag.
+  - **De rest van de pagina op slot:** de lightbox staat nu in `#teleports` (de plek die Nuxt naast
+    `#__nuxt` aanbiedt) en zolang hij open is krijgt `#__nuxt` het attribuut `inert`. Daardoor is de
+    pagina erachter niet bereikbaar met toetsenbord, muis of schermlezer. Bij sluiten en bij het
+    verlaten van de pagina wordt dat weer weggehaald (ook met de terugknop van de browser).
+  - De knoppen kregen een witte focusomlijning (`focus-visible`) op de donkere laag.
+  - Ongewijzigd: Esc en de pijltjestoetsen, de knoppen met hun namen, het vergrendelen van scrollen.
+  - **Niet getest:** met een schermlezer. Een foto wisselt met de pijltjes of de knoppen, maar de
+    alt-tekst van de nieuwe foto wordt dan niet voorgelezen (voorstel voor een vervolg, zie #54).
 - **Toegankelijkheidscontrole WCAG 2.2 AA (2026-11-04, #38)**: de site is getoetst en de bevindingen
   staan als losse issues. De volledige tabel met criterium, niveau en ernst staat als reactie op
   [#38](https://github.com/mikemadern/dabar-het-baken/issues/38). Er is in deze stap **niets aan de
