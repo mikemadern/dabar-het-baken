@@ -111,6 +111,33 @@ een zin, een idee) — het hoeft niet compleet of netjes geformuleerd te zijn.
 
 ## Status
 
+- **Foto's linkbaar, delen en downloaden (2026-11-05, #69 en #70)**: in de albums
+  (`app/pages/fotos/[album].vue`) heeft elke foto een eigen adres en de lightbox een deel- en een
+  downloadknop.
+  - **Adres:** `/fotos/camping?foto=welkom-camping`. De naam is de bestandsnaam zonder extensie: leesbaar
+    en stabiel, en in alle 61 foto's uniek. Een link of verversen opent de lightbox op die foto (na het
+    laden van de pagina); een onbekende naam wordt uit het adres gehaald.
+  - **Geschiedenis:** een foto openen is één stap erbij (`router.push`), bladeren verandert alleen het
+    adres (`history.replaceState`, met de bestaande `history.state`), sluiten met de knop of Esc is Terug
+    als je de lightbox zelf geopend hebt (`history.state.back` is dan het album) en anders alleen de
+    foto uit het adres halen (`router.replace`). Terug sluit dus de lightbox en Vooruit opent hem weer op
+    de laatst bekeken foto. Gemeten: openen 33 → 34 stappen, 3× bladeren blijft 34.
+  - **Waarom bladeren niet via de router gaat:** Vercel Analytics (`@vercel/analytics/nuxt`) kijkt naar
+    elke wijziging van de route en telt die als paginaweergave. Met de router zou een bezoeker die tien
+    foto's bekijkt er tien opleveren. Openen en sluiten tellen wel (één per stuk).
+  - **Voorbeeld bij delen:** een link met `?foto=` krijgt op de server die foto als `og:image` en de
+    alt-tekst als beschrijving (`og:image:alt`); canonical en `og:url` blijven het album zelf. In een
+    productiebuild zijn die URL's absoluut (`https://dabarhetbaken.nl/...`). In dev staat er een relatief
+    pad, dat is alleen dev.
+  - **Delen:** het deelmenu van het apparaat (`navigator.share`) met de titel, de alt-tekst en de link;
+    als dat er niet is, wordt de link gekopieerd en staat er 2,5 s "Link gekopieerd" (een element met
+    `role="status"`). Wegklikken van het deelmenu geeft geen melding.
+  - **Downloaden:** een gewone link met het `download`-attribuut naar het bestand zoals het in
+    `public/images` staat (≤ 2000 px), met zijn eigen naam.
+  - **Knoppen:** delen, downloaden en sluiten rechtsboven, 40 × 40 px, met een naam en een zichtbare focus;
+    de Tab-lus van #50 telt de nieuwe knoppen mee (`button, a[href]`). Iconen van Lucide (ISC).
+  - **Fotobeleid:** een downloadknop geeft bezoekers een kopie, ook van foto's met herkenbare kinderen.
+    Besluit voor jou: moet het fotobeleid daar iets over zeggen, of de knop alleen bij bepaalde albums?
 - **Transities in de lightbox (2026-11-05, #64)**: openen, sluiten en wisselen van foto in de albums
   (`app/pages/fotos/[album].vue`) gaan nu vloeiend in plaats van in één keer.
   - **Openen en sluiten:** de donkere laag fadet in (200 ms) en uit (150 ms) en de foto zoomt er van 94% naar
