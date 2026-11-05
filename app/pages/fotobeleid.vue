@@ -13,7 +13,7 @@ useSeoMeta({
       title="Foto's en video's"
     />
 
-    <section class="mx-auto max-w-3xl px-4 pt-4 sm:pt-6 pb-16 sm:px-6 sm:pb-20">
+    <section class="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-20">
       <p class="text-stone-700 leading-relaxed">
         Tijdens activiteiten maken we soms foto's en/of filmpjes voor
         promotiedoeleinden, bijvoorbeeld voor deze website of onze social media.
