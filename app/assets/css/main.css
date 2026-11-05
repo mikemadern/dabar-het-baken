@@ -23,6 +23,12 @@
 }
 
 @layer base {
+  /* De header (±65 px) blijft bovenaan staan. Zonder deze ruimte kan een veld of link dat met
+     het toetsenbord de focus krijgt achter de header terechtkomen (WCAG 2.4.11). */
+  html {
+    scroll-padding-top: 5rem;
+  }
+
   body {
     font-family: var(--font-sans);
   }
