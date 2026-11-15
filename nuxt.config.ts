@@ -24,9 +24,25 @@ export default defineNuxtConfig({
     identity: {
       type: 'Organization',
       name: 'Dabar Het Baken',
-      alternateName: 'Het Baken Harderwijk',
       logo: '/images/logo-het-baken.svg',
       email: 'dabarhetbaken@gmail.com',
+      // Locatie van de camping waar de commissie zit (zoals op de contactpagina), niet het adres van de stichting
+      location: {
+        '@type': 'Place',
+        name: 'Camping Kriemelberg Bushcamp',
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: 'Drieerweg 104',
+          postalCode: '3852 MC',
+          addressLocality: 'Ermelo',
+          addressCountry: 'NL',
+        },
+      },
+      contactPoint: {
+        '@type': 'ContactPoint',
+        email: 'dabarhetbaken@gmail.com',
+        contactType: 'customer service',
+      },
       sameAs: [
         'https://www.facebook.com/baken.harderwijk/',
         'https://www.instagram.com/baken_harderwijk/',
