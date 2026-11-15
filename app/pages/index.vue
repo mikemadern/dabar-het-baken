@@ -221,27 +221,26 @@ const doeMeeChips = [
         <div class="mx-auto max-w-4xl px-4 text-center sm:px-6">
           <StickerLabel class="mb-3">Foto's</StickerLabel>
           <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">
-            Zo ziet het kamp eruit
+            Een kijkje op de camping
           </h2>
           <p class="mt-4 text-stone-300">
-            Een kijkje op de camping, van de kinderclub en de Sing-In tot het
-            Hawaii-feest.
+            Van de kinderclub en de Sing-In tot het Hawaii-feest.
           </p>
         </div>
         <div class="mx-auto mt-12 max-w-5xl px-4 sm:px-6">
-          <div class="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4">
+          <div class="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-6">
             <NuxtImg
               src="/images/galerij/high-five.jpg"
               alt="Een teamlid geeft een high-five tijdens een groepsspel"
-              class="aspect-[4/3] w-full rounded-2xl object-cover shadow-lg"
+              class="col-span-2 aspect-[16/9] w-full rounded-2xl object-cover shadow-lg"
               format="webp"
               loading="lazy"
-              sizes="375:50vw lg:320px"
+              sizes="375:100vw lg:640px"
             />
             <NuxtImg
               src="/images/galerij/trampoline-lachen.jpg"
               alt="Een meisje lacht op de trampoline"
-              class="aspect-[4/3] w-full rounded-2xl object-cover shadow-lg"
+              class="col-span-1 aspect-square sm:-rotate-2 w-full rounded-2xl object-cover shadow-lg"
               format="webp"
               loading="lazy"
               sizes="375:50vw lg:320px"
@@ -249,7 +248,7 @@ const doeMeeChips = [
             <NuxtImg
               src="/images/galerij/vioolspeelster-sing-in.jpg"
               alt="Een teamlid speelt viool tijdens de Sing-In"
-              class="aspect-[4/3] w-full rounded-2xl object-cover shadow-lg"
+              class="col-span-1 aspect-square w-full rounded-2xl object-cover shadow-lg"
               format="webp"
               loading="lazy"
               sizes="375:50vw lg:320px"
@@ -257,7 +256,7 @@ const doeMeeChips = [
             <NuxtImg
               src="/images/galerij/gezamenlijke-maaltijd.jpg"
               alt="Gasten en team eten samen aan een lange tafel"
-              class="aspect-[4/3] w-full rounded-2xl object-cover shadow-lg"
+              class="col-span-1 aspect-square sm:rotate-2 w-full rounded-2xl object-cover shadow-lg"
               format="webp"
               loading="lazy"
               sizes="375:50vw lg:320px"
@@ -265,7 +264,7 @@ const doeMeeChips = [
             <NuxtImg
               src="/images/galerij/poppenkast-publiek.jpg"
               alt="Kinderen kijken naar de poppenkastvoorstelling"
-              class="aspect-[4/3] w-full rounded-2xl object-cover shadow-lg"
+              class="col-span-1 aspect-square w-full rounded-2xl object-cover shadow-lg"
               format="webp"
               loading="lazy"
               sizes="375:50vw lg:320px"
@@ -273,10 +272,10 @@ const doeMeeChips = [
             <NuxtImg
               src="/images/galerij/waterpistolen-fontein.jpg"
               alt="Kinderen spelen met waterpistolen bij de fontein"
-              class="aspect-[4/3] w-full rounded-2xl object-cover shadow-lg"
+              class="col-span-2 sm:col-span-3 aspect-[16/9] sm:aspect-[16/7] w-full rounded-2xl object-cover shadow-lg"
               format="webp"
               loading="lazy"
-              sizes="375:50vw lg:320px"
+              sizes="375:100vw lg:960px"
             />
           </div>
           <div class="mt-10 text-center">
