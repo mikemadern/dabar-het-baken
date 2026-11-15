@@ -3,7 +3,7 @@
 // Vervang [datum t.b.c.] en zet de status zodra de eigenaar ze aanlevert.
 useSeoMeta({
   title: 'Programma 2027: weken op de camping',
-  description: 'Het programma van Dabar Het Baken voor 2027 op Camping Kriemelberg Bushcamp in Ermelo. De datums zijn nog [datum t.b.c.]; kom terug zodra de weken vast staan.',
+  description: 'Het programma van Dabar Het Baken voor 2027 op Camping Kriemelberg Bushcamp in Ermelo. De datums zijn nog niet bekend; kom terug zodra de weken vast staan.',
 })
 
 // status: 'gesloten' = "Teamplaatsen vol", 'ruimte' = "Nog plek in het team", null = nog niet bekend
@@ -46,7 +46,7 @@ const tekstlinkKlasse =
 
     <section class="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-20">
       <p class="text-lg text-stone-600">
-        Het programma voor 2027 op Camping Kriemelberg Bushcamp in Ermelo komt hier te staan. De datums van de weken zijn nog [datum t.b.c.]. Zodra ze vast staan, zie je hier welke weken er zijn en hoe je je aanmeldt voor een team.
+        Het programma voor 2027 op Camping Kriemelberg Bushcamp in Ermelo komt hier te staan. De datums voor 2027 zijn nog niet bekend. Zodra ze vast staan, zie je hier welke weken er zijn en hoe je je aanmeldt voor een team.
       </p>
 
       <!-- Pas tonen zodra er voor minstens één week een status is: voor 2027 is die nog niet bekend. -->
@@ -59,16 +59,17 @@ const tekstlinkKlasse =
         <li
           v-for="week in weken"
           :key="week.naam"
-          class="grid grid-cols-[1fr_auto] items-center gap-x-4 gap-y-1 rounded-2xl border border-stone-200 bg-stone-50 px-5 py-4 sm:grid-cols-[200px_1fr_auto]"
+          class="flex flex-wrap items-center justify-between gap-x-4 gap-y-1 rounded-2xl border border-stone-200 px-5 py-4 sm:grid sm:grid-cols-[200px_1fr_auto]"
+          :class="week.status === 'ruimte' ? 'bg-white' : 'bg-stone-50'"
         >
-          <span class="font-display text-lg font-semibold text-stone-900 sm:col-start-1">
+          <span class="order-1 font-display text-lg font-semibold text-stone-900 sm:order-none">
             {{ week.naam }}
           </span>
-          <span class="col-start-1 row-start-2 text-stone-600 sm:col-start-2 sm:row-start-1">
+          <span class="order-3 basis-full text-stone-600 sm:order-none sm:basis-auto">
             {{ week.datum }}
           </span>
           <span
-            class="col-start-2 row-span-2 row-start-1 justify-self-end rounded-full px-3 py-1 text-sm font-semibold sm:col-start-3 sm:row-span-1"
+            class="order-2 whitespace-nowrap rounded-full px-3 py-1 text-sm font-semibold sm:order-none"
             :class="statusKlasse[statusSleutel(week.status)]"
           >
             {{ statusTekst[statusSleutel(week.status)] }}
