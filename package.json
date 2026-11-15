@@ -26,6 +26,7 @@
   "overrides": {
     "@vercel/analytics": {
       "vue-router": "$vue-router"
-    }
+    },
+    "minimatch": "^11.0.7"
   }
 }
