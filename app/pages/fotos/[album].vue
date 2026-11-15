@@ -235,6 +235,7 @@ onUnmounted(() => {
               class="h-full w-full object-cover transition-transform duration-200 group-hover:scale-105"
               width="500"
               height="500"
+              sizes="375:50vw sm:33vw lg:357px"
               format="webp"
               loading="lazy"
             />
