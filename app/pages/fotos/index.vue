@@ -3,7 +3,7 @@ import { albums } from "~/data/albums";
 
 useSeoMeta({
   title: "Foto's",
-  description: 'Foto-albums van Kriemelberg Bushcamp en eerdere bakenweken van Dabar Het Baken.',
+  description: 'Foto\'s van Dabar Het Baken: sfeerbeelden van Kriemelberg Bushcamp en de zomerweek van juli 2026, met de kinderclub, de Sing-In en het Hawaii-feest.',
 });
 </script>
 
