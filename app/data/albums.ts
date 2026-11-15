@@ -14,7 +14,7 @@ export const albums: Album[] = [
   {
     slug: 'camping',
     title: 'Op de camping',
-    description: 'Sfeerbeelden van Kriemelberg Bushcamp in Ermelo.',
+    description: 'Sfeerbeelden van Kriemelberg Bushcamp in Ermelo: het welkomstbord bij de ingang, de rode telefooncel bij het informatiebord en het team op de camping.',
     photos: [
       { src: '/images/galerij/welkom-camping.jpg', alt: 'Welkomstbord bij de ingang van Kriemelberg Bushcamp' },
       { src: '/images/telefooncel-informatiebord.jpg', alt: 'De rode telefooncel bij het informatiebord' },
@@ -24,7 +24,7 @@ export const albums: Album[] = [
   {
     slug: 'zomerweek-1-2026',
     title: 'Zomerweek 1 — juli 2026',
-    description: 'De eerste zomerweek van 2026: van Sing-In tot Hawaii-feest, waterspelletjes en een bingoavond.',
+    description: 'De eerste zomerweek van 2026, in juli: van Sing-In tot Hawaii-feest, met kinderclub, volleybal, poppenkast en een bingoavond op de camping.',
     photos: [
       { src: '/images/galerij/team-onderweg-tent.jpg', alt: 'Teamlid op weg naar de tenten op de camping' },
       { src: '/images/team-kind-spelen.jpg', alt: 'Een teamlid speelt met een campingkind' },

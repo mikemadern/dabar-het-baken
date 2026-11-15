@@ -1,7 +1,7 @@
 <script setup lang="ts">
 useSeoMeta({
   title: 'Jaarverslagen',
-  description: 'Alle beschikbare jaarverslagen van Dabar Het Baken om na te lezen.',
+  description: 'Lees de jaarverslagen van Dabar Het Baken na. Per jaar vind je het verslag als pdf om te downloaden, zodat je zelf kunt nalezen wat de commissie heeft gedaan.',
 })
 
 const reports = [
