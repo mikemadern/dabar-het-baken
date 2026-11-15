@@ -25,7 +25,7 @@ const activiteitenTegels = [
     naam: "Kinderclub",
     regel: "4 t/m 8 jaar",
     anker: "kinderclub",
-    sizes: "375:45vw lg:200px",
+    sizes: "375:70vw sm:50vw lg:300px",
     foto: "/images/galerij/lydia-kinderclub-kring.jpg",
     alt: "Een vrijwilliger leidt een kringgesprek bij de kinderclub",
     klasse: "aspect-square sm:col-span-2",
