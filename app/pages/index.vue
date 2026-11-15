@@ -1,9 +1,15 @@
 <script setup lang="ts">
+import { albums } from "~/data/albums";
+
 useSeoMeta({
   title: 'Dabar Het Baken — evangelisatie door recreatie',
   titleTemplate: '%s',
   description: 'Dabar Het Baken is een interkerkelijke evangelisatie- en recreatiecommissie op Camping Kriemelberg Bushcamp in Ermelo: zes weken per jaar, voor gasten van jong tot oud.',
 });
+
+// Homepage-blok met albums: maximaal drie, in de volgorde van albums.ts
+const albumOmslagen = albums.slice(0, 3);
+const aantalFotos = (n: number) => (n === 1 ? "1 foto" : `${n} foto's`);
 
 const activiteitenChips = [
   "Kinderclub 4-8",
@@ -228,62 +234,49 @@ const doeMeeChips = [
           </p>
         </div>
         <div class="mx-auto px-4 sm:px-6">
-          <div class="mx-auto mt-6 grid max-w-xl grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4">
-            <NuxtImg
-              src="/images/galerij/high-five.jpg"
-              alt="Een teamlid geeft een high-five tijdens een groepsspel"
-              class="aspect-[3/2] w-full rounded-2xl object-cover"
-              format="webp"
-              loading="lazy"
-              sizes="375:45vw lg:190px"
-            />
-            <NuxtImg
-              src="/images/galerij/trampoline-lachen.jpg"
-              alt="Een meisje lacht op de trampoline"
-              class="aspect-[3/2] w-full rounded-2xl object-cover"
-              format="webp"
-              loading="lazy"
-              sizes="375:45vw lg:190px"
-            />
-            <NuxtImg
-              src="/images/galerij/vioolspeelster-sing-in.jpg"
-              alt="Een teamlid speelt viool tijdens de Sing-In"
-              class="aspect-[3/2] w-full rounded-2xl object-cover"
-              format="webp"
-              loading="lazy"
-              sizes="375:45vw lg:190px"
-            />
-            <NuxtImg
-              src="/images/galerij/gezamenlijke-maaltijd.jpg"
-              alt="Gasten en team eten samen aan een lange tafel"
-              class="aspect-[3/2] w-full rounded-2xl object-cover"
-              format="webp"
-              loading="lazy"
-              sizes="375:45vw lg:190px"
-            />
-            <NuxtImg
-              src="/images/galerij/poppenkast-publiek.jpg"
-              alt="Kinderen kijken naar de poppenkastvoorstelling"
-              class="aspect-[3/2] w-full rounded-2xl object-cover"
-              format="webp"
-              loading="lazy"
-              sizes="375:45vw lg:190px"
-            />
-            <NuxtImg
-              src="/images/galerij/waterpistolen-fontein.jpg"
-              alt="Kinderen spelen met waterpistolen bij de fontein"
-              class="aspect-[3/2] w-full rounded-2xl object-cover"
-              format="webp"
-              loading="lazy"
-              sizes="375:45vw lg:190px"
-            />
+          <div
+            class="mx-auto mt-6 grid max-w-[15rem] grid-cols-1 gap-x-6 gap-y-6"
+            :class="
+              albumOmslagen.length > 2
+                ? 'sm:max-w-3xl sm:grid-cols-2 lg:grid-cols-3'
+                : 'sm:max-w-xl sm:grid-cols-2'
+            "
+          >
+            <NuxtLink
+              v-for="(album, i) in albumOmslagen"
+              :key="album.slug"
+              :to="`/fotos/${album.slug}`"
+              class="group block rounded-2xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+            >
+              <div class="relative">
+                <div class="aspect-4/3 overflow-hidden rounded-2xl shadow-lg">
+                  <NuxtImg
+                    :src="album.photos[0]?.src"
+                    :alt="album.photos[0]?.alt"
+                    class="h-full w-full object-cover motion-safe:transition-transform motion-safe:duration-200 motion-safe:group-hover:scale-105"
+                    format="webp"
+                    loading="lazy"
+                    sizes="375:60vw sm:50vw lg:276px"
+                  />
+                </div>
+                <StickerLabel
+                  :rotate="i % 2 === 0 ? 'left' : 'right'"
+                  class="absolute -bottom-4 left-6 z-10"
+                >
+                  {{ album.title }}
+                </StickerLabel>
+              </div>
+              <p class="mt-6 pl-6 text-sm text-stone-300">
+                {{ aantalFotos(album.photos.length) }}
+              </p>
+            </NuxtLink>
           </div>
           <div class="mt-6 text-center">
             <NuxtLink
               to="/fotos"
               class="inline-block rounded-full bg-yellow-400 px-6 py-3 text-sm font-semibold text-stone-900 hover:bg-yellow-300 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
             >
-              Bekijk de foto's &rarr;
+              Bekijk alle albums &rarr;
             </NuxtLink>
           </div>
         </div>
