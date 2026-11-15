@@ -32,6 +32,17 @@ useSeoMeta({
   ogImageAlt: () => linkedPhoto.value?.alt,
 })
 
+// Broodkruimels: Home > Foto's > dit album
+useSchemaOrg([
+  defineBreadcrumb({
+    itemListElement: [
+      { name: 'Home', item: '/' },
+      { name: "Foto's", item: '/fotos' },
+      { name: album.title, item: route.path },
+    ],
+  }),
+])
+
 const openIndex = ref<number | null>(null)
 
 // De miniaturen (om de focus bij sluiten terug te zetten) en de lightbox zelf
