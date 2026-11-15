@@ -1,19 +1,20 @@
 <script setup lang="ts">
+// CONCEPT 2027: de datums zijn nog niet bekend. Vervang [datum t.b.c.] zodra de eigenaar ze aanlevert.
 useSeoMeta({
-  title: 'Programma 2026',
-  description: 'In 2026 is Dabar Het Baken zes weken te vinden op Camping Kriemelberg Bushcamp: de meivakantieweek en vijf zomerweken. Bekijk de weken en meld je aan voor een team.',
+  title: 'Programma 2027: weken op de camping',
+  description: 'Het programma van Dabar Het Baken voor 2027 op Camping Kriemelberg Bushcamp in Ermelo. De datums zijn nog [datum t.b.c.]; kom terug zodra de weken vast staan.',
 })
 
 const meivakantie = [
-  { label: 'Zaterdag 25 april t/m vrijdag 1 mei', vol: true },
+  { label: 'Meivakantieweek — [datum t.b.c.]' },
 ]
 
 const zomerweken = [
-  { label: 'Zomerweek 1: za 18 juli t/m vr 24 juli', vol: true },
-  { label: 'Zomerweek 2: za 25 juli t/m vr 31 juli', vol: true },
-  { label: 'Zomerweek 3: za 1 aug t/m vr 7 aug', vol: false },
-  { label: 'Zomerweek 4: za 8 aug t/m vr 14 aug', vol: false },
-  { label: 'Zomerweek 5: za 15 aug t/m vr 21 aug', vol: false },
+  { label: 'Zomerweek 1 — [datum t.b.c.]' },
+  { label: 'Zomerweek 2 — [datum t.b.c.]' },
+  { label: 'Zomerweek 3 — [datum t.b.c.]' },
+  { label: 'Zomerweek 4 — [datum t.b.c.]' },
+  { label: 'Zomerweek 5 — [datum t.b.c.]' },
 ]
 </script>
 
@@ -21,18 +22,13 @@ const zomerweken = [
   <div>
     <PageHeader
       image="/images/galerij/broodjebakken-groep.jpg"
-      label="Programma 2026"
-      title="In 2026 zijn we weer zes weken op Kriemelberg Bushcamp"
+      label="Programma 2027"
+      title="Op de camping in 2027"
     />
 
     <section class="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-20">
       <p class="text-lg text-stone-600">
-        In 2026 is Dabar Het Baken weer zes weken te vinden op Camping Kriemelberg Bushcamp:
-        de meivakantieweek en vijf zomerweken.
-      </p>
-      <p class="mt-4 text-stone-700 leading-relaxed">
-        Sommige weken zitten al vol, in andere is nog ruimte. Meld je snel aan als je mee wilt
-        draaien in een team.
+        Het programma voor 2027 op Camping Kriemelberg Bushcamp in Ermelo komt hier te staan. De datums van de weken zijn nog [datum t.b.c.]. Zodra ze vast staan, zie je hier welke weken er zijn en hoe je je aanmeldt voor een team.
       </p>
 
       <div class="mt-10 grid gap-8 sm:grid-cols-2">
@@ -42,10 +38,9 @@ const zomerweken = [
             <div
               v-for="week in meivakantie"
               :key="week.label"
-              class="flex items-center justify-between gap-2 rounded-lg bg-stone-900 px-4 py-2.5 text-sm font-semibold text-white"
+              class="rounded-lg bg-stone-900 px-4 py-2.5 text-sm font-semibold text-white"
             >
               <span>{{ week.label }}</span>
-              <span v-if="week.vol" class="shrink-0 rounded bg-red-500 px-2 py-0.5 text-xs font-bold uppercase">vol</span>
             </div>
           </div>
         </div>
@@ -55,10 +50,9 @@ const zomerweken = [
             <div
               v-for="week in zomerweken"
               :key="week.label"
-              class="flex items-center justify-between gap-2 rounded-lg bg-stone-900 px-4 py-2.5 text-sm font-semibold text-white"
+              class="rounded-lg bg-stone-900 px-4 py-2.5 text-sm font-semibold text-white"
             >
               <span>{{ week.label }}</span>
-              <span v-if="week.vol" class="shrink-0 rounded bg-red-500 px-2 py-0.5 text-xs font-bold uppercase">vol</span>
             </div>
           </div>
         </div>
@@ -70,6 +64,7 @@ const zomerweken = [
       </p>
 
       <div class="mt-8 flex flex-wrap gap-3">
+        <!-- CONCEPT: deze aanmeldlink is die van 2026. De link voor 2027 moet nog komen. -->
         <a
           href="https://www.izb.nl/dabar/camping?relation_id=32836"
           target="_blank"
