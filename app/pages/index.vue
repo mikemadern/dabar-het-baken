@@ -308,7 +308,7 @@ const doeMeeChips = [
             </StickerLabel>
           </div>
           <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">
-            We zoeken je
+            Wij zoeken jou
           </h2>
           <p class="mt-4 text-stone-600 leading-relaxed">
             Dabar Het Baken draait volledig op vrijwilligers. Elk jaar is er
