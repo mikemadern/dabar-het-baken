@@ -202,7 +202,7 @@ const doeMeeChips = [
 
     <!-- 03 Albums -->
     <section
-      class="relative overflow-hidden bg-stone-900 py-20 text-white sm:py-28"
+      class="relative overflow-hidden bg-stone-900 py-12 text-white sm:py-12"
     >
       <NuxtImg
         src="/images/galerij/welkom-camping.jpg"
@@ -228,41 +228,57 @@ const doeMeeChips = [
           </p>
         </div>
         <div class="mx-auto px-4 sm:px-6">
-          <div class="mx-auto mt-12 grid max-w-xl grid-cols-2 gap-3 sm:gap-4">
+          <div class="mx-auto mt-6 grid max-w-xl grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4">
+            <NuxtImg
+              src="/images/galerij/high-five.jpg"
+              alt="Een teamlid geeft een high-five tijdens een groepsspel"
+              class="aspect-[3/2] w-full rounded-2xl object-cover"
+              format="webp"
+              loading="lazy"
+              sizes="375:45vw lg:190px"
+            />
+            <NuxtImg
+              src="/images/galerij/trampoline-lachen.jpg"
+              alt="Een meisje lacht op de trampoline"
+              class="aspect-[3/2] w-full rounded-2xl object-cover"
+              format="webp"
+              loading="lazy"
+              sizes="375:45vw lg:190px"
+            />
             <NuxtImg
               src="/images/galerij/vioolspeelster-sing-in.jpg"
               alt="Een teamlid speelt viool tijdens de Sing-In"
-              class="row-span-2 aspect-[3/4] w-full rounded-2xl object-cover"
+              class="aspect-[3/2] w-full rounded-2xl object-cover"
               format="webp"
               loading="lazy"
-              sizes="375:45vw lg:252px"
-            />
-            <NuxtImg
-              src="/images/galerij/poppenkast-publiek.jpg"
-              alt="Kinderen kijken naar de poppenkastvoorstelling"
-              class="aspect-square w-full rounded-2xl object-cover"
-              format="webp"
-              loading="lazy"
-              sizes="375:45vw lg:252px"
+              sizes="375:45vw lg:190px"
             />
             <NuxtImg
               src="/images/galerij/gezamenlijke-maaltijd.jpg"
               alt="Gasten en team eten samen aan een lange tafel"
-              class="aspect-square w-full rounded-2xl object-cover"
+              class="aspect-[3/2] w-full rounded-2xl object-cover"
               format="webp"
               loading="lazy"
-              sizes="375:45vw lg:252px"
+              sizes="375:45vw lg:190px"
+            />
+            <NuxtImg
+              src="/images/galerij/poppenkast-publiek.jpg"
+              alt="Kinderen kijken naar de poppenkastvoorstelling"
+              class="aspect-[3/2] w-full rounded-2xl object-cover"
+              format="webp"
+              loading="lazy"
+              sizes="375:45vw lg:190px"
             />
             <NuxtImg
               src="/images/galerij/waterpistolen-fontein.jpg"
               alt="Kinderen spelen met waterpistolen bij de fontein"
-              class="col-span-2 aspect-[2/1] w-full rounded-2xl object-cover"
+              class="aspect-[3/2] w-full rounded-2xl object-cover"
               format="webp"
               loading="lazy"
-              sizes="375:100vw lg:560px"
+              sizes="375:45vw lg:190px"
             />
           </div>
-          <div class="mt-10 text-center">
+          <div class="mt-6 text-center">
             <NuxtLink
               to="/fotos"
               class="inline-block rounded-full bg-yellow-400 px-6 py-3 text-sm font-semibold text-stone-900 hover:bg-yellow-300 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
