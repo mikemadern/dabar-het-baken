@@ -48,7 +48,7 @@ const clubs = [
       'Er is veel ruimte voor de eigen inbreng van de tieners zelf, en voor actuele onderwerpen die hen persoonlijk bezighouden — laagdrempelig, en met veel plezier.',
     ],
     photos: [
-      { src: '/images/galerij/kaartspel-bunting-lach.jpg', alt: 'Tieners spelen lachend een kaartspel bij Chatpoint', main: true },
+      { src: '/images/galerij/kaartspel-bunting-lach.jpg', alt: 'Een lachende jongen in een geel shirt en rode pet houdt twee speelkaarten omhoog bij een kaartspel.', main: true },
       { src: '/images/galerij/tieners-lachen-bankje.jpg', alt: 'Tieners lachen samen op een bankje' },
       { src: '/images/galerij/haren-vlechten.jpg', alt: 'Een vrijwilliger vlecht het haar van een meisje' },
     ],
