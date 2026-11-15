@@ -208,7 +208,7 @@ const doeMeeChips = [
 
     <!-- 03 Albums -->
     <section
-      class="relative overflow-hidden bg-stone-900 py-12 text-white sm:py-12"
+      class="relative overflow-hidden bg-stone-900 py-12 text-white"
     >
       <NuxtImg
         src="/images/galerij/welkom-camping.jpg"
@@ -235,7 +235,7 @@ const doeMeeChips = [
         </div>
         <div class="mx-auto px-4 sm:px-6">
           <div
-            class="mx-auto mt-6 grid max-w-[15rem] grid-cols-1 gap-x-6 gap-y-6"
+            class="mx-auto mt-5 grid max-w-[15rem] grid-cols-1 gap-x-6 gap-y-3"
             :class="
               albumOmslagen.length > 2
                 ? 'sm:max-w-3xl sm:grid-cols-2 lg:grid-cols-3'
@@ -256,7 +256,7 @@ const doeMeeChips = [
                     class="h-full w-full object-cover motion-safe:transition-transform motion-safe:duration-200 motion-safe:group-hover:scale-105"
                     format="webp"
                     loading="lazy"
-                    sizes="375:60vw sm:50vw lg:276px"
+                    sizes="375:60vw sm:276px"
                   />
                 </div>
                 <StickerLabel
@@ -271,7 +271,7 @@ const doeMeeChips = [
               </p>
             </NuxtLink>
           </div>
-          <div class="mt-6 text-center">
+          <div class="mt-4 text-center">
             <NuxtLink
               to="/fotos"
               class="inline-block rounded-full bg-yellow-400 px-6 py-3 text-sm font-semibold text-stone-900 hover:bg-yellow-300 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
