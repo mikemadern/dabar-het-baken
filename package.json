@@ -20,7 +20,8 @@
     "nuxt": "^4.6.4",
     "tailwindcss": "^4.3.3",
     "vue": "^3.5.45",
-    "vue-router": "^5.1.0"
+    "vue-router": "^5.1.0",
+    "zod": "^4.6.7"
   },
   "overrides": {
     "@vercel/analytics": {
