@@ -227,55 +227,39 @@ const doeMeeChips = [
             Van de kinderclub en de Sing-In tot het Hawaii-feest.
           </p>
         </div>
-        <div class="mx-auto mt-12 max-w-5xl px-4 sm:px-6">
-          <div class="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-6">
-            <NuxtImg
-              src="/images/galerij/high-five.jpg"
-              alt="Een teamlid geeft een high-five tijdens een groepsspel"
-              class="col-span-2 aspect-[16/9] w-full rounded-2xl object-cover shadow-lg"
-              format="webp"
-              loading="lazy"
-              sizes="375:100vw lg:640px"
-            />
-            <NuxtImg
-              src="/images/galerij/trampoline-lachen.jpg"
-              alt="Een meisje lacht op de trampoline"
-              class="col-span-1 aspect-square sm:-rotate-2 w-full rounded-2xl object-cover shadow-lg"
-              format="webp"
-              loading="lazy"
-              sizes="375:50vw lg:320px"
-            />
+        <div class="mx-auto px-4 sm:px-6">
+          <div class="mx-auto mt-12 grid max-w-xl grid-cols-2 gap-3 sm:gap-4">
             <NuxtImg
               src="/images/galerij/vioolspeelster-sing-in.jpg"
               alt="Een teamlid speelt viool tijdens de Sing-In"
-              class="col-span-1 aspect-square w-full rounded-2xl object-cover shadow-lg"
+              class="row-span-2 aspect-[3/4] w-full rounded-2xl object-cover"
               format="webp"
               loading="lazy"
-              sizes="375:50vw lg:320px"
-            />
-            <NuxtImg
-              src="/images/galerij/gezamenlijke-maaltijd.jpg"
-              alt="Gasten en team eten samen aan een lange tafel"
-              class="col-span-1 aspect-square sm:rotate-2 w-full rounded-2xl object-cover shadow-lg"
-              format="webp"
-              loading="lazy"
-              sizes="375:50vw lg:320px"
+              sizes="375:45vw lg:252px"
             />
             <NuxtImg
               src="/images/galerij/poppenkast-publiek.jpg"
               alt="Kinderen kijken naar de poppenkastvoorstelling"
-              class="col-span-1 aspect-square w-full rounded-2xl object-cover shadow-lg"
+              class="aspect-square w-full rounded-2xl object-cover"
               format="webp"
               loading="lazy"
-              sizes="375:50vw lg:320px"
+              sizes="375:45vw lg:252px"
+            />
+            <NuxtImg
+              src="/images/galerij/gezamenlijke-maaltijd.jpg"
+              alt="Gasten en team eten samen aan een lange tafel"
+              class="aspect-square w-full rounded-2xl object-cover"
+              format="webp"
+              loading="lazy"
+              sizes="375:45vw lg:252px"
             />
             <NuxtImg
               src="/images/galerij/waterpistolen-fontein.jpg"
               alt="Kinderen spelen met waterpistolen bij de fontein"
-              class="col-span-2 sm:col-span-3 aspect-[16/9] sm:aspect-[16/7] w-full rounded-2xl object-cover shadow-lg"
+              class="col-span-2 aspect-[2/1] w-full rounded-2xl object-cover"
               format="webp"
               loading="lazy"
-              sizes="375:100vw lg:960px"
+              sizes="375:100vw lg:560px"
             />
           </div>
           <div class="mt-10 text-center">
