@@ -31,6 +31,7 @@ const activiteitenTegels = [
     naam: "Kinderclub",
     regel: "4 t/m 8 jaar",
     anker: "kinderclub",
+    sizes: "375:45vw lg:200px",
     foto: "/images/galerij/lydia-kinderclub-kring.jpg",
     alt: "Een vrijwilliger leidt een kringgesprek bij de kinderclub",
     klasse: "aspect-square sm:col-span-2",
@@ -39,6 +40,7 @@ const activiteitenTegels = [
     naam: "Teen Spirit",
     regel: "9 t/m 11 jaar",
     anker: "teen-spirit",
+    sizes: "375:45vw lg:200px",
     foto: "/images/galerij/raketten-lanceren.jpg",
     alt: "Een meisje lanceert een speelgoedraket tijdens Teen Spirit",
     klasse: "aspect-square sm:col-span-2",
@@ -47,6 +49,7 @@ const activiteitenTegels = [
     naam: "Chatpoint",
     regel: "12 t/m 16 jaar",
     anker: "chatpoint",
+    sizes: "375:45vw lg:200px",
     foto: "/images/galerij/kaartspel-bunting-lach.jpg",
     alt: "Een lachende jongen in een geel shirt en rode pet houdt twee speelkaarten omhoog bij een kaartspel.",
     klasse: "aspect-square sm:col-span-2",
@@ -55,6 +58,7 @@ const activiteitenTegels = [
     naam: "Sing-In",
     regel: "zondagavond",
     anker: "sing-in",
+    sizes: "375:45vw sm:50vw lg:310px",
     foto: "/images/galerij/vioolspeelster-sing-in.jpg",
     alt: "Een teamlid speelt viool tijdens de Sing-In",
     klasse: "aspect-square sm:col-span-3 sm:aspect-[3/2]",
@@ -63,9 +67,11 @@ const activiteitenTegels = [
     naam: "Campingpastoraat",
     regel: "volwassenen",
     anker: "campingpastoraat",
+    sizes: "375:100vw sm:50vw lg:310px",
     foto: "/images/galerij/gasten-koffie-terras.jpg",
     alt: "Twee gasten drinken samen koffie op het terras",
     klasse: "col-span-2 aspect-[21/9] sm:col-span-3 sm:aspect-[3/2]",
+    positie: "object-[center_30%]",
   },
 ];
 </script>
@@ -207,7 +213,8 @@ const activiteitenTegels = [
                 :src="tegel.foto"
                 :alt="tegel.alt"
                 class="h-full w-full object-cover motion-safe:transition-transform motion-safe:duration-200 motion-safe:group-hover:scale-105"
-                sizes="375:45vw lg:200px"
+                :class="tegel.positie"
+                :sizes="tegel.sizes"
                 format="webp"
                 loading="lazy"
               />
