@@ -9,8 +9,8 @@ useSeoMeta({
   <div>
     <PageHeader
       image="/images/headers/receptie-telefooncel.jpg"
-      label="Steun ons"
-      title="Steun ons"
+      label="Bijdragen"
+      title="Maak het Baken mogelijk"
     />
 
     <section class="bg-white py-16 sm:py-20">
