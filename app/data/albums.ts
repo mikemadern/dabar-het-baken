@@ -56,7 +56,7 @@ export const albums: Album[] = [
       { src: '/images/galerij/team-groepsfoto-juichend.jpg', alt: 'Het voltallige team juicht tijdens de groepsfoto' },
       { src: '/images/galerij/samen-van-de-glijbaan.jpg', alt: 'Verklede vrijwilligers gaan samen van de glijbaan' },
       { src: '/images/galerij/poppenkast-optreden.jpg', alt: 'Een poppenkastvoorstelling voor de kinderen' },
-      { src: '/images/galerij/kaartspel-bunting-lach.jpg', alt: 'Vrijwilligers lachen tijdens een kaartspel' },
+      { src: '/images/galerij/kaartspel-bunting-lach.jpg', alt: 'Een lachende jongen in een geel shirt en rode pet houdt twee speelkaarten omhoog bij een kaartspel.' },
       { src: '/images/galerij/voetballen-in-kooi.jpg', alt: 'Jongens voetballen in de voetbalkooi' },
       { src: '/images/galerij/gezamenlijke-maaltijd.jpg', alt: 'Gasten en team eten samen aan een lange tafel' },
       { src: '/images/galerij/nestschommel-lach.jpg', alt: 'Twee meisjes lachen op de nestschommel' },

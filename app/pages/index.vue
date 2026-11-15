@@ -42,7 +42,7 @@ const activiteitenTegels = [
     regel: "12 t/m 16 jaar",
     anker: "chatpoint",
     foto: "/images/galerij/kaartspel-bunting-lach.jpg",
-    alt: "Tieners spelen lachend een kaartspel bij Chatpoint",
+    alt: "Een lachende jongen in een geel shirt en rode pet houdt twee speelkaarten omhoog bij een kaartspel.",
     klasse: "aspect-square sm:col-span-2",
   },
   {
