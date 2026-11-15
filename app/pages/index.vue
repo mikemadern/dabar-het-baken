@@ -200,7 +200,7 @@ const doeMeeChips = [
       </div>
     </section>
 
-    <!-- 03 Programma 2026 -->
+    <!-- 03 Albums -->
     <section
       class="relative overflow-hidden bg-stone-900 py-20 text-white sm:py-28"
     >
@@ -217,63 +217,77 @@ const doeMeeChips = [
       <div
         class="absolute inset-0 bg-linear-to-t from-stone-900 via-stone-900/90 to-stone-900/70"
       />
-      <div class="relative mx-auto max-w-4xl px-4 text-center sm:px-6">
-        <StickerLabel class="mb-3">Programma 2026</StickerLabel>
-        <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">
-          Zes weken op de Kriemelberg
-        </h2>
-        <p class="mt-4 text-stone-300">
-          Meivakantie + vijf zomerweken — sommige weken zitten al vol, in andere
-          is nog volop ruimte.
-        </p>
-        <div class="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-3">
-          <div class="text-center">
-            <p
-              class="font-display text-5xl font-bold text-yellow-400 sm:text-6xl"
-            >
-              6
-            </p>
-            <p
-              class="mt-2 text-sm font-semibold uppercase tracking-wide text-stone-300"
-            >
-              bakenweken per jaar
-            </p>
+      <div class="relative">
+        <div class="mx-auto max-w-4xl px-4 text-center sm:px-6">
+          <StickerLabel class="mb-3">Foto's</StickerLabel>
+          <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">
+            Zo ziet het kamp eruit
+          </h2>
+          <p class="mt-4 text-stone-300">
+            Een kijkje op de camping, van de kinderclub en de Sing-In tot het
+            Hawaii-feest.
+          </p>
+        </div>
+        <div class="mx-auto mt-12 max-w-5xl px-4 sm:px-6">
+          <div class="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4">
+            <NuxtImg
+              src="/images/galerij/high-five.jpg"
+              alt="Een teamlid geeft een high-five tijdens een groepsspel"
+              class="aspect-[4/3] w-full rounded-2xl object-cover shadow-lg"
+              format="webp"
+              loading="lazy"
+              sizes="375:50vw lg:320px"
+            />
+            <NuxtImg
+              src="/images/galerij/trampoline-lachen.jpg"
+              alt="Een meisje lacht op de trampoline"
+              class="aspect-[4/3] w-full rounded-2xl object-cover shadow-lg"
+              format="webp"
+              loading="lazy"
+              sizes="375:50vw lg:320px"
+            />
+            <NuxtImg
+              src="/images/galerij/vioolspeelster-sing-in.jpg"
+              alt="Een teamlid speelt viool tijdens de Sing-In"
+              class="aspect-[4/3] w-full rounded-2xl object-cover shadow-lg"
+              format="webp"
+              loading="lazy"
+              sizes="375:50vw lg:320px"
+            />
+            <NuxtImg
+              src="/images/galerij/gezamenlijke-maaltijd.jpg"
+              alt="Gasten en team eten samen aan een lange tafel"
+              class="aspect-[4/3] w-full rounded-2xl object-cover shadow-lg"
+              format="webp"
+              loading="lazy"
+              sizes="375:50vw lg:320px"
+            />
+            <NuxtImg
+              src="/images/galerij/poppenkast-publiek.jpg"
+              alt="Kinderen kijken naar de poppenkastvoorstelling"
+              class="aspect-[4/3] w-full rounded-2xl object-cover shadow-lg"
+              format="webp"
+              loading="lazy"
+              sizes="375:50vw lg:320px"
+            />
+            <NuxtImg
+              src="/images/galerij/waterpistolen-fontein.jpg"
+              alt="Kinderen spelen met waterpistolen bij de fontein"
+              class="aspect-[4/3] w-full rounded-2xl object-cover shadow-lg"
+              format="webp"
+              loading="lazy"
+              sizes="375:50vw lg:320px"
+            />
           </div>
-          <div class="text-center">
-            <p
-              class="font-display text-5xl font-bold text-yellow-400 sm:text-6xl"
+          <div class="mt-10 text-center">
+            <NuxtLink
+              to="/fotos"
+              class="inline-block rounded-full bg-yellow-400 px-6 py-3 text-sm font-semibold text-stone-900 hover:bg-yellow-300 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
             >
-              3
-              <span
-                class="ml-1 inline-block rounded bg-red-500 px-2 py-0.5 align-middle text-xs font-bold uppercase text-white"
-                >vol</span
-              >
-            </p>
-            <p
-              class="mt-2 text-sm font-semibold uppercase tracking-wide text-stone-300"
-            >
-              weken al vol (meivakantie, week 1 en 2)
-            </p>
-          </div>
-          <div class="text-center">
-            <p
-              class="font-display text-5xl font-bold text-yellow-400 sm:text-6xl"
-            >
-              3
-            </p>
-            <p
-              class="mt-2 text-sm font-semibold uppercase tracking-wide text-stone-300"
-            >
-              zomerweken met nog ruimte (week 3, 4 en 5)
-            </p>
+              Bekijk de foto's &rarr;
+            </NuxtLink>
           </div>
         </div>
-        <NuxtLink
-          to="/programma"
-          class="mt-10 inline-block rounded-full bg-yellow-400 px-6 py-3 text-sm font-semibold text-stone-900 hover:bg-yellow-300 transition-colors"
-        >
-          Bekijk het volledige programma &rarr;
-        </NuxtLink>
       </div>
     </section>
 
