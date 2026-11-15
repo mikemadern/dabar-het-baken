@@ -7,6 +7,7 @@ useSeoMeta({
 const clubs = [
   {
     name: 'Kinderclub',
+    slug: 'kinderclub',
     age: '4 t/m 8 jaar',
     color: 'yellow',
     bg: 'white',
@@ -22,6 +23,7 @@ const clubs = [
   },
   {
     name: 'Teen Spirit',
+    slug: 'teen-spirit',
     age: '9 t/m 11 jaar',
     color: 'blue',
     bg: 'stone-50',
@@ -37,6 +39,7 @@ const clubs = [
   },
   {
     name: 'Chatpoint',
+    slug: 'chatpoint',
     age: '12 t/m 16 jaar',
     color: 'yellow',
     bg: 'white',
@@ -52,6 +55,7 @@ const clubs = [
   },
   {
     name: 'Sing-In',
+    slug: 'sing-in',
     age: 'zondagavond',
     color: 'blue',
     bg: 'stone-50',
@@ -67,6 +71,7 @@ const clubs = [
   },
   {
     name: 'Campingpastoraat',
+    slug: 'campingpastoraat',
     age: 'volwassenen',
     color: 'yellow',
     bg: 'white',
@@ -109,6 +114,7 @@ const clubs = [
 
     <section
       v-for="(club, i) in clubs"
+      :id="club.slug"
       :key="club.name"
       :class="club.bg === 'stone-50' ? 'bg-stone-50' : 'bg-white'"
       class="py-16 sm:py-20"

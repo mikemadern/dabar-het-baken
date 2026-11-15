@@ -25,6 +25,49 @@ const doeMeeChips = [
   "Kerkambassadeur",
   "Campingpastor",
 ];
+// Tegels bij Activiteiten: elke tegel linkt naar het onderdeel op /activiteiten (id's staan daar)
+const activiteitenTegels = [
+  {
+    naam: "Kinderclub",
+    regel: "4 t/m 8 jaar",
+    anker: "kinderclub",
+    foto: "/images/galerij/lydia-kinderclub-kring.jpg",
+    alt: "Een vrijwilliger leidt een kringgesprek bij de kinderclub",
+    klasse: "aspect-square sm:col-span-2",
+  },
+  {
+    naam: "Teen Spirit",
+    regel: "9 t/m 11 jaar",
+    anker: "teen-spirit",
+    foto: "/images/galerij/raketten-lanceren.jpg",
+    alt: "Een meisje lanceert een speelgoedraket tijdens Teen Spirit",
+    klasse: "aspect-square sm:col-span-2",
+  },
+  {
+    naam: "Chatpoint",
+    regel: "12 t/m 16 jaar",
+    anker: "chatpoint",
+    foto: "/images/galerij/kaartspel-bunting-lach.jpg",
+    alt: "Tieners spelen lachend een kaartspel bij Chatpoint",
+    klasse: "aspect-square sm:col-span-2",
+  },
+  {
+    naam: "Sing-In",
+    regel: "zondagavond",
+    anker: "sing-in",
+    foto: "/images/galerij/vioolspeelster-sing-in.jpg",
+    alt: "Een teamlid speelt viool tijdens de Sing-In",
+    klasse: "aspect-square sm:col-span-3 sm:aspect-[3/2]",
+  },
+  {
+    naam: "Campingpastoraat",
+    regel: "volwassenen",
+    anker: "campingpastoraat",
+    foto: "/images/galerij/gasten-koffie-terras.jpg",
+    alt: "Twee gasten drinken samen koffie op het terras",
+    klasse: "col-span-2 aspect-[21/9] sm:col-span-3 sm:aspect-[3/2]",
+  },
+];
 </script>
 
 <template>
@@ -134,10 +177,8 @@ const doeMeeChips = [
       <div
         class="mx-auto grid max-w-6xl grid-cols-1 gap-10 px-4 sm:px-6 lg:grid-cols-12 lg:items-center lg:gap-16"
       >
-        <div class="lg:col-span-6">
-          <StickerLabel color="blue" rotate="right" class="mb-3"
-            >Activiteiten</StickerLabel
-          >
+        <div class="lg:col-span-5">
+          <StickerLabel rotate="right" class="mb-3">Activiteiten</StickerLabel>
           <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">
             Voor iedere leeftijd
           </h2>
@@ -146,20 +187,6 @@ const doeMeeChips = [
             's Avonds is er de Sing-In, en de hele week door is er het
             campingpastoraat voor volwassenen die een luisterend oor zoeken.
           </p>
-          <div class="mt-6 flex flex-wrap gap-2">
-            <span
-              v-for="(chip, i) in activiteitenChips"
-              :key="chip"
-              class="rounded-full px-2.5 py-1 text-xs font-semibold"
-              :class="
-                i % 2 === 0
-                  ? 'bg-yellow-100 text-yellow-800'
-                  : 'bg-sky-100 text-sky-800'
-              "
-            >
-              {{ chip }}
-            </span>
-          </div>
           <NuxtLink
             to="/activiteiten"
             class="mt-6 inline-block font-semibold text-stone-900 underline decoration-yellow-400 decoration-2 underline-offset-4 hover:text-stone-700"
@@ -167,40 +194,34 @@ const doeMeeChips = [
             Bekijk alle activiteiten &rarr;
           </NuxtLink>
         </div>
-        <div class="lg:col-span-6">
-          <div class="grid grid-cols-2 grid-rows-2 gap-3 sm:gap-4">
-            <NuxtImg
-              src="/images/galerij/trampoline-lachen.jpg"
-              alt="Een meisje lacht op de trampoline"
-              class="row-span-2 aspect-[3/4] w-full rounded-2xl object-cover"
-              sizes="375:45vw lg:252px"
-              format="webp"
-              loading="lazy"
-            />
-            <NuxtImg
-              src="/images/galerij/limbo-hawaiifeest.jpg"
-              alt="Kinderen doen een limbo-wedstrijd tijdens het Hawaii-feest"
-              class="aspect-square w-full rounded-2xl object-cover"
-              sizes="375:45vw lg:252px"
-              format="webp"
-              loading="lazy"
-            />
-            <NuxtImg
-              src="/images/galerij/voetballen-in-kooi.jpg"
-              alt="Jongens voetballen in de voetbalkooi"
-              class="aspect-square w-full rounded-2xl object-cover"
-              sizes="375:45vw lg:252px"
-              format="webp"
-              loading="lazy"
-            />
-            <NuxtImg
-              src="/images/galerij/high-five.jpg"
-              alt="Een teamlid geeft een high-five tijdens een groepsspel"
-              class="col-span-2 aspect-[2/1] w-full rounded-2xl object-cover"
-              sizes="375:100vw sm:100vw lg:560px"
-              format="webp"
-              loading="lazy"
-            />
+        <div class="lg:col-span-7">
+          <div class="grid grid-cols-2 gap-3 sm:grid-cols-6 sm:gap-4">
+            <NuxtLink
+              v-for="tegel in activiteitenTegels"
+              :key="tegel.anker"
+              :to="`/activiteiten#${tegel.anker}`"
+              class="group relative block overflow-hidden rounded-2xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-stone-900"
+              :class="tegel.klasse"
+            >
+              <NuxtImg
+                :src="tegel.foto"
+                :alt="tegel.alt"
+                class="h-full w-full object-cover motion-safe:transition-transform motion-safe:duration-200 motion-safe:group-hover:scale-105"
+                sizes="375:45vw lg:200px"
+                format="webp"
+                loading="lazy"
+              />
+              <div
+                class="absolute inset-x-0 bottom-0 bg-linear-to-t from-stone-900/80 via-stone-900/40 to-transparent px-3 pb-3 pt-10"
+              >
+                <StickerLabel
+                  :rotate="tegel.anker === 'teen-spirit' || tegel.anker === 'sing-in' ? 'right' : 'left'"
+                >
+                  {{ tegel.naam }}
+                </StickerLabel>
+                <p class="mt-1.5 text-sm font-medium text-white">{{ tegel.regel }}</p>
+              </div>
+            </NuxtLink>
           </div>
         </div>
       </div>
