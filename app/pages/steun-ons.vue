@@ -10,7 +10,7 @@ const giften = [
     id: 'gewoon',
     titel: 'Gewone gift',
     iban: 'NL43 INGB 0001 1478 23',
-    regel: 't.n.v. Het Baken Harderwijk',
+    regel: 't.n.v. Dabar Het Baken',
     knopLabel: 'Kopieer IBAN van de gewone gift',
     gelukt: 'IBAN van de gewone gift gekopieerd',
   },
@@ -96,10 +96,11 @@ onBeforeUnmount(() => {
               </p>
               <p>
                 Een gift komt zo terecht bij het clubwerk voor kinderen en jongeren, en bij
-                de teams die tijdens de bakenweken op de camping verblijven.
+                de teams die tijdens de bakenweken op de camping verblijven. Vragen over je gift?
+                Stel ze via de <NuxtLink to="/contact" class="font-semibold text-stone-900 underline decoration-yellow-400 decoration-2 underline-offset-4 hover:text-stone-700">contactpagina &rarr;</NuxtLink>.
               </p>
               <p>
-                Dabar Het Baken heeft zelf geen ANBI-status. Wilt u een gift fiscaal
+                Dabar Het Baken heeft zelf geen ANBI-status. Wil je een gift fiscaal
                 aftrekken, dan loopt die daarom via de IZB, die deze status wel heeft.
               </p>
               <p>
@@ -116,13 +117,16 @@ onBeforeUnmount(() => {
               <li
                 v-for="(gift, i) in giften"
                 :key="gift.id"
-                class="rounded-2xl border border-stone-200 bg-stone-50 p-5"
+                class="rounded-2xl border border-stone-200 bg-stone-50 p-5 pb-3"
               >
                 <StickerLabel :rotate="i % 2 === 0 ? 'left' : 'right'">{{ gift.titel }}</StickerLabel>
                 <div class="mt-4 flex flex-wrap items-center justify-between gap-x-4 gap-y-3">
-                  <p class="select-all whitespace-nowrap font-display text-xl font-bold tracking-wide text-stone-900 lg:text-[22px]">
-                    {{ gift.iban }}
-                  </p>
+                  <div>
+                    <p class="select-all whitespace-nowrap font-display text-xl font-bold tracking-wide text-stone-900 lg:text-[22px]">
+                      {{ gift.iban }}
+                    </p>
+                    <p class="mt-1 text-stone-600">{{ gift.regel }}</p>
+                  </div>
                   <button
                     type="button"
                     class="inline-flex min-h-11 items-center rounded-full bg-yellow-400 px-5 py-2.5 text-sm font-semibold text-stone-900 hover:bg-yellow-300 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-stone-900"
@@ -132,14 +136,13 @@ onBeforeUnmount(() => {
                     Kopieer IBAN
                   </button>
                 </div>
-                <p class="mt-2 text-stone-600">{{ gift.regel }}</p>
-                <p role="status" class="mt-2 min-h-6 text-sm font-semibold text-stone-900">{{ meldingen[gift.id] }}</p>
+                <p role="status" class="mt-1 min-h-6 text-sm font-semibold text-stone-900 max-[340px]:min-h-10">{{ meldingen[gift.id] }}</p>
               </li>
             </ul>
             <div class="relative mb-4 mt-8">
               <NuxtImg
                 src="/images/telefooncel-informatiebord.jpg"
-                alt="De rode telefooncel bij de receptie van Kriemelberg Bushcamp"
+                alt="Een rode telefooncel naast het informatiebord bij Kriemelberg Bushcamp."
                 class="aspect-[16/9] w-full rounded-2xl object-cover"
                 sizes="375:100vw sm:100vw lg:560px"
                 format="webp"

@@ -151,11 +151,11 @@ useSeoMeta({
             </p>
           </div>
           <div>
-            <h3
+            <h2
               class="text-sm font-semibold uppercase tracking-wide text-stone-400"
             >
               Contact
-            </h3>
+            </h2>
             <ul class="mt-4 space-y-2 text-sm">
               <li>
                 <a
@@ -204,11 +204,11 @@ useSeoMeta({
             </ul>
           </div>
           <div>
-            <h3
+            <h2
               class="text-sm font-semibold uppercase tracking-wide text-stone-400"
             >
               Camping
-            </h3>
+            </h2>
             <ul class="mt-4 space-y-2 text-sm">
               <li>Kriemelberg Bushcamp</li>
               <li>Drieerweg 104, 3852 MC Ermelo</li>

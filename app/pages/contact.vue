@@ -35,7 +35,8 @@ function sendMessage() {
       <p class="mt-4 text-stone-700 leading-relaxed">
         Voor vragen over vrijwilligerswerk, kerksamenwerking of een gift mail je ons direct.
         Voor praktische vragen over een verblijf op de camping kun je terecht bij Kriemelberg
-        Bushcamp zelf.
+        Bushcamp zelf. Wil je eerst weten wat vrijwilligerswerk inhoudt? Lees het bij
+        <NuxtLink to="/doe-mee" class="font-semibold text-stone-900 underline decoration-yellow-400 decoration-2 underline-offset-4 hover:text-stone-700">Doe mee &rarr;</NuxtLink>.
       </p>
 
       <div class="mt-10 grid gap-6 sm:grid-cols-2">

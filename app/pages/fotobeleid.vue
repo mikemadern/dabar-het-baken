@@ -19,7 +19,7 @@ useSeoMeta({
         promotiedoeleinden, bijvoorbeeld voor deze website of onze social media.
         Heb je hier bezwaar tegen, of wil je niet dat je kind(eren)
         gefotografeerd of gefilmd worden? Geef dit dan direct door aan het team
-        op de camping. We zorgen er dan voor dat jij of je kind(eren) niet op
+        op de camping. Of stuur ons een bericht via de <NuxtLink to="/contact" class="font-semibold text-stone-900 underline decoration-yellow-400 decoration-2 underline-offset-4 hover:text-stone-700">contactpagina &rarr;</NuxtLink>. We zorgen er dan voor dat jij of je kind(eren) niet op
         foto's of filmpjes komen, of dat gezichten onherkenbaar worden gemaakt.
       </p>
       <a
