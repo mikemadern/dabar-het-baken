@@ -96,7 +96,8 @@ onBeforeUnmount(() => {
               </p>
               <p>
                 Een gift komt zo terecht bij het clubwerk voor kinderen en jongeren, en bij
-                de teams die tijdens de bakenweken op de camping verblijven.
+                de teams die tijdens de bakenweken op de camping verblijven. Vragen over je gift?
+                Stel ze via de <NuxtLink to="/contact" class="font-semibold text-stone-900 underline decoration-yellow-400 decoration-2 underline-offset-4 hover:text-stone-700">contactpagina &rarr;</NuxtLink>.
               </p>
               <p>
                 Dabar Het Baken heeft zelf geen ANBI-status. Wilt u een gift fiscaal
