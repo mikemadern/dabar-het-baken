@@ -3,10 +3,12 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "nuxt build",
+    "build": "node scripts/og/check.mjs && nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
-    "preview": "nuxt preview"
+    "preview": "nuxt preview",
+    "og": "node scripts/og/maak.mjs",
+    "og:check": "node scripts/og/check.mjs"
   },
   "dependencies": {
     "@fontsource/poppins": "^5.3.0",
@@ -28,5 +30,9 @@
       "vue-router": "$vue-router"
     },
     "minimatch": "^11.0.7"
+  },
+  "devDependencies": {
+    "satori": "0.47.1",
+    "sharp": "0.35.5"
   }
 }
