@@ -21,6 +21,21 @@ const socialLinkClass =
 const route = useRoute();
 const isActive = (to: string) =>
   route.path === to || route.path.startsWith(`${to}/`);
+
+// Eigen deelafbeelding (og:image en twitter:image) per pagina, 1200 x 630; zie app/data/shareImages.json
+const share = useShareImage();
+useSeoMeta({
+  ogImage: () => share.value.image,
+  twitterImage: () => share.value.image,
+  ogImageAlt: () => share.value.alt,
+  twitterImageAlt: () => share.value.alt,
+  ogImageType: () => (share.value.sized ? "image/jpeg" : undefined),
+  twitterImageType: () => (share.value.sized ? "image/jpeg" : undefined),
+  ogImageWidth: () => (share.value.sized ? 1200 : undefined),
+  twitterImageWidth: () => (share.value.sized ? 1200 : undefined),
+  ogImageHeight: () => (share.value.sized ? 630 : undefined),
+  twitterImageHeight: () => (share.value.sized ? 630 : undefined),
+});
 </script>
 
 <template>

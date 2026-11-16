@@ -25,11 +25,20 @@ const linkedPhoto = computed(() => {
   const index = indexOfPhoto(route.query.foto)
   return index === null ? null : photos[index]
 })
+// Niet het origineel (tot 1,3 MB) maar een kleinere versie van 1200 x 630; veel apps tonen grote voorbeelden niet of traag.
+const img = useImage()
+const sharePhoto = computed(() =>
+  linkedPhoto.value
+    ? img(linkedPhoto.value.src, { width: 1200, height: 630, fit: 'cover', format: 'jpeg', quality: 75 })
+    : undefined,
+)
 useSeoMeta({
   title: `${album.title} — Foto's`,
   description: () => linkedPhoto.value?.alt ?? album.description,
-  ogImage: () => linkedPhoto.value?.src,
+  ogImage: () => sharePhoto.value,
+  twitterImage: () => sharePhoto.value,
   ogImageAlt: () => linkedPhoto.value?.alt,
+  twitterImageAlt: () => linkedPhoto.value?.alt,
 })
 
 // Broodkruimels: Home > Foto's > dit album

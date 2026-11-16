@@ -1,0 +1,111 @@
+{
+  "_uitleg": "De deelafbeeldingen (og:image, 1200 x 630). Eén bron voor het script (scripts/og/maak.mjs), de controle (scripts/og/check.mjs) en de pagina's (app/composables/useShareImage.ts). Na een wijziging hier: npm run og. 'title' zijn de regels op het blauwe plaatje, met de hand gelijkmatig afgebroken (maximaal twee). 'position' is de uitsnede van de foto in procenten [links-rechts, boven-onder], zoals object-position. Albums staan niet in 'pages': die komen uit app/data/albums.ts (titel = albumtitel, foto = eerste foto) en hebben alleen 'albums.overrides' nodig voor een andere uitsnede of alt.",
+  "pages": [
+    {
+      "key": "home",
+      "path": "/",
+      "sticker": "Evangelisatie door recreatie",
+      "title": ["Dabar Het Baken"],
+      "photo": "/images/team-onderweg-camping.jpg",
+      "position": [50, 35],
+      "alt": "Mensen in gele shirts lopen over een zandpad tussen de hagen op de camping."
+    },
+    {
+      "key": "missie",
+      "path": "/missie",
+      "sticker": "Missie",
+      "title": ["Evangelisatie", "door recreatie"],
+      "photo": "/images/galerij/gezamenlijke-maaltijd.jpg",
+      "position": [50, 30],
+      "alt": "Gasten en teamleden eten samen aan een lange tafel."
+    },
+    {
+      "key": "activiteiten",
+      "path": "/activiteiten",
+      "sticker": "Activiteiten",
+      "title": ["Activiteiten voor", "iedere leeftijd"],
+      "photo": "/images/galerij/vreugde-door-het-water.jpg",
+      "position": [50, 25],
+      "alt": "Een lachende vrijwilliger in een geel shirt spat door het water, met twee kinderen erbij."
+    },
+    {
+      "key": "programma",
+      "path": "/programma",
+      "sticker": "Dabar Het Baken",
+      "title": ["Weken op de camping"],
+      "photo": "/images/galerij/broodjebakken-groep.jpg",
+      "position": [50, 30],
+      "alt": "Kinderen bakken broodjes boven het vuur."
+    },
+    {
+      "key": "doe-mee",
+      "path": "/doe-mee",
+      "sticker": "Doe mee",
+      "title": ["Word onderdeel", "van het team"],
+      "photo": "/images/galerij/team-groepsfoto-juichend.jpg",
+      "position": [50, 80],
+      "alt": "Een grote groep mensen steekt de armen omhoog voor de foto."
+    },
+    {
+      "key": "steun-ons",
+      "path": "/steun-ons",
+      "sticker": "Bijdragen",
+      "title": ["Maak het Baken", "mogelijk"],
+      "photo": "/images/headers/receptie-telefooncel.jpg",
+      "position": [50, 60],
+      "alt": "Het receptiegebouw van Kriemelberg Bushcamp, met een rode telefooncel achter de glazen gevel."
+    },
+    {
+      "key": "contact",
+      "path": "/contact",
+      "sticker": "Dabar Het Baken",
+      "title": ["Contact"],
+      "photo": "/images/galerij/team-groepsfoto-welkom.jpg",
+      "position": [50, 15],
+      "alt": "Het team in gele shirts poseert bij het welkomstbord van Kriemelberg Bushcamp."
+    },
+    {
+      "key": "fotos",
+      "path": "/fotos",
+      "sticker": "Foto's",
+      "title": ["Albums"],
+      "photo": "/images/galerij/poppenkast-pippi.jpg",
+      "position": [50, 30],
+      "alt": "Een poppenkastvoorstelling: een pop met rode vlechten kijkt uit het poppenkasttheater."
+    },
+    {
+      "key": "jaarverslagen",
+      "path": "/jaarverslagen",
+      "sticker": "Dabar Het Baken",
+      "title": ["Jaarverslagen"],
+      "photo": "/images/galerij/radslag-actie.jpg",
+      "position": [50, 35],
+      "alt": "Een jongen in een geel shirt doet een handstand op het gras, naast een ander kind."
+    },
+    {
+      "key": "fotobeleid",
+      "path": "/fotobeleid",
+      "sticker": "Fotobeleid",
+      "title": ["Foto's en", "video's"],
+      "photo": "/images/headers/terras-overkapping.jpg",
+      "position": [50, 40],
+      "alt": "Een overdekt terras met picknicktafels onder een zeil bij de camping."
+    }
+  ],
+  "albums": {
+    "sticker": "Foto's",
+    "keyPrefix": "fotos-",
+    "defaultPosition": [50, 30],
+    "overrides": {
+      "camping": {
+        "position": [50, 100],
+        "alt": "Het houten welkomstbord van Kriemelberg Bushcamp, met een metalen wild zwijn ervoor."
+      },
+      "zomer-2026": {
+        "position": [50, 30],
+        "alt": "Een teamlid in een geel shirt loopt over de camping richting de tenten."
+      }
+    }
+  },
+  "fallback": "home"
+}
