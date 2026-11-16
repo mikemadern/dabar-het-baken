@@ -107,7 +107,8 @@ const clubs = [
         <p class="mt-4 text-stone-600">
           Zes weken per jaar is Dabar Het Baken aanwezig op de camping. Van kinderclub tot
           gesprek onder volwassenen: er is voor elke leeftijd een eigen plek om mee te doen
-          — en, voor wie dat wil, ook het gesprek over geloof aan te gaan.
+          — en, voor wie dat wil, ook het gesprek over geloof aan te gaan. Benieuwd hoe dat
+          eruitziet? Bekijk de <NuxtLink to="/fotos" class="font-semibold text-stone-900 underline decoration-yellow-400 decoration-2 underline-offset-4 hover:text-stone-700">foto's &rarr;</NuxtLink>.
         </p>
       </div>
     </section>

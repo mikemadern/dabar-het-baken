@@ -25,7 +25,9 @@ useSeoMeta({
         </p>
         <p>
           Die aanwezigheid komt voort uit de liefde van Christus. We zoeken mensen op juist
-          waar ze tot rust willen komen — op de camping, in de vakantie.
+          waar ze tot rust willen komen — op de camping, in de vakantie. Wat we op de camping
+          precies doen, lees je bij <NuxtLink to="/activiteiten" class="font-semibold text-stone-900 underline decoration-yellow-400 decoration-2 underline-offset-4 hover:text-stone-700">Activiteiten &rarr;</NuxtLink>. Wil je zelf
+          meehelpen? Dat kan bij <NuxtLink to="/doe-mee" class="font-semibold text-stone-900 underline decoration-yellow-400 decoration-2 underline-offset-4 hover:text-stone-700">Doe mee &rarr;</NuxtLink>.
         </p>
         <p>
           We zijn hier al actief sinds het einde van de vorige eeuw. Daarbij werken we samen
