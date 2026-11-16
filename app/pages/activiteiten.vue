@@ -34,7 +34,7 @@ const clubs = [
     photos: [
       { src: '/images/galerij/raketten-lanceren.jpg', alt: 'Een meisje lanceert een speelgoedraket tijdens Teen Spirit', main: true },
       { src: '/images/galerij/ringwerpen-groepsspel.jpg', alt: 'Groepsspel met ringwerpen op de camping' },
-      { src: '/images/galerij/radslag-actie.jpg', alt: 'Jongens maken een radslag op het gras' },
+      { src: '/images/galerij/radslag-actie.jpg', alt: 'Een jongen in een geel shirt doet een handstand op het gras, naast een ander kind.' },
     ],
   },
   {
