@@ -5,11 +5,11 @@ useSeoMeta({
 })
 
 const roles = [
-  { name: 'Commissielid', requirement: '24 jaar of ouder', description: 'Je denkt het jaar door mee over voorbereiding, uitvoering en evaluatie, vergadert één keer per maand en begeleidt één week per jaar een team op de camping.' },
-  { name: 'Teamlid', requirement: '18 tot 26 jaar', description: 'Je verblijft een bakenweek op de camping, samen met een team van ongeveer negen jongeren, en getuigt er door woord en daad.' },
-  { name: 'Mentor', requirement: '', description: 'Je biedt een team tijdens hun bakenweek dagelijks begeleiding en ondersteuning.' },
-  { name: 'Kerkambassadeur', requirement: '', description: 'Je vertegenwoordigt je kerk, houdt de lijnen kort en helpt mee met de werving van teamleden en fondsen.' },
-  { name: 'Campingpastor', requirement: '', description: 'Je bent er voor gasten die op de camping een luisterend oor, een goed gesprek of gebed zoeken.' },
+  { name: 'Commissielid', anker: 'commissielid', requirement: '24 jaar of ouder', description: 'Je denkt het jaar door mee over voorbereiding, uitvoering en evaluatie, vergadert één keer per maand en begeleidt één week per jaar een team op de camping.' },
+  { name: 'Teamlid', anker: 'teamlid', requirement: '18 tot 26 jaar', description: 'Je verblijft een bakenweek op de camping, samen met een team van ongeveer negen jongeren, en getuigt er door woord en daad.' },
+  { name: 'Mentor', anker: 'mentor', requirement: '', description: 'Je biedt een team tijdens hun bakenweek dagelijks begeleiding en ondersteuning.' },
+  { name: 'Kerkambassadeur', anker: 'kerkambassadeur', requirement: '', description: 'Je vertegenwoordigt je kerk, houdt de lijnen kort en helpt mee met de werving van teamleden en fondsen.' },
+  { name: 'Campingpastor', anker: 'campingpastor', requirement: '', description: 'Je bent er voor gasten die op de camping een luisterend oor, een goed gesprek of gebed zoeken.' },
 ]
 
 const churches = [
@@ -85,6 +85,7 @@ const churches = [
         <div class="grid gap-5 sm:grid-cols-2">
           <div
             v-for="role in roles"
+            :id="role.anker"
             :key="role.name"
             class="rounded-2xl border border-stone-200 bg-white p-6 shadow-sm"
           >

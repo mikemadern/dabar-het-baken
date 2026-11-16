@@ -18,12 +18,13 @@ const activiteitenChips = [
   "Sing-In",
   "Campingpastoraat",
 ];
+// Labels in het blok Doe mee: elk is een link naar de rol op /doe-mee (de id's staan daar)
 const doeMeeChips = [
-  "Commissielid 24+",
-  "Teamlid 18-26",
-  "Mentor",
-  "Kerkambassadeur",
-  "Campingpastor",
+  { label: "Commissielid 24+", anker: "commissielid", aria: "Commissielid 24+: lees meer op Doe mee" },
+  { label: "Teamlid 18-26", anker: "teamlid", aria: "Teamlid 18-26: lees meer op Doe mee" },
+  { label: "Mentor", anker: "mentor", aria: "Mentor: lees meer op Doe mee" },
+  { label: "Kerkambassadeur", anker: "kerkambassadeur", aria: "Kerkambassadeur: lees meer op Doe mee" },
+  { label: "Campingpastor", anker: "campingpastor", aria: "Campingpastor: lees meer op Doe mee" },
 ];
 // Tegels bij Activiteiten: elke tegel linkt naar het onderdeel op /activiteiten (id's staan daar)
 const activiteitenTegels = [
@@ -351,18 +352,20 @@ const activiteitenTegels = [
             campingpastors en commissieleden van 24 jaar en ouder.
           </p>
           <div class="mt-6 flex flex-wrap gap-2">
-            <span
+            <NuxtLink
               v-for="(chip, i) in doeMeeChips"
-              :key="chip"
-              class="rounded-full px-2.5 py-1 text-xs font-semibold"
+              :key="chip.anker"
+              :to="`/doe-mee#${chip.anker}`"
+              :aria-label="chip.aria"
+              class="relative rounded-full px-2.5 py-1 text-xs font-semibold transition-colors after:absolute after:inset-x-0 after:-inset-y-2.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-stone-900"
               :class="
                 i % 2 === 0
-                  ? 'bg-yellow-100 text-yellow-800'
-                  : 'bg-sky-100 text-sky-800'
+                  ? 'bg-yellow-100 text-yellow-800 hover:bg-yellow-300'
+                  : 'bg-sky-100 text-sky-800 hover:bg-sky-200'
               "
             >
-              {{ chip }}
-            </span>
+              {{ chip.label }}
+            </NuxtLink>
           </div>
           <NuxtLink
             to="/doe-mee"
