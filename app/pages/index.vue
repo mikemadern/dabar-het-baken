@@ -357,7 +357,7 @@ const activiteitenTegels = [
               :key="chip.anker"
               :to="`/doe-mee#${chip.anker}`"
               :aria-label="chip.aria"
-              class="relative rounded-full px-2.5 py-1 text-xs font-semibold transition-colors after:absolute after:inset-x-0 after:-inset-y-2.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-stone-900"
+              class="relative rounded-full px-2.5 py-1 text-xs font-semibold transition-[background-color] after:absolute after:inset-x-0 after:-inset-y-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-stone-900"
               :class="
                 i % 2 === 0
                   ? 'bg-yellow-100 text-yellow-800 hover:bg-yellow-300'
