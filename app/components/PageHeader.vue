@@ -1,5 +1,5 @@
 <script setup lang="ts">
-withDefaults(
+const props = withDefaults(
   defineProps<{
     image: string;
     imageAlt?: string;
@@ -12,6 +12,10 @@ withDefaults(
     labelColor: "yellow",
   }
 );
+
+// De kopafbeelding is de hoofdafbeelding van de pagina in de gestructureerde data (JSON-LD),
+// in plaats van het logo. Dit is één afbeelding per pagina; geen ImageGallery en geen foto's in de sitemap.
+useSchemaOrg([defineWebPage({ primaryImageOfPage: props.image })]);
 </script>
 
 <template>
