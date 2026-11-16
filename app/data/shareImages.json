@@ -32,7 +32,7 @@
       "key": "programma",
       "path": "/programma",
       "sticker": "Dabar Het Baken",
-      "title": ["Weken op de camping"],
+      "title": ["Weken op", "de camping"],
       "photo": "/images/galerij/broodjebakken-groep.jpg",
       "position": [50, 30],
       "alt": "Kinderen bakken broodjes boven het vuur."
@@ -43,7 +43,7 @@
       "sticker": "Doe mee",
       "title": ["Word onderdeel", "van het team"],
       "photo": "/images/galerij/team-groepsfoto-juichend.jpg",
-      "position": [50, 80],
+      "position": [50, 100],
       "alt": "Een grote groep mensen steekt de armen omhoog voor de foto."
     },
     {
@@ -86,7 +86,7 @@
       "key": "fotobeleid",
       "path": "/fotobeleid",
       "sticker": "Fotobeleid",
-      "title": ["Foto's en", "video's"],
+      "title": ["Foto's en video's"],
       "photo": "/images/headers/terras-overkapping.jpg",
       "position": [50, 40],
       "alt": "Een overdekt terras met picknicktafels onder een zeil bij de camping."
