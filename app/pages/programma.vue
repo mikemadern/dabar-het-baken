@@ -36,8 +36,8 @@ const tekstlinkKlasse =
   <div>
     <PageHeader
       image="/images/galerij/broodjebakken-groep.jpg"
-      label="Programma 2027"
-      title="Op de camping in 2027"
+      label="Op de camping"
+      title="Het programma van 2027"
     />
 
     <section class="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-20">
