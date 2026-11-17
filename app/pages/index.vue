@@ -65,7 +65,7 @@ const doeMeeChips = [
             to="/activiteiten"
             class="rounded-full bg-yellow-400 px-6 py-3 text-sm font-semibold text-stone-900 hover:bg-yellow-300 transition-colors"
           >
-            Programma voor gasten
+            Bekijk de activiteiten
           </NuxtLink>
           <NuxtLink
             to="/doe-mee"

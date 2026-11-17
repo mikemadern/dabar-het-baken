@@ -33,7 +33,7 @@ const churches = [
       <div class="mx-auto max-w-6xl px-4 sm:px-6">
         <div class="grid gap-12 lg:grid-cols-2 lg:items-center">
           <div>
-            <StickerLabel color="blue" rotate="right" class="mb-4">Zoekt teamleden voor 2026</StickerLabel>
+            <StickerLabel color="blue" rotate="right" class="mb-4">Zoekt teamleden</StickerLabel>
             <p class="text-lg text-stone-600">
               Dabar Het Baken draait volledig op vrijwilligers — mensen die tijd, aandacht
               en geloof willen delen met gasten op de camping.
