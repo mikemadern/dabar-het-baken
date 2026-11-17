@@ -1,5 +1,17 @@
+import { existsSync, readdirSync } from 'node:fs'
+import { fileURLToPath } from 'node:url'
 import tailwindcss from '@tailwindcss/vite'
 import { albums } from './app/data/albums'
+
+// De jaarverslag-PDF's (public/documenten/jaarverslag-<jaar>.pdf) komen niet in zoekmachines: een regel
+// per bestand, zodat een nieuw jaarverslag er vanzelf bij komt. De rest van public/documenten (de
+// vacature-PDF) blijft indexeerbaar, en de pagina /jaarverslagen ook.
+const documentenMap = fileURLToPath(new URL('./public/documenten', import.meta.url))
+const jaarverslagenNoindex = Object.fromEntries(
+  (existsSync(documentenMap) ? readdirSync(documentenMap) : [])
+    .filter((bestand) => /^jaarverslag-.+\.pdf$/.test(bestand))
+    .map((bestand) => [`/documenten/${bestand}`, { headers: { 'X-Robots-Tag': 'noindex' } }]),
+)
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
@@ -71,6 +83,7 @@ export default defineNuxtConfig({
     screens: { xxs: 320, xs: 480 },
     vercel: { minimumCacheTTL: 60 * 60 * 24 * 7 },
   },
+  routeRules: jaarverslagenNoindex,
   devtools: { enabled: true },
   compatibilityDate: '2024-04-03',
   css: ['~/assets/css/main.css'],
