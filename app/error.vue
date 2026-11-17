@@ -33,7 +33,7 @@ const goHome = () => clearError({ redirect: '/' })
 const links = [
   { to: '/missie', label: 'Missie' },
   { to: '/activiteiten', label: 'Activiteiten' },
-  { to: '/programma', label: 'Programma 2026' },
+  { to: '/programma', label: 'Programma 2027' },
   { to: '/fotos', label: "Foto's" },
   { to: '/steun-ons', label: 'Steun ons' },
   { to: '/doe-mee', label: 'Doe mee' },
