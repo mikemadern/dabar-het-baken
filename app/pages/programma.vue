@@ -28,6 +28,21 @@ const statusKlasse: Record<Status, string> = {
   ruimte: 'bg-yellow-400 text-stone-900',
 }
 
+// De aanmeldpagina van de IZB: de gele knop en het statuswoord "Nog plek in het team" gaan hierheen
+const aanmeldLink = 'https://www.izb.nl/dabar/camping/registratie-eerste-keer/32836'
+
+// "za 17 juli t/m vr 23 juli" wordt "17 tot 23 juli"; over een maandwissel "31 juli tot 6 augustus"
+function periode(datum: string) {
+  const m = datum.match(/(\d+) (\w+) t\/m vr (\d+) (\w+)/)
+  if (!m) return datum
+  const [, van, vanMaand, tot, totMaand] = m
+  return vanMaand === totMaand ? `${van} tot ${tot} ${totMaand}` : `${van} ${vanMaand} tot ${tot} ${totMaand}`
+}
+
+// De week staat in de naam, want de IZB-link zelf bevat geen week. Het zichtbare woord staat vooraan.
+const statusLinkNaam = (week: { naam: string, datum: string }) =>
+  `Nog plek in het team voor ${week.naam}, ${periode(week.datum)}. Meld je aan op de pagina van de IZB (opent in een nieuw tabblad)`
+
 const tekstlinkKlasse =
   'font-semibold text-stone-900 underline decoration-yellow-400 decoration-2 underline-offset-4 hover:text-stone-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-stone-900'
 </script>
@@ -62,7 +77,20 @@ const tekstlinkKlasse =
           <span class="order-3 basis-full text-stone-600 sm:order-none sm:basis-auto">
             {{ week.datum }}
           </span>
+          <!-- Alleen "Nog plek in het team" is een link; het label ziet er hetzelfde uit als de tekst "Teamplaatsen vol" -->
+          <a
+            v-if="week.status === 'ruimte'"
+            :href="aanmeldLink"
+            target="_blank"
+            rel="noopener"
+            :aria-label="statusLinkNaam(week)"
+            class="order-2 cursor-pointer whitespace-nowrap rounded-full px-3 py-1 text-sm font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-stone-900 sm:order-none"
+            :class="statusKlasse[week.status]"
+          >
+            {{ statusTekst[week.status] }}
+          </a>
           <span
+            v-else
             class="order-2 whitespace-nowrap rounded-full px-3 py-1 text-sm font-semibold sm:order-none"
             :class="statusKlasse[week.status]"
           >
@@ -73,7 +101,7 @@ const tekstlinkKlasse =
 
       <div class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-4">
         <a
-          href="https://www.izb.nl/dabar/camping/registratie-eerste-keer/32836"
+          :href="aanmeldLink"
           target="_blank"
           rel="noopener"
           class="rounded-full bg-yellow-400 px-6 py-3 text-sm font-semibold text-stone-900 hover:bg-yellow-300 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-stone-900"
