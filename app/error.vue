@@ -19,8 +19,8 @@ const intro = computed(() =>
 // Het titelsjabloon (sitenaam erachter) wordt op de foutpagina niet toegepast, dus die staat hier erin.
 useSeoMeta({
   title: isNotFound.value
-    ? 'Pagina niet gevonden — Dabar Het Baken'
-    : 'Er ging iets mis — Dabar Het Baken',
+    ? 'Pagina niet gevonden | Dabar Het Baken'
+    : 'Er ging iets mis | Dabar Het Baken',
   description: isNotFound.value
     ? 'Deze pagina bestaat niet of is verplaatst. Ga naar de startpagina van Dabar Het Baken of kies een andere pagina.'
     : 'Er ging iets mis op deze pagina van Dabar Het Baken. Ga naar de startpagina of kies een andere pagina.',

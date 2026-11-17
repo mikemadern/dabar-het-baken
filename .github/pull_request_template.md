@@ -25,7 +25,7 @@ De milestone neemt de PR automatisch over van het issue; heeft het issue er geen
 
 ### Alleen bij foto's
 
-- [ ] Elke foto is rechtstreeks bekeken — niet op bestandsnummer vertrouwd
+- [ ] Elke foto is rechtstreeks bekeken, niet op bestandsnummer vertrouwd
 - [ ] Foto's zijn verkleind (max. 2000 px breed) en geen ruwe originelen toegevoegd
 - [ ] Past binnen het [fotobeleid](https://github.com/mikemadern/dabar-het-baken/blob/develop/app/pages/fotobeleid.vue)
 

@@ -21,4 +21,4 @@ body:
     id: afronding
     attributes:
       label: Wanneer is het klaar?
-      description: Optioneel — een korte lijst van wat er af moet zijn.
+      description: "Optioneel: een korte lijst van wat er af moet zijn."

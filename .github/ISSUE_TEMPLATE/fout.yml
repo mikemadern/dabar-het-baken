@@ -20,4 +20,4 @@ body:
     id: extra
     attributes:
       label: Extra informatie
-      description: Screenshot, link of browser — alles wat helpt om het na te bootsen.
+      description: "Screenshot, link of browser: alles wat helpt om het na te bootsen."

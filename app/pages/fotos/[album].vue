@@ -33,7 +33,7 @@ const sharePhoto = computed(() =>
     : undefined,
 )
 useSeoMeta({
-  title: `${album.title} — Foto's`,
+  title: `${album.title} | Foto's`,
   description: () => linkedPhoto.value?.alt ?? album.description,
   ogImage: () => sharePhoto.value,
   twitterImage: () => sharePhoto.value,
@@ -132,7 +132,7 @@ function showNotice(text: string) {
 // link kopiëren. Het adres in de adresbalk is altijd dat van de getoonde foto.
 async function share() {
   if (!currentPhoto.value) return
-  const data = { title: `${album!.title} — Dabar Het Baken`, text: currentPhoto.value.alt, url: window.location.href }
+  const data = { title: `${album!.title} | Dabar Het Baken`, text: currentPhoto.value.alt, url: window.location.href }
   if (navigator.share) {
     try {
       await navigator.share(data)

@@ -2,7 +2,7 @@
 import { albums } from "~/data/albums";
 
 useSeoMeta({
-  title: 'Dabar Het Baken — evangelisatie door recreatie',
+  title: 'Dabar Het Baken | evangelisatie door recreatie',
   titleTemplate: '%s',
   description: 'Dabar Het Baken is een interkerkelijke evangelisatie- en recreatiecommissie op Camping Kriemelberg Bushcamp in Ermelo: zes weken per jaar, voor gasten van jong tot oud.',
 });
@@ -110,7 +110,7 @@ const doeMeeChips = [
             <p>
               Al sinds het einde van de vorige eeuw staat er een team in gele
               shirts op Camping Kriemelberg Bushcamp in Ermelo. Niet om te
-              overtuigen, maar om er gewoon te zijn — tussen de tenten, op het
+              overtuigen, maar om er gewoon te zijn: tussen de tenten, op het
               terras, bij de receptie.
             </p>
             <p>
@@ -311,21 +311,21 @@ const doeMeeChips = [
             Met tijd, gebed of een gift
           </h2>
           <p class="mt-4 text-stone-600 leading-relaxed">
-            Dabar Het Baken draait volledig op vrijwilligers en giften — er is
+            Dabar Het Baken draait volledig op vrijwilligers en giften. Er is
             geen betaald personeel. Elke bijdrage komt direct ten goede aan het
             team en de bezoekers op de camping.
           </p>
           <ul class="mt-6 space-y-2 text-sm text-stone-700">
             <li class="flex gap-2">
-              <span class="text-yellow-500">&bull;</span> Tijd — word
+              <span class="text-yellow-500">&bull;</span> Tijd: word
               vrijwilliger of teamlid.
             </li>
             <li class="flex gap-2">
-              <span class="text-yellow-500">&bull;</span> Gebed — draag het team
+              <span class="text-yellow-500">&bull;</span> Gebed: draag het team
               en de gasten in gedachten mee.
             </li>
             <li class="flex gap-2">
-              <span class="text-yellow-500">&bull;</span> Gift — gewoon of
+              <span class="text-yellow-500">&bull;</span> Gift: gewoon of
               fiscaal aftrekbaar via de IZB, of een muntje in de rode
               telefooncel bij de receptie.
             </li>

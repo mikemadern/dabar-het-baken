@@ -35,7 +35,7 @@ const churches = [
           <div>
             <StickerLabel color="blue" rotate="right" class="mb-4">Zoekt teamleden</StickerLabel>
             <p class="text-lg text-stone-600">
-              Dabar Het Baken draait volledig op vrijwilligers — mensen die tijd, aandacht
+              Dabar Het Baken draait volledig op vrijwilligers: mensen die tijd, aandacht
               en geloof willen delen met gasten op de camping.
             </p>
             <div class="mt-6 space-y-4 text-stone-700 leading-relaxed">
@@ -43,7 +43,7 @@ const churches = [
                 Als interkerkelijke evangelisatie- en recreatiecommissie organiseren we
                 jaarlijks de bakenweken op Camping Kriemelberg Bushcamp in Ermelo. De
                 voorbereiding daarvoor loopt het hele jaar door, en elk jaar is opnieuw een
-                team nodig — en mensen die dat team voorbereiden, begeleiden en dragen.
+                team nodig, en mensen die dat team voorbereiden, begeleiden en dragen.
               </p>
               <p>
                 Er is op meerdere plekken ruimte om aan te sluiten, van een enkele week op
@@ -101,7 +101,7 @@ const churches = [
             href="mailto:dabarhetbaken@gmail.com"
             class="inline-block rounded-full bg-yellow-400 px-5 py-3 text-sm font-semibold text-stone-900 hover:bg-yellow-300 transition-colors"
           >
-            Neem contact op — dabarhetbaken@gmail.com
+            Neem contact op: dabarhetbaken@gmail.com
           </a>
           <a
             href="/documenten/vacature-commissielid.pdf"

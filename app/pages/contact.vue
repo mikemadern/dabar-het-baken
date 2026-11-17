@@ -44,9 +44,9 @@ function sendMessage() {
           <h2 class="text-sm font-semibold uppercase tracking-wide text-stone-500">Dabar Het Baken</h2>
           <ul class="mt-4 space-y-2 text-stone-700">
             <li><a href="mailto:dabarhetbaken@gmail.com" class="font-semibold text-stone-900 underline decoration-yellow-400 decoration-2 underline-offset-4">dabarhetbaken@gmail.com</a></li>
-            <li><a href="https://www.facebook.com/baken.harderwijk/" target="_blank" rel="noopener" class="hover:text-stone-950">Facebook — baken.harderwijk</a></li>
-            <li><a href="https://www.instagram.com/baken_harderwijk/" target="_blank" rel="noopener" class="hover:text-stone-950">Instagram — baken_harderwijk</a></li>
-            <li><a href="https://www.youtube.com/@bakenharderwijk7193" target="_blank" rel="noopener" class="hover:text-stone-950">YouTube — bakenharderwijk7193</a></li>
+            <li><a href="https://www.facebook.com/baken.harderwijk/" target="_blank" rel="noopener" class="hover:text-stone-950">Facebook: baken.harderwijk</a></li>
+            <li><a href="https://www.instagram.com/baken_harderwijk/" target="_blank" rel="noopener" class="hover:text-stone-950">Instagram: baken_harderwijk</a></li>
+            <li><a href="https://www.youtube.com/@bakenharderwijk7193" target="_blank" rel="noopener" class="hover:text-stone-950">YouTube: bakenharderwijk7193</a></li>
           </ul>
         </div>
         <div class="rounded-2xl border border-stone-200 bg-white p-6 shadow-sm">

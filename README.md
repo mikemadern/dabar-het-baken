@@ -35,6 +35,7 @@ app/data/albums.ts   de fotoalbums
 app/data/shareImages.json  per pagina label, titel, foto, uitsnede en alt van de deelafbeelding
 app/composables/     useShareImage: kiest de deelafbeelding bij de pagina
 scripts/og/          het script dat de deelafbeeldingen maakt en controleert (maak.mjs, check.mjs, manifest.json)
+scripts/geen-em-dash.mjs  controleert dat er geen lang gedachtestreepje in app/, content/ en public/ staat (draait in npm run build)
 app/assets/css/      Tailwind-instellingen, kleuren en lettertypen
 public/images/       afbeeldingen (galerij/ en headers/)
 public/og/           de deelafbeeldingen bij het delen van een link, één per pagina en per album (1200 × 630)

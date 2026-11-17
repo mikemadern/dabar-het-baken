@@ -30,7 +30,7 @@ export default defineNuxtConfig({
       'Interkerkelijke evangelisatie- en recreatiecommissie op Camping Kriemelberg Bushcamp in Ermelo.',
     // Met regio, zodat ook og:locale (nl_NL) wordt gezet; <html lang> wordt "nl-NL"
     defaultLocale: 'nl-NL',
-    separator: '—',
+    separator: '|',
   },
   schemaOrg: {
     identity: {
