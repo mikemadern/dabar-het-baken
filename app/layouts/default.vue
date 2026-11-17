@@ -48,7 +48,7 @@ useSeoMeta({
       class="sticky top-0 z-50 border-b border-stone-200 bg-white/95 backdrop-blur"
     >
       <div
-        class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6"
+        class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 max-[330px]:gap-2 sm:px-6"
       >
         <NuxtLink to="/" class="flex items-center gap-2 shrink-0">
           <img
