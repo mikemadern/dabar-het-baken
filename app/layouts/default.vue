@@ -48,7 +48,7 @@ useSeoMeta({
       class="sticky top-0 z-50 border-b border-stone-200 bg-white/95 backdrop-blur"
     >
       <div
-        class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 max-[330px]:gap-2 sm:px-6"
+        class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 max-[341px]:gap-2 sm:px-6"
       >
         <NuxtLink to="/" class="flex items-center gap-2 shrink-0">
           <img
@@ -56,7 +56,7 @@ useSeoMeta({
             alt="Het Baken"
             width="1402"
             height="333"
-            class="h-9 w-auto sm:h-10"
+            class="h-9 w-auto max-[333px]:h-auto max-[333px]:w-[calc(100vw-181.4px)] sm:h-10"
           />
         </NuxtLink>
         <nav
