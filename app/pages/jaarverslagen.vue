@@ -5,13 +5,13 @@ useSeoMeta({
 })
 
 const reports = [
-  { year: '2024', href: 'https://bakenharderwijk.nl/wp-content/uploads/2025/05/Jaarverslag-2024.pdf' },
-  { year: '2022', href: 'https://bakenharderwijk.nl/wp-content/uploads/2023/03/Jaarverslag-2022.pdf' },
-  { year: '2021', href: 'https://bakenharderwijk.nl/wp-content/uploads/2023/03/Jaarverslag-2021.pdf' },
-  { year: '2020', href: 'https://bakenharderwijk.nl/wp-content/uploads/2023/03/Jaarverslag-2020.pdf' },
-  { year: '2019', href: 'https://bakenharderwijk.nl/wp-content/uploads/2023/03/Jaarverslag-2019.pdf' },
-  { year: '2018', href: 'https://bakenharderwijk.nl/wp-content/uploads/2023/03/Jaarverslag-2018.pdf' },
-  { year: '2017', href: 'https://bakenharderwijk.nl/wp-content/uploads/2023/03/Jaarverslag-2017.pdf' },
+  { year: '2024', href: '/documenten/jaarverslag-2024.pdf' },
+  { year: '2022', href: '/documenten/jaarverslag-2022.pdf' },
+  { year: '2021', href: '/documenten/jaarverslag-2021.pdf' },
+  { year: '2020', href: '/documenten/jaarverslag-2020.pdf' },
+  { year: '2019', href: '/documenten/jaarverslag-2019.pdf' },
+  { year: '2018', href: '/documenten/jaarverslag-2018.pdf' },
+  { year: '2017', href: '/documenten/jaarverslag-2017.pdf' },
 ]
 </script>
 
