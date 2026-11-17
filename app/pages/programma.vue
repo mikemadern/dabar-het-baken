@@ -1,36 +1,32 @@
 <script setup lang="ts">
-// CONCEPT 2027: de datums en de beschikbaarheid zijn nog niet bekend.
-// Vervang [datum t.b.c.] en zet de status zodra de eigenaar ze aanlevert.
+// Programma 2027: datums en status volgens de IZB-pagina van de camping.
+// De status staat in woorden, zonder aantallen: aantallen veranderen snel en staan op de IZB-pagina.
 useSeoMeta({
   title: 'Programma 2027: weken op de camping',
-  description: 'Het programma van Dabar Het Baken voor 2027 op Camping Kriemelberg Bushcamp in Ermelo. De datums zijn nog niet bekend; kom terug zodra de weken vast staan.',
+  description: 'Het programma van Dabar Het Baken in 2027 op Camping Kriemelberg Bushcamp in Ermelo: de meivakantie en vijf zomerweken, van 24 april t/m 20 augustus 2027.',
 })
 
-// status: 'gesloten' = "Teamplaatsen vol", 'ruimte' = "Nog plek in het team", null = nog niet bekend
-type Status = 'gesloten' | 'ruimte' | null
+// status: 'gesloten' = "Teamplaatsen vol" (de teamplaatsen zijn vol, niet de camping), 'ruimte' = "Nog plek in het team"
+type Status = 'gesloten' | 'ruimte'
 
 const weken: { naam: string, datum: string, status: Status }[] = [
-  { naam: 'Meivakantie', datum: '[datum t.b.c.]', status: null },
-  { naam: 'Zomerweek 1', datum: '[datum t.b.c.]', status: null },
-  { naam: 'Zomerweek 2', datum: '[datum t.b.c.]', status: null },
-  { naam: 'Zomerweek 3', datum: '[datum t.b.c.]', status: null },
-  { naam: 'Zomerweek 4', datum: '[datum t.b.c.]', status: null },
-  { naam: 'Zomerweek 5', datum: '[datum t.b.c.]', status: null },
+  { naam: 'Meivakantie', datum: 'za 24 april t/m vr 30 april', status: 'gesloten' },
+  { naam: 'Zomerweek 1', datum: 'za 17 juli t/m vr 23 juli', status: 'ruimte' },
+  { naam: 'Zomerweek 2', datum: 'za 24 juli t/m vr 30 juli', status: 'ruimte' },
+  { naam: 'Zomerweek 3', datum: 'za 31 juli t/m vr 6 augustus', status: 'ruimte' },
+  { naam: 'Zomerweek 4', datum: 'za 7 augustus t/m vr 13 augustus', status: 'ruimte' },
+  { naam: 'Zomerweek 5', datum: 'za 14 augustus t/m vr 20 augustus', status: 'ruimte' },
 ]
 
-const statusTekst: Record<'gesloten' | 'ruimte' | 'onbekend', string> = {
+const statusTekst: Record<Status, string> = {
   gesloten: 'Teamplaatsen vol',
   ruimte: 'Nog plek in het team',
-  onbekend: '[status t.b.c.]',
 }
 
-const statusKlasse: Record<'gesloten' | 'ruimte' | 'onbekend', string> = {
+const statusKlasse: Record<Status, string> = {
   gesloten: 'bg-stone-200 text-stone-700',
   ruimte: 'bg-yellow-400 text-stone-900',
-  onbekend: 'border border-dashed border-stone-300 text-stone-600',
 }
-
-const statusSleutel = (status: Status) => status ?? 'onbekend'
 
 const tekstlinkKlasse =
   'font-semibold text-stone-900 underline decoration-yellow-400 decoration-2 underline-offset-4 hover:text-stone-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-stone-900'
@@ -46,13 +42,11 @@ const tekstlinkKlasse =
 
     <section class="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-20">
       <p class="text-lg text-stone-600">
-        Het programma voor 2027 op Camping Kriemelberg Bushcamp in Ermelo komt hier te staan. De datums voor 2027 zijn nog niet bekend. Zodra ze vast staan, zie je hier welke weken er zijn en hoe je je aanmeldt voor een team.
+        In 2027 is Dabar Het Baken op Camping Kriemelberg Bushcamp in Ermelo: de meivakantieweek en vijf zomerweken. Bekijk de weken hieronder en meld je aan voor een team.
       </p>
 
-      <!-- Pas tonen zodra er voor minstens één week een status is: voor 2027 is die nog niet bekend. -->
-      <p v-if="weken.some((week) => week.status)" class="mt-4 text-stone-700 leading-relaxed">
-        Voor sommige weken zijn de teamplaatsen al vol, voor andere is nog plek. Meld je snel aan
-        als je mee wilt draaien in een team.
+      <p class="mt-4 text-stone-700 leading-relaxed">
+        Voor de meivakantie zijn de teamplaatsen al vol. Voor de zomerweken is er nog plek in het team. Meld je aan als je mee wilt draaien in een team.
       </p>
 
       <ul class="mt-10 space-y-3">
@@ -70,17 +64,16 @@ const tekstlinkKlasse =
           </span>
           <span
             class="order-2 whitespace-nowrap rounded-full px-3 py-1 text-sm font-semibold sm:order-none"
-            :class="statusKlasse[statusSleutel(week.status)]"
+            :class="statusKlasse[week.status]"
           >
-            {{ statusTekst[statusSleutel(week.status)] }}
+            {{ statusTekst[week.status] }}
           </span>
         </li>
       </ul>
 
       <div class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-4">
-        <!-- CONCEPT: deze aanmeldlink is die van 2026. De link voor 2027 moet nog komen. -->
         <a
-          href="https://www.izb.nl/dabar/camping?relation_id=32836"
+          href="https://www.izb.nl/dabar/camping/registratie-eerste-keer/32836"
           target="_blank"
           rel="noopener"
           class="rounded-full bg-yellow-400 px-6 py-3 text-sm font-semibold text-stone-900 hover:bg-yellow-300 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-stone-900"
