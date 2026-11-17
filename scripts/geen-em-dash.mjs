@@ -1,5 +1,5 @@
 // Controleert dat er geen lang gedachtestreepje (em dash) in de tekst van de site staat: niet het teken zelf,
-// niet &mdash;, &#8212; of &#x2014; en niet als —. Gebruik een komma, punt, dubbele punt of haakjes,
+// niet &mdash;, &#8212; of &#x2014; en niet als \u2014. Gebruik een komma, punt, dubbele punt of haakjes,
 // en ' | ' tussen delen van een titel. Het korte streepje (en dash) en het koppelteken mogen wel.
 // Zoekt in app/, content/ en public/ (waar die bestaan), alleen in tekstbestanden. Draait zonder extra
 // pakketten, vóór de build (npm run build) en dus ook in de CI.
@@ -8,7 +8,7 @@ import { join, relative } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 const wortel = fileURLToPath(new URL('..', import.meta.url))
-const EM_DASH = /—|&mdash;|&#8212;|&#x2014;|\\u2014/i
+const EM_DASH = /\u2014|&mdash;|&#8212;|&#x2014;|\\u2014/i
 const TEKST_BESTAND = /\.(md|vue|ts|mjs|js|json|ya?ml|svg|txt|html|css|xml)$/
 const fouten = []
 
