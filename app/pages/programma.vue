@@ -2,7 +2,7 @@
 // Programma 2027: datums en status volgens de IZB-pagina van de camping.
 // De status staat in woorden, zonder aantallen: aantallen veranderen snel en staan op de IZB-pagina.
 useSeoMeta({
-  title: 'Programma 2027: weken op de camping',
+  title: 'Het programma van 2027 op de camping',
   description: 'Het programma van Dabar Het Baken in 2027 op Camping Kriemelberg Bushcamp in Ermelo: de meivakantie en vijf zomerweken, van 24 april t/m 20 augustus 2027.',
 })
 
