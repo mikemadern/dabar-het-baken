@@ -96,5 +96,32 @@ const tekstlinkKlasse =
         </a>
       </div>
     </section>
+
+    <!-- Wat er in de weken gebeurt: dezelfde tegels als op de homepage -->
+    <section class="bg-stone-50 py-16 sm:py-20" aria-labelledby="activiteiten-kop">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6">
+        <div class="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between lg:gap-8">
+          <div>
+            <StickerLabel rotate="right" class="mb-3">Activiteiten</StickerLabel>
+            <h2 id="activiteiten-kop" class="text-3xl font-bold tracking-tight sm:text-4xl">
+              Wat er in de weken gebeurt
+            </h2>
+            <p class="mt-4 text-stone-600 leading-relaxed">
+              Elke ochtend is er een club per leeftijdsgroep, op zondagavond de Sing-In, en de hele week door aandacht voor volwassenen.
+            </p>
+          </div>
+          <NuxtLink
+            to="/activiteiten"
+            :class="tekstlinkKlasse"
+            class="shrink-0"
+          >
+            Bekijk alle activiteiten &rarr;
+          </NuxtLink>
+        </div>
+        <div class="mt-8 lg:mt-10">
+          <ActiviteitenTegels rij />
+        </div>
+      </div>
+    </section>
   </div>
 </template>
