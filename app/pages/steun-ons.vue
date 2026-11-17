@@ -89,8 +89,8 @@ onBeforeUnmount(() => {
         <div class="grid gap-y-4 lg:grid-cols-2 lg:grid-rows-[auto_auto_1fr] lg:items-start lg:gap-x-12 lg:gap-y-0">
           <div class="lg:col-start-1 lg:row-start-1">
             <p class="text-lg text-stone-600">
-              Ons werk op de camping bestaat bij de gratie van vrijwilligers en giften —
-              elke bijdrage komt direct ten goede aan het team en de bezoekers.
+              Ons werk op de camping bestaat bij de gratie van vrijwilligers en giften.
+              Elke bijdrage komt direct ten goede aan het team en de bezoekers.
             </p>
             <p class="mt-4 text-stone-700 leading-relaxed">
               Je gift gaat naar het clubwerk voor kinderen en jongeren en naar de teams op de camping.
@@ -139,7 +139,7 @@ onBeforeUnmount(() => {
             <div class="space-y-4 text-stone-700 leading-relaxed">
               <p>
                 Dabar Het Baken draait volledig op vrijwilligers en op giften. Er is geen
-                betaald personeel en geen vaste financiering — alles wat we doen wordt
+                betaald personeel en geen vaste financiering. Alles wat we doen wordt
                 mogelijk gemaakt door mensen die meehelpen of meegeven.
               </p>
               <p>
@@ -153,7 +153,7 @@ onBeforeUnmount(() => {
               </p>
               <p>
                 Liever iets tastbaars? Bij de receptie op de camping staat een opvallende
-                rode telefooncel als spaarpot — gooi er gerust wat in.
+                rode telefooncel als spaarpot. Gooi er gerust wat in.
               </p>
             </div>
           </div>

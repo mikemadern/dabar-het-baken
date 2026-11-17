@@ -13,7 +13,7 @@ const clubs = [
     bg: 'white',
     paragraphs: [
       'Elke ochtend van 9:45 tot 11:30 is er Kinderclub, opgebouwd rond een wekelijks thema met drie "sporen": een verhaal-, een knutsel- en een spelspoor. Op maandag, woensdag en vrijdag heeft het programma een christelijk karakter met een kort gebed en Bijbelverhaal; op dinsdag en donderdag staat een maatschappelijk thema of prentenboek centraal.',
-      'Alle kinderen zijn welkom, ongeacht achtergrond — en aan het einde van de week strijden ze in de wekelijkse kleurwedstrijd om de titel van beste kunstenaar.',
+      'Alle kinderen zijn welkom, ongeacht achtergrond, en aan het einde van de week strijden ze in de wekelijkse kleurwedstrijd om de titel van beste kunstenaar.',
     ],
     photos: [
       { src: '/images/galerij/lydia-kinderclub-kring.jpg', alt: 'Een vrijwilliger leidt een kringgesprek bij de kinderclub', main: true },
@@ -29,7 +29,7 @@ const clubs = [
     bg: 'stone-50',
     paragraphs: [
       'Net iets te oud voor de Kinderclub en nog niet toe aan Chatpoint: voor deze leeftijdsgroep is er Teen Spirit, een dagelijkse ochtendactiviteit gebaseerd op het clubprogramma "Rock Solid" van Youth for Christ.',
-      'De werkvormen zijn speels van aard, maar er is ook ruimte voor verdieping — een mooie overgang tussen de kinderclub en de tienerjaren die volgen.',
+      'De werkvormen zijn speels van aard, maar er is ook ruimte voor verdieping: een mooie overgang tussen de kinderclub en de tienerjaren die volgen.',
     ],
     photos: [
       { src: '/images/galerij/raketten-lanceren.jpg', alt: 'Een meisje lanceert een speelgoedraket tijdens Teen Spirit', main: true },
@@ -45,7 +45,7 @@ const clubs = [
     bg: 'white',
     paragraphs: [
       'Voor tieners is er dagelijks Chatpoint, gebaseerd op "Solid Friends" van Youth for Christ: een mix van gesprek, spel en Bijbel.',
-      'Er is veel ruimte voor de eigen inbreng van de tieners zelf, en voor actuele onderwerpen die hen persoonlijk bezighouden — laagdrempelig, en met veel plezier.',
+      'Er is veel ruimte voor de eigen inbreng van de tieners zelf, en voor actuele onderwerpen die hen persoonlijk bezighouden, laagdrempelig en met veel plezier.',
     ],
     photos: [
       { src: '/images/galerij/kaartspel-bunting-lach.jpg', alt: 'Een lachende jongen in een geel shirt en rode pet houdt twee speelkaarten omhoog bij een kaartspel.', main: true },
@@ -61,7 +61,7 @@ const clubs = [
     bg: 'stone-50',
     paragraphs: [
       'Op zondagavond is er de Sing-In: samenzang gericht op het lofprijzen van God, live begeleid door teamleden op onder meer gitaar en viool.',
-      'Tussen de liederen door zijn er korte overdenkingen die het team gedurende de week heeft voorbereid — een laagdrempelig moment van bezinning, open voor alle campinggasten.',
+      'Tussen de liederen door zijn er korte overdenkingen die het team gedurende de week heeft voorbereid: een laagdrempelig moment van bezinning, open voor alle campinggasten.',
     ],
     photos: [
       { src: '/images/galerij/vioolspeelster-sing-in.jpg', alt: 'Een teamlid speelt viool tijdens de Sing-In', main: true },
@@ -76,7 +76,7 @@ const clubs = [
     color: 'yellow',
     bg: 'white',
     paragraphs: [
-      'Waar het recreatieteam zich vooral richt op kinderen, jongeren en jongvolwassenen, is er voor de volwassen gasten het campingpastoraat — met drie aspecten: pastoraal, diaconaal en missionair.',
+      'Waar het recreatieteam zich vooral richt op kinderen, jongeren en jongvolwassenen, is er voor de volwassen gasten het campingpastoraat, met drie aspecten: pastoraal, diaconaal en missionair.',
       'Dat betekent een luisterend oor (voor gasten én team), een helpende hand, en waar mogelijk een getuigenis van hun geloof. De campingpastors verzorgen elke week twee avondsluitingen en zoeken actief aansluiting bij volwassenen tijdens activiteiten.',
     ],
     photos: [
@@ -106,8 +106,8 @@ const clubs = [
         </p>
         <p class="mt-4 text-stone-600">
           Zes weken per jaar is Dabar Het Baken aanwezig op de camping. Van kinderclub tot
-          gesprek onder volwassenen: er is voor elke leeftijd een eigen plek om mee te doen
-          — en, voor wie dat wil, ook het gesprek over geloof aan te gaan. Benieuwd hoe dat
+          gesprek onder volwassenen: er is voor elke leeftijd een eigen plek om mee te doen,
+          en, voor wie dat wil, ook het gesprek over geloof aan te gaan. Benieuwd hoe dat
           eruitziet? Bekijk de <NuxtLink to="/fotos" class="font-semibold text-stone-900 underline decoration-yellow-400 decoration-2 underline-offset-4 hover:text-stone-700">foto's &rarr;</NuxtLink>.
         </p>
       </div>

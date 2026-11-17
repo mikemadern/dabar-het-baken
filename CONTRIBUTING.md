@@ -4,10 +4,10 @@ Korte afspraken, zodat `develop` altijd werkend en overzichtelijk blijft.
 
 ## Werkwijze
 
-1. **Issue** — begin met een [issue](https://github.com/mikemadern/dabar-het-baken/issues/new/choose) (fout of wijziging) en geef het een **milestone**.
-2. **Branch** — maak een branch vanaf `develop`, bijvoorbeeld `fix/korte-omschrijving` of `feature/korte-omschrijving`. Direct pushen naar `develop` kan niet.
-3. **Pull request** — open een PR naar `develop` en zet `Closes #<nummer>` in de beschrijving. Volg de checklist in het PR-template.
-4. **Merge** — zodra de checks groen zijn. Alleen *rebase-merge* is ingesteld, en de branch wordt daarna automatisch verwijderd.
+1. **Issue**: begin met een [issue](https://github.com/mikemadern/dabar-het-baken/issues/new/choose) (fout of wijziging) en geef het een **milestone**.
+2. **Branch**: maak een branch vanaf `develop`, bijvoorbeeld `fix/korte-omschrijving` of `feature/korte-omschrijving`. Direct pushen naar `develop` kan niet.
+3. **Pull request**: open een PR naar `develop` en zet `Closes #<nummer>` in de beschrijving. Volg de checklist in het PR-template.
+4. **Merge**: zodra de checks groen zijn. Alleen *rebase-merge* is ingesteld, en de branch wordt daarna automatisch verwijderd.
 
 ## Milestones
 
