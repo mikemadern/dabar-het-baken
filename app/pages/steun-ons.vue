@@ -30,36 +30,16 @@ const mislukt = 'Kopiëren lukt niet. Selecteer het IBAN en kopieer het zelf.'
 const meldingen = reactive<Record<string, string>>({ gewoon: '', anbi: '' })
 const timers: Record<string, ReturnType<typeof setTimeout> | undefined> = {}
 
-// Terugval voor browsers zonder navigator.clipboard (of zonder toestemming): tijdelijk tekstveld
-function kopieerMetTekstveld(tekst: string) {
-  const veld = document.createElement('textarea')
-  veld.value = tekst
-  veld.setAttribute('readonly', '')
-  veld.style.position = 'fixed'
-  veld.style.opacity = '0'
-  document.body.appendChild(veld)
-  veld.select()
-  let gelukt = false
-  try {
-    gelukt = document.execCommand('copy')
-  } catch {
-    gelukt = false
-  }
-  document.body.removeChild(veld)
-  return gelukt
-}
-
 async function kopieer(gift: (typeof giften)[number]) {
+  // navigator.clipboard.writeText is overal beschikbaar (sinds 2020); lukt het niet (geen toestemming, of een
+  // onveilige verbinding), dan staat de melding 'Kopiëren lukt niet' met de uitleg om het IBAN zelf te kopiëren.
   let gelukt = false
   try {
-    if (navigator.clipboard?.writeText) {
-      await navigator.clipboard.writeText(gift.iban)
-      gelukt = true
-    }
+    await navigator.clipboard.writeText(gift.iban)
+    gelukt = true
   } catch {
     gelukt = false
   }
-  if (!gelukt) gelukt = kopieerMetTekstveld(gift.iban)
   meldingen[gift.id] = gelukt ? gift.gelukt : mislukt
   clearTimeout(timers[gift.id])
   timers[gift.id] = setTimeout(() => {
