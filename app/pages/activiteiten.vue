@@ -123,6 +123,9 @@ const clubs = [
       <div class="mx-auto max-w-6xl px-4 sm:px-6">
         <div class="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:items-center lg:gap-16">
           <div :class="i % 2 === 0 ? 'lg:order-1' : 'lg:order-2'" class="lg:col-span-5">
+            <!-- De foto's staan in twee kolommen: elke foto is (schermbreedte min de marges en de tussenruimte) gedeeld door
+                 twee breed, dat is ongeveer 44 procent van de schermbreedte op een telefoon en 46 procent op een tablet,
+                 en vanaf 1024 px ongeveer 203 px (de kolom is dan 5 van de 12). Klopt de indeling niet meer, pas dit aan. -->
             <div class="grid grid-cols-2 gap-3 sm:gap-4" :class="club.photos.length === 3 ? 'grid-rows-2' : 'grid-rows-1'">
               <template v-for="photo in club.photos" :key="photo.src">
                 <NuxtImg
@@ -130,7 +133,7 @@ const clubs = [
                   :alt="photo.alt"
                   :class="photo.main ? 'row-span-2 aspect-[3/4]' : club.photos.length === 3 ? 'aspect-square' : 'aspect-[3/4]'"
                   class="w-full rounded-2xl object-cover"
-                  sizes="280px"
+                  sizes="xxs:44vw xs:46vw md:46vw lg:203px"
                   format="webp"
                   loading="lazy"
                 />
