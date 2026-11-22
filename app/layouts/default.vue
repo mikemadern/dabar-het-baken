@@ -42,6 +42,13 @@ useSeoMeta({
   <div
     class="flex min-h-screen flex-col bg-white text-stone-900 overflow-x-clip"
   >
+    <!-- Sla-over-link voor het toetsenbord: de eerste tab komt hier, zodat de navigatie niet bij elke pagina
+         opnieuw doorlopen hoeft te worden (WCAG 2.4.1). Alleen zichtbaar bij focus. -->
+    <a
+      href="#inhoud"
+      class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-white focus:px-5 focus:py-3 focus:text-sm focus:font-semibold focus:text-stone-900 focus:shadow-lg focus:outline-2 focus:outline-offset-2 focus:outline-stone-900"
+      >Ga naar de inhoud</a
+    >
     <!-- Nav. De wrapper hierboven heeft overflow-x-clip, niet -hidden: hidden maakt er een
          scrollcontainer van en dan blijft deze plakkende header niet bovenaan staan. -->
     <header
@@ -128,7 +135,7 @@ useSeoMeta({
       </nav>
     </header>
 
-    <main class="flex-1">
+    <main id="inhoud" tabindex="-1" class="flex-1 focus:outline-none">
       <slot />
     </main>
 
