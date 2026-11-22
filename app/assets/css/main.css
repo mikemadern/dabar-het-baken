@@ -38,3 +38,12 @@
     font-weight: 600;
   }
 }
+
+/* Lopende tekst op de pagina's Missie, Contact, Jaarverslagen en Activiteiten: niet breder dan 40,5 rem (648 px bij de
+   normale tekstgrootte, ongeveer 65 tekens bij de breedte van een nul in Poppins 16 px, ongeveer 80 gewone letters
+   per regel) in plaats van de 720 px van de kolom (86 tot 91 tekens). rem en niet px, zodat het meeschaalt met de
+   tekstgrootte van het apparaat; de lead (18 px) wordt zo ook smaller. De kolom blijft links uitgelijnd met de kop; op
+   een telefoon is de kolom smaller en verandert er niets. */
+.tekstkolom p {
+  max-inline-size: 40.5rem;
+}

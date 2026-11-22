@@ -28,7 +28,7 @@ function sendMessage() {
       title="Contact"
     />
 
-    <section class="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-20">
+    <section class="tekstkolom mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-20">
       <p class="text-lg text-stone-600">
         Vraag, idee, of zin om mee te doen? We horen graag van je.
       </p>
