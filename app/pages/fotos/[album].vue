@@ -339,6 +339,8 @@ onUnmounted(() => {
             class="hidden"
             format="webp"
             width="1600"
+            fetchpriority="low"
+            decoding="async"
           />
           <p class="absolute bottom-4 left-1/2 -translate-x-1/2 text-sm text-stone-400">
             {{ openIndex + 1 }} / {{ photos.length }}
