@@ -97,6 +97,17 @@ export default defineNuxtConfig({
         'Permissions-Policy': 'camera=(), microphone=(), geolocation=(), payment=()',
       },
     },
+    // Statische bestanden uit public/ hebben geen hash in de naam; Vercel geeft ze 'max-age=0, must-revalidate', waardoor
+    // de browser ze bij elk bezoek opnieuw controleert. Een week bewaren (net als de bewerkte foto's van @nuxt/image):
+    // een vervangen bestand met dezelfde naam is dan hoogstens een week oud bij wie het al had. De PDF's van de
+    // jaarverslagen houden hun noindex.
+    '/images/**': { headers: { 'Cache-Control': 'public, max-age=604800' } },
+    '/og/**': { headers: { 'Cache-Control': 'public, max-age=604800' } },
+    '/documenten/**': { headers: { 'Cache-Control': 'public, max-age=604800' } },
+    '/favicon.ico': { headers: { 'Cache-Control': 'public, max-age=604800' } },
+    '/icon.svg': { headers: { 'Cache-Control': 'public, max-age=604800' } },
+    '/apple-touch-icon.png': { headers: { 'Cache-Control': 'public, max-age=604800' } },
+    '/og-image.jpg': { headers: { 'Cache-Control': 'public, max-age=604800' } },
     ...jaarverslagenNoindex,
   },
   devtools: { enabled: true },
