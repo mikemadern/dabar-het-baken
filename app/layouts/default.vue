@@ -28,13 +28,21 @@ function bijKlik(event: MouseEvent) {
   const pad = event.composedPath();
   if (!pad.includes(mobielMenu.value as EventTarget) && !pad.includes(menuKnop.value as EventTarget)) sluitMenu();
 }
+// Wordt het venster zo breed dat het gewone menu verschijnt (vanaf 1024 px, de `lg` van Tailwind), dan sluit het
+// mobiele menu, zodat het niet openstaat als het venster weer smaller wordt.
+const breedScherm = typeof window === 'undefined' ? null : window.matchMedia('(min-width: 64rem)');
+function bijBreedte(event: MediaQueryListEvent) {
+  if (event.matches) sluitMenu();
+}
 onMounted(() => {
   document.addEventListener('keydown', bijToets);
   document.addEventListener('click', bijKlik);
+  breedScherm?.addEventListener('change', bijBreedte);
 });
 onBeforeUnmount(() => {
   document.removeEventListener('keydown', bijToets);
   document.removeEventListener('click', bijKlik);
+  breedScherm?.removeEventListener('change', bijBreedte);
 });
 
 // Rond icoon voor de sociale-medialinks in de footer: 40 x 40 px, wit bij hover, witte focusomlijning
@@ -143,7 +151,7 @@ useSeoMeta({
         </div>
       </div>
       <nav
-        v-if="mobileMenuOpen"
+        v-show="mobileMenuOpen"
         id="mobiel-menu"
         ref="mobielMenu"
         aria-label="Hoofdmenu"
