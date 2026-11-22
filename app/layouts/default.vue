@@ -44,13 +44,16 @@ useSeoMeta({
   >
     <!-- Nav. De wrapper hierboven heeft overflow-x-clip, niet -hidden: hidden maakt er een
          scrollcontainer van en dan blijft deze plakkende header niet bovenaan staan. -->
+    <!-- Tikvlakken in de kop: de kop wordt niet groter, maar het vlak dat je kunt aanraken wel, met een onzichtbaar
+         `::after` (de `after:`-klassen hieronder). Logo, 'Doe mee' en menuknop komen op 44 px hoog (de menuknop
+         ook 46 px breed), de menulinks op desktop op 40 px; de norm is 24 px. Zie het nalooprapport (Designer, punt 3). -->
     <header
       class="sticky top-0 z-50 border-b border-stone-200 bg-white/95 backdrop-blur"
     >
       <div
         class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 max-[341px]:gap-2 sm:px-6"
       >
-        <NuxtLink to="/" class="flex items-center gap-2 shrink-0">
+        <NuxtLink to="/" class="relative flex items-center gap-2 shrink-0 after:absolute after:inset-x-0 after:top-1/2 after:h-11 after:-translate-y-1/2 after:content-['']">
           <img
             src="/images/logo-het-baken.svg"
             alt="Het Baken"
@@ -66,7 +69,7 @@ useSeoMeta({
             v-for="link in navLinks"
             :key="link.to"
             :to="link.to"
-            class="hover:text-stone-950 transition-colors"
+            class="relative hover:text-stone-950 transition-colors after:absolute after:-inset-y-2.5 after:inset-x-0 after:content-['']"
             :class="{ 'text-stone-950 font-semibold': isActive(link.to) }"
             >{{ link.label }}</NuxtLink
           >
@@ -74,13 +77,13 @@ useSeoMeta({
         <div class="flex items-center gap-2">
           <NuxtLink
             to="/doe-mee"
-            class="shrink-0 rounded-full bg-yellow-400 px-4 py-2 text-sm font-semibold text-stone-900 hover:bg-yellow-300 transition-colors"
+            class="relative shrink-0 rounded-full bg-yellow-400 px-4 py-2 text-sm font-semibold text-stone-900 hover:bg-yellow-300 transition-colors after:absolute after:-inset-y-1 after:inset-x-0 after:content-['']"
             active-class="ring-2 ring-stone-900"
             >Doe mee</NuxtLink
           >
           <button
             type="button"
-            class="shrink-0 rounded-full border border-stone-300 p-2 lg:hidden"
+            class="relative shrink-0 rounded-full border border-stone-300 p-2 lg:hidden after:absolute after:-inset-1 after:content-['']"
             :aria-expanded="mobileMenuOpen"
             aria-label="Menu"
             @click="mobileMenuOpen = !mobileMenuOpen"
