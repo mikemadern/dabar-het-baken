@@ -23,7 +23,7 @@ const reports = [
       title="Jaarverslagen"
     />
 
-    <section class="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-20">
+    <section class="tekstkolom mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-20">
       <p class="text-stone-600">
         Hieronder alle beschikbare jaarverslagen. Het werk wordt gedragen door vrijwilligers
         en giften. Lees hoe je kunt bijdragen bij <NuxtLink to="/steun-ons" class="font-semibold text-stone-900 underline decoration-yellow-400 decoration-2 underline-offset-4 hover:text-stone-700">Steun ons &rarr;</NuxtLink>.
