@@ -53,7 +53,7 @@ useSeoMeta({
 
         <NuxtLink
           to="/fotobeleid"
-          class="mt-10 inline-block text-sm text-stone-400 underline decoration-stone-300 underline-offset-4 hover:text-stone-600"
+          class="mt-10 inline-flex min-h-6 items-center text-sm text-stone-600 underline decoration-stone-300 underline-offset-4 hover:text-stone-900"
         >
           Bezwaar tegen een foto? Bekijk ons fotobeleid
         </NuxtLink>

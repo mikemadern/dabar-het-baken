@@ -224,15 +224,21 @@ useSeoMeta({
             </ul>
           </div>
         </div>
+        <!-- De onderste regel: 14 px in plaats van 12, lichter dan stone-500 (dat gaf 3,7:1 op deze achtergrond, de norm is
+             4,5:1), de twee links onderstreept en 44 px hoog om aan te raken (voorstel van de Designer). -->
         <div
-          class="mt-12 flex flex-wrap items-center justify-between gap-4 border-t border-stone-800 pt-6 text-xs text-stone-500"
+          class="mt-12 flex flex-wrap items-center justify-between gap-x-4 gap-y-1 border-t border-stone-800 pt-6 text-sm text-stone-400"
         >
           <p>© {{ new Date().getFullYear() }} Dabar Het Baken</p>
           <div class="flex gap-4">
-            <NuxtLink to="/jaarverslagen" class="hover:text-white"
+            <NuxtLink
+              to="/jaarverslagen"
+              class="inline-flex min-h-11 items-center text-stone-300 underline underline-offset-4 hover:text-white"
               >Jaarverslagen</NuxtLink
             >
-            <NuxtLink to="/fotobeleid" class="hover:text-white"
+            <NuxtLink
+              to="/fotobeleid"
+              class="inline-flex min-h-11 items-center text-stone-300 underline underline-offset-4 hover:text-white"
               >Fotobeleid</NuxtLink
             >
           </div>
