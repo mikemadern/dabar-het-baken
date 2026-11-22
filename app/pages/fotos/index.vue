@@ -32,7 +32,7 @@ useSeoMeta({
               <NuxtImg
                 :src="album.photos[0]?.src"
                 :alt="album.photos[0]?.alt"
-                class="h-full w-full object-cover transition-transform duration-200 group-hover:scale-105"
+                class="h-full w-full object-cover motion-safe:transition-transform motion-safe:duration-200 motion-safe:group-hover:scale-105"
                 width="500"
                 height="375"
                 format="webp"
