@@ -40,7 +40,7 @@ useSeoMeta({
 
 <template>
   <div
-    class="flex min-h-screen flex-col bg-white text-stone-900 overflow-x-clip"
+    class="flex min-h-dvh flex-col bg-white text-stone-900 overflow-x-clip"
   >
     <!-- Nav. De wrapper hierboven heeft overflow-x-clip, niet -hidden: hidden maakt er een
          scrollcontainer van en dan blijft deze plakkende header niet bovenaan staan. -->

@@ -324,7 +324,7 @@ onUnmounted(() => {
               :key="openIndex"
               :src="photos[openIndex].src"
               :alt="photos[openIndex].alt"
-              class="lightbox-photo max-h-[85vh] max-w-full rounded-lg object-contain"
+              class="lightbox-photo max-h-[85dvh] max-w-full rounded-lg object-contain"
               format="webp"
               width="1600"
               @load="photoLoaded = true"
