@@ -10,6 +10,33 @@ const navLinks = [
 
 const mobileMenuOpen = ref(false);
 
+// Het mobiele menu sluit met Escape (de focus gaat terug naar de menuknop), met een tik buiten het menu en bij een
+// andere pagina. De knop en de keuze van een link sluiten het al.
+const menuKnop = ref<HTMLButtonElement | null>(null);
+const mobielMenu = ref<HTMLElement | null>(null);
+function sluitMenu(focusTerug = false) {
+  if (!mobileMenuOpen.value) return;
+  mobileMenuOpen.value = false;
+  if (focusTerug) menuKnop.value?.focus();
+}
+function bijToets(event: KeyboardEvent) {
+  if (event.key === 'Escape') sluitMenu(true);
+}
+function bijKlik(event: MouseEvent) {
+  // composedPath en niet event.target: Vue wisselt het icoon in de knop bij een klik, waarna het aangeklikte
+  // element al uit de pagina is en `contains` onwaar zou geven (het menu sloot dan meteen weer)
+  const pad = event.composedPath();
+  if (!pad.includes(mobielMenu.value as EventTarget) && !pad.includes(menuKnop.value as EventTarget)) sluitMenu();
+}
+onMounted(() => {
+  document.addEventListener('keydown', bijToets);
+  document.addEventListener('click', bijKlik);
+});
+onBeforeUnmount(() => {
+  document.removeEventListener('keydown', bijToets);
+  document.removeEventListener('click', bijKlik);
+});
+
 // Rond icoon voor de sociale-medialinks in de footer: 40 x 40 px, wit bij hover, witte focusomlijning
 const socialLinkClass =
   "flex h-10 w-10 items-center justify-center rounded-full border border-stone-700 text-stone-300 transition-colors hover:border-white hover:bg-white hover:text-stone-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white";
@@ -19,6 +46,7 @@ const socialLinkClass =
 // van /fotos, dus daar is een padcontrole nodig. `${to}/` voorkomt dat /fotobeleid
 // als "Foto's" telt.
 const route = useRoute();
+watch(() => route.path, () => sluitMenu());
 const isActive = (to: string) =>
   route.path === to || route.path.startsWith(`${to}/`);
 
@@ -79,9 +107,11 @@ useSeoMeta({
             >Doe mee</NuxtLink
           >
           <button
+            ref="menuKnop"
             type="button"
             class="shrink-0 rounded-full border border-stone-300 p-2 lg:hidden"
             :aria-expanded="mobileMenuOpen"
+            aria-controls="mobiel-menu"
             aria-label="Menu"
             @click="mobileMenuOpen = !mobileMenuOpen"
           >
@@ -114,6 +144,9 @@ useSeoMeta({
       </div>
       <nav
         v-if="mobileMenuOpen"
+        id="mobiel-menu"
+        ref="mobielMenu"
+        aria-label="Hoofdmenu"
         class="flex max-h-[calc(100dvh-4.5rem)] flex-col gap-1 overflow-y-auto border-t border-stone-200 bg-white px-4 py-3 text-sm font-medium text-stone-700 lg:hidden"
       >
         <NuxtLink
