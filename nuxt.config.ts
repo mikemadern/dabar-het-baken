@@ -83,7 +83,22 @@ export default defineNuxtConfig({
     screens: { xxs: 320, xs: 480 },
     vercel: { minimumCacheTTL: 60 * 60 * 24 * 7 },
   },
-  routeRules: jaarverslagenNoindex,
+  // Beveiligingsheaders op alle pagina's en bestanden (Vercel zet er zelf alleen HSTS op). De site laadt geen scripts of
+  // frames van anderen en wordt nergens ingesloten, dus: geen MIME-sniffing, niet in een frame (twee manieren, voor
+  // oude en nieuwe browsers), alleen de herkomst als verwijzer naar andere sites, en geen toegang tot camera,
+  // microfoon, locatie en betalen. Een Content-Security-Policy voor scripts volgt apart (vraagt een ontvangstadres).
+  routeRules: {
+    '/**': {
+      headers: {
+        'X-Content-Type-Options': 'nosniff',
+        'X-Frame-Options': 'DENY',
+        'Content-Security-Policy': "frame-ancestors 'none'",
+        'Referrer-Policy': 'strict-origin-when-cross-origin',
+        'Permissions-Policy': 'camera=(), microphone=(), geolocation=(), payment=()',
+      },
+    },
+    ...jaarverslagenNoindex,
+  },
   devtools: { enabled: true },
   compatibilityDate: '2024-04-03',
   css: ['~/assets/css/main.css'],
