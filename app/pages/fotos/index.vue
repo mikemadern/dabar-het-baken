@@ -23,11 +23,13 @@ useSeoMeta({
       <div class="mx-auto max-w-6xl px-4 sm:px-6">
         <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           <NuxtLink
-            v-for="album in albums"
+            v-for="(album, index) in albums"
             :key="album.slug"
             :to="`/fotos/${album.slug}`"
             class="group overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-sm transition-shadow hover:shadow-md"
           >
+            <!-- De eerste miniatuur staat boven de vouw en is het grootste element van de pagina (LCP): niet lazy en
+                 met hoge prioriteit. De rest blijft lazy. -->
             <div class="aspect-4/3 overflow-hidden bg-stone-200">
               <NuxtImg
                 :src="album.photos[0]?.src"
@@ -36,7 +38,8 @@ useSeoMeta({
                 width="500"
                 height="375"
                 format="webp"
-                loading="lazy"
+                :loading="index === 0 ? 'eager' : 'lazy'"
+                :fetchpriority="index === 0 ? 'high' : undefined"
               />
             </div>
             <div class="p-5">
