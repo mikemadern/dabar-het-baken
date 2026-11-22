@@ -28,7 +28,11 @@ const props = withDefaults(
         class="whitespace-nowrap text-center text-xs font-bold uppercase tracking-wide text-white sm:text-sm"
       >
         <template v-for="n in 4" :key="n">
-          <span v-for="word in words" :key="word">{{ word }} &bull; </span>
+          <!-- De zes woorden staan vier keer achter elkaar om de strook te vullen: een schermlezer leest ze één keer
+               (de eerste reeks); de herhalingen zijn versiering. -->
+          <span v-for="word in words" :key="word" :aria-hidden="n > 1 ? 'true' : undefined"
+            >{{ word }} &bull;
+          </span>
         </template>
       </p>
     </div>
