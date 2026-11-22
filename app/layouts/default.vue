@@ -76,7 +76,7 @@ useSeoMeta({
 
 <template>
   <div
-    class="flex min-h-screen flex-col bg-white text-stone-900 overflow-x-clip"
+    class="flex min-h-dvh flex-col bg-white text-stone-900 overflow-x-clip"
   >
     <!-- Sla-over-link voor het toetsenbord: de eerste tab komt hier, zodat de navigatie niet bij elke pagina
          opnieuw doorlopen hoeft te worden (WCAG 2.4.1). Alleen zichtbaar bij focus. -->
