@@ -33,8 +33,12 @@
     font-family: var(--font-sans);
   }
 
+  /* Koppen: de regels even lang verdelen, zodat er geen los woord op de laatste regel staat ('Word onderdeel van het
+     / team'). Alleen op koppen, niet op lopende tekst: het verdelen kost rekentijd en werkt tot ongeveer zes regels.
+     Een kop in een vlak (de paginatitel in het blauwe vlak) houdt zijn breedte; browsers zonder steun breken zoals voorheen. */
   h1, h2, h3 {
     font-family: var(--font-display);
     font-weight: 600;
+    text-wrap: balance;
   }
 }
