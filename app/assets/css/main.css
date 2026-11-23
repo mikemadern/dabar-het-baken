@@ -33,8 +33,21 @@
     font-family: var(--font-sans);
   }
 
+  /* Koppen: de regels even lang verdelen, zodat er geen los woord op de laatste regel staat ('Word onderdeel van het
+     / team'). Alleen op koppen, niet op lopende tekst: het verdelen kost rekentijd en werkt tot ongeveer zes regels.
+     Een kop in een vlak (de paginatitel in het blauwe vlak) houdt zijn breedte; browsers zonder steun breken zoals voorheen. */
   h1, h2, h3 {
     font-family: var(--font-display);
     font-weight: 600;
+    text-wrap: balance;
   }
+}
+
+/* Lopende tekst op de pagina's Missie, Contact, Jaarverslagen en Activiteiten: niet breder dan 40,5 rem (648 px bij de
+   normale tekstgrootte, ongeveer 65 tekens bij de breedte van een nul in Poppins 16 px, ongeveer 80 gewone letters
+   per regel) in plaats van de 720 px van de kolom (86 tot 91 tekens). rem en niet px, zodat het meeschaalt met de
+   tekstgrootte van het apparaat; de lead (18 px) wordt zo ook smaller. De kolom blijft links uitgelijnd met de kop; op
+   een telefoon is de kolom smaller en verandert er niets. */
+.tekstkolom p {
+  max-inline-size: 40.5rem;
 }

@@ -33,7 +33,7 @@
     "minimatch": "^11.0.7"
   },
   "devDependencies": {
-    "satori": "0.47.1",
+    "satori": "0.63.2",
     "sharp": "0.35.5"
   }
 }

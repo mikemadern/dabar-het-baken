@@ -241,7 +241,7 @@ onUnmounted(() => {
             <NuxtImg
               :src="photo.src"
               :alt="photo.alt"
-              class="h-full w-full object-cover transition-transform duration-200 group-hover:scale-105"
+              class="h-full w-full object-cover motion-safe:transition-transform motion-safe:duration-200 motion-safe:group-hover:scale-105"
               width="500"
               height="500"
               sizes="375:50vw sm:33vw lg:357px"
@@ -253,7 +253,7 @@ onUnmounted(() => {
 
         <NuxtLink
           to="/fotobeleid"
-          class="mt-10 inline-block text-sm text-stone-400 underline decoration-stone-300 underline-offset-4 hover:text-stone-600"
+          class="mt-10 inline-flex min-h-6 items-center text-sm text-stone-600 underline decoration-stone-300 underline-offset-4 hover:text-stone-900"
         >
           Bezwaar tegen een foto? Bekijk ons fotobeleid
         </NuxtLink>
@@ -324,7 +324,7 @@ onUnmounted(() => {
               :key="openIndex"
               :src="photos[openIndex].src"
               :alt="photos[openIndex].alt"
-              class="lightbox-photo max-h-[85vh] max-w-full rounded-lg object-contain"
+              class="lightbox-photo max-h-[85dvh] max-w-full rounded-lg object-contain"
               format="webp"
               width="1600"
               @load="photoLoaded = true"
@@ -339,6 +339,8 @@ onUnmounted(() => {
             class="hidden"
             format="webp"
             width="1600"
+            fetchpriority="low"
+            decoding="async"
           />
           <p class="absolute bottom-4 left-1/2 -translate-x-1/2 text-sm text-stone-400">
             {{ openIndex + 1 }} / {{ photos.length }}
