@@ -26,6 +26,9 @@ useSeoMeta({
     : 'Er ging iets mis op deze pagina van Dabar Het Baken. Ga naar de startpagina of kies een andere pagina.',
   robots: 'noindex, nofollow',
 })
+// Ook de header (X-Robots-Tag) van de foutpagina moet noindex zijn: de module zet er anders 'index, follow' op,
+// terwijl de meta-tag noindex zegt. De statuscode (404) blijft leidend, maar de twee zeggen nu hetzelfde.
+useRobotsRule('noindex, nofollow')
 
 // Wist de fout en gaat naar de voorpagina; zonder clearError blijft de foutpagina staan.
 const goHome = () => clearError({ redirect: '/' })

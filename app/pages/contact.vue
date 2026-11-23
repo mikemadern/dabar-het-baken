@@ -28,7 +28,7 @@ function sendMessage() {
       title="Contact"
     />
 
-    <section class="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-20">
+    <section class="tekstkolom mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-20">
       <p class="text-lg text-stone-600">
         Vraag, idee, of zin om mee te doen? We horen graag van je.
       </p>
@@ -59,7 +59,16 @@ function sendMessage() {
         </div>
       </div>
 
-      <form class="mt-10 rounded-2xl border border-stone-200 bg-white p-6 shadow-sm sm:p-8" @submit.prevent="sendMessage">
+      <!-- Met JavaScript maakt sendMessage het bericht (onderwerp, naam, e-mail en tekst) en opent het e-mailprogramma. Zonder
+           JavaScript, of voordat de pagina is geladen, doet het formulier zelf hetzelfde (mailto, als platte tekst): er gaat
+           niets als GET naar het adres van de pagina. -->
+      <form
+        class="mt-10 rounded-2xl border border-stone-200 bg-white p-6 shadow-sm sm:p-8"
+        method="post"
+        action="mailto:dabarhetbaken@gmail.com"
+        enctype="text/plain"
+        @submit.prevent="sendMessage"
+      >
         <h2 class="text-lg font-semibold text-stone-900">Stuur ons een bericht</h2>
         <p class="mt-1 text-sm text-stone-500">
           Dit opent je e-mailprogramma met het bericht al ingevuld, klaar om te versturen.
@@ -70,8 +79,10 @@ function sendMessage() {
             <input
               id="name"
               v-model="name"
+              name="naam"
               type="text"
               autocomplete="name"
+              enterkeyhint="next"
               required
               :class="fieldClass"
             >
@@ -81,8 +92,13 @@ function sendMessage() {
             <input
               id="email"
               v-model="email"
+              name="e-mail"
               type="email"
               autocomplete="email"
+              autocapitalize="none"
+              autocorrect="off"
+              spellcheck="false"
+              enterkeyhint="next"
               required
               :class="fieldClass"
             >
@@ -93,6 +109,7 @@ function sendMessage() {
           <textarea
             id="message"
             v-model="message"
+            name="bericht"
             rows="5"
             required
             :class="fieldClass"

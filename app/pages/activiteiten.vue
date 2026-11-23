@@ -97,7 +97,7 @@ const clubs = [
     />
 
     <section class="py-16 sm:py-20">
-      <div class="mx-auto max-w-3xl px-4 sm:px-6">
+      <div class="tekstkolom mx-auto max-w-3xl px-4 sm:px-6">
         <p class="text-lg text-stone-600">
           Tijdens de meivakantie en vijf zomerweken is er op Kriemelberg Bushcamp voor
           iedereen wat te doen: elke ochtend een club per leeftijdsgroep, op zondagavond
@@ -147,7 +147,7 @@ const clubs = [
                 :class="club.color === 'blue' ? 'bg-sky-100 text-sky-800' : 'bg-yellow-100 text-yellow-800'"
               >{{ club.age }}</span>
             </div>
-            <div class="space-y-4 text-stone-600 leading-relaxed">
+            <div class="tekstkolom space-y-4 text-stone-600 leading-relaxed">
               <p v-for="paragraph in club.paragraphs" :key="paragraph">{{ paragraph }}</p>
             </div>
           </div>
