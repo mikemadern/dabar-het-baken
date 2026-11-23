@@ -158,6 +158,25 @@ function handleKeydown(event: KeyboardEvent) {
   if (openIndex.value === null) return
   if (event.key === 'ArrowRight') next()
   else if (event.key === 'ArrowLeft') prev()
+  else if (event.key === 'Tab') keepTabInside(event)
+}
+
+// Een modaal <dialog> houdt de focus binnen de pagina, maar na het laatste (of voor het eerste) element gaat Tab
+// naar de adresbalk van de browser. De lightbox houdt Tab liever in het venster: van het laatste element terug naar
+// het eerste en omgekeerd.
+function keepTabInside(event: KeyboardEvent) {
+  const items = dialog.value?.querySelectorAll<HTMLElement>('button, a[href]')
+  if (!dialog.value || !items?.length) return
+  const first = items[0]!
+  const last = items[items.length - 1]!
+  const outside = !dialog.value.contains(document.activeElement)
+  if (event.shiftKey && (document.activeElement === first || outside)) {
+    event.preventDefault()
+    last.focus()
+  } else if (!event.shiftKey && (document.activeElement === last || outside)) {
+    event.preventDefault()
+    first.focus()
+  }
 }
 
 // Het <dialog> sluit zichzelf bij Escape (en bij de terugbeweging van sommige telefoons). De staat en het adres
@@ -342,6 +361,12 @@ onUnmounted(() => {
 </template>
 
 <style>
+/* Zolang de lightbox open is, verdwijnt de schuifbalk van de pagina (zoals voorheen, met overflow: hidden op de
+   body): anders staat hij naast de donkere laag. De pagina scrolt dan ook niet mee onder het venster. */
+html:has(dialog.lightbox-dialoog:modal) {
+  overflow: hidden;
+}
+
 /* Het <dialog> vult het scherm met zijn eigen donkere laag; de standaardlaag van de browser (::backdrop) is niet
    nodig. overscroll-behavior: de pagina erachter scrolt niet mee, ook niet boven de laag. */
 .lightbox-dialoog {
