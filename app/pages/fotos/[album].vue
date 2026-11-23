@@ -150,7 +150,7 @@ async function share() {
 }
 
 const lightboxButton =
-  'rounded-full bg-white/10 p-2 text-white hover:bg-white/20 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white'
+  'rounded-full bg-white/10 p-2 text-white hover:bg-white/20 active:bg-white/30 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white'
 
 // Pijltjes bladeren door de foto's. Escape, de focus in het venster (Tab blijft erin) en de rest van de pagina
 // op slot (inert) regelt het ingebouwde <dialog> zelf, omdat het met showModal() is geopend.

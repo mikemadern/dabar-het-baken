@@ -55,13 +55,13 @@ const churches = [
                 href="https://www.izb.nl/dabar/camping?relation_id=32836"
                 target="_blank"
                 rel="noopener"
-                class="rounded-full bg-yellow-400 px-5 py-3 text-sm font-semibold text-stone-900 hover:bg-yellow-300 transition-colors"
+                class="rounded-full bg-yellow-400 px-5 py-3 text-sm font-semibold text-stone-900 hover:bg-yellow-300 transition duration-100 active:bg-yellow-500 motion-safe:active:translate-y-px"
               >
                 Meld je aan als teamlid
               </a>
               <a
                 href="mailto:dabarhetbaken@gmail.com"
-                class="rounded-full border border-stone-300 px-5 py-3 text-sm font-semibold text-stone-900 hover:bg-stone-100 transition-colors"
+                class="rounded-full border border-stone-300 px-5 py-3 text-sm font-semibold text-stone-900 hover:bg-stone-100 transition duration-100 active:bg-stone-200 motion-safe:active:translate-y-px"
               >
                 Liever eerst wat vragen? Mail ons
               </a>
@@ -99,14 +99,14 @@ const churches = [
         <div class="mt-10 flex flex-wrap gap-3">
           <a
             href="mailto:dabarhetbaken@gmail.com"
-            class="inline-block rounded-full bg-yellow-400 px-5 py-3 text-sm font-semibold text-stone-900 hover:bg-yellow-300 transition-colors"
+            class="inline-block rounded-full bg-yellow-400 px-5 py-3 text-sm font-semibold text-stone-900 hover:bg-yellow-300 transition duration-100 active:bg-yellow-500 motion-safe:active:translate-y-px"
           >
             Neem contact op: dabarhetbaken@gmail.com
           </a>
           <a
             href="/documenten/vacature-commissielid.pdf"
             target="_blank"
-            class="inline-block rounded-full border border-stone-300 bg-white px-5 py-3 text-sm font-semibold text-stone-900 hover:bg-stone-100 transition-colors"
+            class="inline-block rounded-full border border-stone-300 bg-white px-5 py-3 text-sm font-semibold text-stone-900 hover:bg-stone-100 transition duration-100 active:bg-stone-200 motion-safe:active:translate-y-px"
           >
             Download de vacature commissielid (PDF)
           </a>

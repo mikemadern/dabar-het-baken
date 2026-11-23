@@ -117,7 +117,7 @@ function sendMessage() {
         </div>
         <button
           type="submit"
-          class="mt-6 rounded-full bg-yellow-400 px-5 py-3 text-sm font-semibold text-stone-900 hover:bg-yellow-300 transition-colors"
+          class="mt-6 rounded-full bg-yellow-400 px-5 py-3 text-sm font-semibold text-stone-900 hover:bg-yellow-300 transition duration-100 active:bg-yellow-500 motion-safe:active:translate-y-px"
         >
           Neem contact met ons op
         </button>

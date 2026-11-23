@@ -26,7 +26,7 @@ useSeoMeta({
             v-for="(album, index) in albums"
             :key="album.slug"
             :to="`/fotos/${album.slug}`"
-            class="group overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-sm transition-shadow hover:shadow-md"
+            class="group overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-sm transition-[box-shadow,transform,border-color] duration-100 hover:shadow-md active:border-stone-300 active:shadow-none motion-safe:active:scale-[.99]"
           >
             <!-- De eerste miniatuur staat boven de vouw en is het grootste element van de pagina (LCP): niet lazy en
                  met hoge prioriteit. De rest blijft lazy. -->

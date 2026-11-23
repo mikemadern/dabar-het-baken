@@ -60,13 +60,13 @@ const activiteitenTegels = [
       v-for="tegel in activiteitenTegels"
       :key="tegel.anker"
       :to="`/activiteiten#${tegel.anker}`"
-      class="group relative block overflow-hidden rounded-2xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-stone-900"
+      class="group relative block overflow-hidden rounded-2xl motion-safe:transition-transform motion-safe:duration-100 motion-safe:active:scale-[.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-stone-900"
       :class="[tegel.klasse, rij && 'lg:col-span-1 lg:aspect-square']"
     >
       <NuxtImg
         :src="tegel.foto"
         :alt="tegel.alt"
-        class="h-full w-full object-cover motion-safe:transition-transform motion-safe:duration-200 motion-safe:group-hover:scale-105"
+        class="h-full w-full object-cover motion-safe:transition-transform motion-safe:duration-200 motion-safe:group-hover:scale-105 group-active:brightness-[.92]"
         :class="tegel.positie"
         :sizes="tegel.sizes"
         format="webp"

@@ -63,13 +63,13 @@ const doeMeeChips = [
         <div class="mt-8 flex flex-wrap justify-center gap-3">
           <NuxtLink
             to="/activiteiten"
-            class="rounded-full bg-yellow-400 px-6 py-3 text-sm font-semibold text-stone-900 hover:bg-yellow-300 transition-colors"
+            class="rounded-full bg-yellow-400 px-6 py-3 text-sm font-semibold text-stone-900 hover:bg-yellow-300 transition duration-100 active:bg-yellow-500 motion-safe:active:translate-y-px"
           >
             Bekijk de activiteiten
           </NuxtLink>
           <NuxtLink
             to="/doe-mee"
-            class="rounded-full border border-white/40 px-6 py-3 text-sm font-semibold text-white hover:bg-white/10 transition-colors"
+            class="rounded-full border border-white/40 px-6 py-3 text-sm font-semibold text-white hover:bg-white/10 transition duration-100 active:bg-white/20 motion-safe:active:translate-y-px"
           >
             Word vrijwilliger
           </NuxtLink>
@@ -198,14 +198,14 @@ const doeMeeChips = [
               v-for="(album, i) in albumOmslagen"
               :key="album.slug"
               :to="`/fotos/${album.slug}`"
-              class="group block rounded-2xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+              class="group block rounded-2xl motion-safe:transition-transform motion-safe:duration-100 motion-safe:active:scale-[.98] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
             >
               <div class="relative">
                 <div class="aspect-4/3 overflow-hidden rounded-2xl shadow-lg">
                   <NuxtImg
                     :src="album.photos[0]?.src"
                     :alt="album.photos[0]?.alt"
-                    class="h-full w-full object-cover motion-safe:transition-transform motion-safe:duration-200 motion-safe:group-hover:scale-105"
+                    class="h-full w-full object-cover motion-safe:transition-transform motion-safe:duration-200 motion-safe:group-hover:scale-105 group-active:brightness-[.92]"
                     format="webp"
                     loading="lazy"
                     sizes="375:60vw sm:276px"
@@ -226,7 +226,7 @@ const doeMeeChips = [
           <div class="mt-4 text-center">
             <NuxtLink
               to="/fotos"
-              class="inline-block rounded-full bg-yellow-400 px-6 py-3 text-sm font-semibold text-stone-900 hover:bg-yellow-300 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+              class="inline-block rounded-full bg-yellow-400 px-6 py-3 text-sm font-semibold text-stone-900 hover:bg-yellow-300 transition duration-100 active:bg-yellow-500 motion-safe:active:translate-y-px focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
             >
               Bekijk alle albums &rarr;
             </NuxtLink>
@@ -292,7 +292,7 @@ const doeMeeChips = [
           </div>
           <NuxtLink
             to="/doe-mee"
-            class="mt-6 inline-block rounded-full bg-yellow-400 px-5 py-3 text-sm font-semibold text-stone-900 hover:bg-yellow-300 transition-colors"
+            class="mt-6 inline-block rounded-full bg-yellow-400 px-5 py-3 text-sm font-semibold text-stone-900 hover:bg-yellow-300 transition duration-100 active:bg-yellow-500 motion-safe:active:translate-y-px"
           >
             Bekijk de rollen en meld je aan &rarr;
           </NuxtLink>
