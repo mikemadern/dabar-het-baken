@@ -93,7 +93,7 @@ onBeforeUnmount(() => {
                   </div>
                   <button
                     type="button"
-                    class="inline-flex min-h-11 items-center rounded-full bg-yellow-400 px-5 py-2.5 text-sm font-semibold text-stone-900 hover:bg-yellow-300 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-stone-900"
+                    class="inline-flex min-h-11 items-center rounded-full bg-yellow-400 px-5 py-2.5 text-sm font-semibold text-stone-900 hover:bg-yellow-300 transition duration-100 active:bg-yellow-500 motion-safe:active:translate-y-px focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-stone-900"
                     :aria-label="gift.knopLabel"
                     @click="kopieer(gift)"
                   >

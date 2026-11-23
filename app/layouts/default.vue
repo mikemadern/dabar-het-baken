@@ -47,7 +47,7 @@ onBeforeUnmount(() => {
 
 // Rond icoon voor de sociale-medialinks in de footer: 40 x 40 px, wit bij hover, witte focusomlijning
 const socialLinkClass =
-  "flex h-10 w-10 items-center justify-center rounded-full border border-stone-700 text-stone-300 transition-colors hover:border-white hover:bg-white hover:text-stone-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white";
+  "flex h-10 w-10 items-center justify-center rounded-full border border-stone-700 text-stone-300 transition-colors duration-100 hover:border-white hover:bg-white hover:text-stone-900 active:bg-white/20 active:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white";
 
 // Actief voor de pagina zelf én voor onderliggende paden (bv. /fotos/[album]).
 // vue-router's active-class kijkt naar de routeketen; albums zijn een zusterroute
@@ -120,14 +120,14 @@ useSeoMeta({
         <div class="flex items-center gap-2">
           <NuxtLink
             to="/doe-mee"
-            class="relative shrink-0 rounded-full bg-yellow-400 px-4 py-2 text-sm font-semibold text-stone-900 hover:bg-yellow-300 transition-colors after:absolute after:-inset-y-1 after:inset-x-0 after:content-['']"
+            class="relative shrink-0 rounded-full bg-yellow-400 px-4 py-2 text-sm font-semibold text-stone-900 hover:bg-yellow-300 transition duration-100 active:bg-yellow-500 motion-safe:active:translate-y-px after:absolute after:-inset-y-1 after:inset-x-0 after:content-['']"
             active-class="ring-2 ring-stone-900"
             >Doe mee</NuxtLink
           >
           <button
             ref="menuKnop"
             type="button"
-            class="relative shrink-0 rounded-full border border-stone-300 p-2 lg:hidden after:absolute after:-inset-1 after:content-['']"
+            class="relative shrink-0 rounded-full border border-stone-300 p-2 transition-colors duration-100 active:bg-stone-100 lg:hidden after:absolute after:-inset-1 after:content-['']"
             :aria-expanded="mobileMenuOpen"
             aria-controls="mobiel-menu"
             aria-label="Menu"
