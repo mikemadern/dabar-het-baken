@@ -30,7 +30,8 @@
     "@vercel/analytics": {
       "vue-router": "$vue-router"
     },
-    "minimatch": "^11.0.7"
+    "minimatch": "^11.0.7",
+    "satori": "$satori"
   },
   "devDependencies": {
     "satori": "0.63.2",
