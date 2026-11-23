@@ -11,7 +11,7 @@ const message = ref('')
 // Rand: stone-500 haalt 4,8:1 op wit (WCAG 1.4.11 vraagt 3:1). Focus: donkere rand plus een
 // donkere omlijning met ruimte erbuiten, want geel op wit haalt maar 1,3:1 (2.4.7).
 const fieldClass =
-  'veld mt-1 w-full rounded-lg border border-stone-500 px-3 py-2 text-sm focus:border-stone-900 focus:outline-2 focus:outline-offset-2 focus:outline-stone-900'
+  'veld mt-1 block w-full rounded-lg border border-stone-500 px-3 py-2 text-sm focus:border-stone-900 focus:outline-2 focus:outline-offset-2 focus:outline-stone-900'
 
 // Schermlezers: aria-invalid en aria-describedby volgen precies de zichtbare staat (:user-invalid), zodat
 // een leeg verplicht veld niet wordt voorgelezen voordat de bezoeker iets heeft gedaan. Een melding die
