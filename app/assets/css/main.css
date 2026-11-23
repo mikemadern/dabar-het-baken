@@ -20,6 +20,10 @@
   --color-sky-400: #38b6ff;
 
   --color-red-500: #ff3131;
+
+  /* Foutkleur: 6,47:1 op wit en 6,19:1 op stone-50 (WCAG 1.4.3 vraagt 4,5:1 voor kleine tekst).
+     Het huisstijlrood red-500 haalt op wit maar 3,66:1 en blijft alleen voor het label 'vol'. */
+  --color-fout: #b91c1c;
 }
 
 @layer base {
@@ -41,6 +45,36 @@
     font-weight: 600;
     text-wrap: balance;
   }
+}
+
+/* Foutopmaak van formuliervelden (:user-invalid: pas na het verlaten van het veld of bij versturen,
+   niet tijdens het typen). De rand wordt 2 px; de binnenruimte wordt 1 px kleiner, zodat het veld niet
+   verspringt. De melding (VeldFout) staat direct onder het veld en is niet alleen aan kleur te zien:
+   er staat een uitroepteken en tekst. */
+.veld:user-invalid {
+  border-width: 2px;
+  border-color: var(--color-fout);
+  padding: calc(0.5rem - 1px) calc(0.75rem - 1px);
+}
+
+.veld-fout {
+  display: none;
+  margin-top: 0.375rem;
+  align-items: flex-start;
+  gap: 0.375rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  color: var(--color-fout);
+}
+
+.veld:user-invalid ~ .veld-fout {
+  display: flex;
+}
+
+.veld-fout-icoon {
+  flex-shrink: 0;
+  margin-top: 2px;
 }
 
 /* Lopende tekst op de pagina's Missie, Contact, Jaarverslagen en Activiteiten: niet breder dan 40,5 rem (648 px bij de
