@@ -82,7 +82,7 @@ useSeoMeta({
          opnieuw doorlopen hoeft te worden (WCAG 2.4.1). Alleen zichtbaar bij focus. -->
     <a
       href="#inhoud"
-      class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-white focus:px-5 focus:py-3 focus:text-sm focus:font-semibold focus:text-stone-900 focus:shadow-lg focus:outline-2 focus:outline-offset-2 focus:outline-stone-900"
+      class="sr-only focus:not-sr-only focus:fixed focus:left-4 sm:focus:left-[max(1.5rem,calc(50%-34.5rem))] focus:top-4 focus:z-[100] focus:rounded-full focus:bg-white focus:px-5 focus:py-3 focus:text-sm focus:font-semibold focus:text-stone-900 focus:shadow-lg focus:outline-2 focus:outline-offset-2 focus:outline-stone-900"
       >Ga naar de inhoud</a
     >
     <!-- Nav. De wrapper hierboven heeft overflow-x-clip, niet -hidden: hidden maakt er een
