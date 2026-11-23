@@ -56,8 +56,7 @@ const openIndex = ref<number | null>(null)
 
 // De miniaturen (om de focus bij sluiten terug te zetten) en de lightbox zelf
 const thumbs: (HTMLElement | null)[] = []
-const dialog = ref<HTMLElement | null>(null)
-const closeButton = ref<HTMLButtonElement | null>(null)
+const dialog = ref<HTMLDialogElement | null>(null)
 
 // Het adres bepaalt wat open is, maar alleen als de router navigeert: een directe link, Terug en
 // Vooruit. Bladeren door de foto's past het adres rechtstreeks aan (zie go()), zonder router.
@@ -153,50 +152,34 @@ async function share() {
 const lightboxButton =
   'rounded-full bg-white/10 p-2 text-white hover:bg-white/20 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white'
 
-// Tab blijft in de lightbox: van het laatste element naar het eerste en omgekeerd
-function trapFocus(event: KeyboardEvent) {
-  const items = dialog.value?.querySelectorAll<HTMLElement>('button, a[href]')
-  if (!dialog.value || !items?.length) return
-  const first = items[0]!
-  const last = items[items.length - 1]!
-  const outside = !dialog.value.contains(document.activeElement)
-  if (event.shiftKey && (document.activeElement === first || outside)) {
-    event.preventDefault()
-    last.focus()
-  } else if (!event.shiftKey && (document.activeElement === last || outside)) {
-    event.preventDefault()
-    first.focus()
-  }
-}
-
+// Pijltjes bladeren door de foto's. Escape, de focus in het venster (Tab blijft erin) en de rest van de pagina
+// op slot (inert) regelt het ingebouwde <dialog> zelf, omdat het met showModal() is geopend.
 function handleKeydown(event: KeyboardEvent) {
   if (openIndex.value === null) return
-  if (event.key === 'Escape') close()
-  else if (event.key === 'ArrowRight') next()
+  if (event.key === 'ArrowRight') next()
   else if (event.key === 'ArrowLeft') prev()
-  else if (event.key === 'Tab') trapFocus(event)
 }
 
-// Zolang de lightbox open is, is de rest van de pagina (#__nuxt) niet bereikbaar met toetsenbord,
-// muis of schermlezer. De lightbox staat in #teleports, buiten #__nuxt.
-function setPageInert(inert: boolean) {
-  document.getElementById('__nuxt')?.toggleAttribute('inert', inert)
+// Het <dialog> sluit zichzelf bij Escape (en bij de terugbeweging van sommige telefoons). De staat en het adres
+// volgen dan via close(), net als bij de sluitknop. Sluiten we zelf (openIndex is al leeg), dan is dit een no-op.
+function onDialogClose() {
+  if (openIndex.value !== null) close()
 }
 
 let lastIndex: number | null = null
 watch(openIndex, (value, previous) => {
-  document.body.style.overflow = value === null ? '' : 'hidden'
-  setPageInert(value !== null)
   photoLoaded.value = false
   if (value !== null) lastIndex = value
-  // De focus gaat de lightbox in (anders blijft hij achter de donkere laag staan) en bij sluiten terug
-  // naar de miniatuur van de foto die je het laatst zag, ook als het Terug van de browser was
-  if (previous === null && value !== null) nextTick(() => closeButton.value?.focus())
-  if (previous !== null && value === null && lastIndex !== null) {
-    const index = lastIndex
-    nextTick(() => thumbs[index]?.focus())
-  }
+  // Openen: als modaal venster (showModal): de rest van de pagina is niet bereikbaar en de focus gaat naar de
+  // sluitknop (autofocus). Bij sluiten verdwijnt het <dialog> uit de pagina (zie restoreFocus voor de focus).
+  if (previous === null && value !== null) nextTick(() => dialog.value?.showModal())
 })
+
+// Pas als het venster helemaal weg is (na het uitfaden) is de pagina erachter weer bereikbaar en kan de focus terug
+// naar de miniatuur van de foto die je het laatst zag, ook als het Terug van de browser of Escape was
+function restoreFocus() {
+  if (lastIndex !== null) thumbs[lastIndex]?.focus()
+}
 
 onMounted(() => {
   window.addEventListener('keydown', handleKeydown)
@@ -209,8 +192,6 @@ onMounted(() => {
 onUnmounted(() => {
   window.removeEventListener('keydown', handleKeydown)
   clearTimeout(noticeTimer)
-  document.body.style.overflow = ''
-  setPageInert(false)
 })
 </script>
 
@@ -260,17 +241,17 @@ onUnmounted(() => {
       </div>
     </section>
 
-    <!-- Lightbox: in #teleports (naast #__nuxt), zodat de rest van de pagina op slot kan -->
+    <!-- Lightbox: het ingebouwde <dialog>, geopend met showModal(). Dat regelt zelf de laag erachter (::backdrop),
+         de focus in het venster, Escape en de rest van de pagina op slot (inert). -->
     <Teleport to="#teleports">
-      <Transition name="lightbox">
-        <div
+      <Transition name="lightbox" @after-leave="restoreFocus">
+        <dialog
           v-if="openIndex !== null"
           ref="dialog"
-          role="dialog"
-          aria-modal="true"
           aria-label="Foto vergroten"
-          class="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-4"
+          class="lightbox-dialoog fixed inset-0 m-0 h-full max-h-none w-full max-w-none items-center justify-center overflow-hidden border-0 bg-black/90 p-4 text-inherit open:flex"
           @click.self="close"
+          @close="onDialogClose"
         >
           <!-- Delen, downloaden en sluiten rechtsboven. Iconen: Lucide (ISC). -->
           <div class="absolute right-4 top-4 flex gap-2">
@@ -293,7 +274,7 @@ onUnmounted(() => {
               <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="7 10 12 15 17 10" /><line x1="12" y1="15" x2="12" y2="3" /></svg>
             </a>
             <button
-              ref="closeButton"
+              autofocus
               type="button"
               :class="lightboxButton"
               aria-label="Sluiten (Esc)"
@@ -354,13 +335,22 @@ onUnmounted(() => {
           >
             {{ notice }}
           </p>
-        </div>
+        </dialog>
       </Transition>
     </Teleport>
   </div>
 </template>
 
 <style>
+/* Het <dialog> vult het scherm met zijn eigen donkere laag; de standaardlaag van de browser (::backdrop) is niet
+   nodig. overscroll-behavior: de pagina erachter scrolt niet mee, ook niet boven de laag. */
+.lightbox-dialoog {
+  overscroll-behavior: contain;
+}
+.lightbox-dialoog::backdrop {
+  background: transparent;
+}
+
 /* Lightbox: de donkere laag fadet in en uit en de foto zoomt er licht in (±200 ms). Bij wisselen
    schuift de oude foto weg en de nieuwe erin, in de richting van de wissel (±150 + 220 ms). */
 .lightbox-enter-active {
